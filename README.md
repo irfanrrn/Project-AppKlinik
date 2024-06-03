@@ -1,6 +1,6 @@
 # PROJECT21-KlinikApp02
 
-## Anggota Grub
+## Anggota Grup
 - Afni Noor Azizah (frontend)
 - Irfan Rizkiana Raja Nugraha (frontend)
 - M. Khotib (frontend)
