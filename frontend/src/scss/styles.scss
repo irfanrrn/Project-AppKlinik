@@ -1,3 +1,52 @@
 // Import all of Bootstrap's CSS
 @import "./variables";
 @import "bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    font-family: "Poppins", sans-serif;
+}
+
+#icons-light{
+    color: $primary-color;
+}
+.navbar{
+    text-transform: uppercase;
+
+    .nav-link.active {
+        font-weight: 700;
+        color: white;
+      }
+      .nav-link.active:hover {
+        font-weight: 700;
+      }
+      .nav-link{
+        color: white;
+      }
+      .nav-link:hover {
+        font-weight: 700;
+      }
+}
+#navnav{
+    background-color: $primary-color;
+    color: white;
+}
+.btn-log{
+    width: 205px;
+    background-color: $primary-color;
+    letter-spacing: 2px;
+    color: white;
+    text-align: center;
+}
+.btn-log:hover{
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: $primary-color;
+    text-align: center;
+}
+.btn-appo{
+    background-color: $warning-color;
+}
+.btn-appo:hover{
+    background-color: $primary-color;
+}

@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import './scss/styles.scss'
 import * as bootstrap from 'bootstrap'
 
+
 export default function App() {
   return (
     <BrowserRouter>
