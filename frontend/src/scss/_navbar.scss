@@ -1,0 +1,40 @@
+.navbar{
+    text-transform: uppercase;
+
+    .nav-link.active {
+        font-weight: 700;
+        color: white;
+      }
+      .nav-link.active:hover {
+        font-weight: 700;
+      }
+      .nav-link{
+        color: white;
+      }
+      .nav-link:hover {
+        font-weight: 700;
+      }
+}
+#navnav{
+    background-color: $primary-color;
+    color: white;
+}
+.btn-log{
+    width: 205px;
+    background-color: $primary-color;
+
+    color: white;
+    text-align: center;
+}
+.btn-log:hover{
+    letter-spacing: 2px;
+    font-weight: 700;
+    color: $primary-color;
+    text-align: center;
+}
+.btn-appo{
+    background-color: $warning-color;
+}
+.btn-appo:hover{
+    background-color: $primary-color;
+}
