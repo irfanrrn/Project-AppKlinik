@@ -8,12 +8,12 @@ footer{
 }
 .btn-appo-foot{
     color: white;
-    background-color: $warning-color;
+    background-color: $warning;
     text-transform: uppercase;
 }
 .btn-appo-foot:hover{
-    color: $warning-color;
-    border-color: $warning-color;
+    color: $warning;
+    border-color: $warning;
     text-transform: uppercase;
 }
 .footer-widget p{
@@ -23,9 +23,7 @@ a{
     text-decoration: none;
     color: white;
 }
-.footer-title-use{
-    text-align: center;
-}
+
 .footer-title{
     text-align: justify;
 }
@@ -34,7 +32,6 @@ a{
   }
   .list li {
     width: auto;
-    text-align: center;
     list-style-type: none;
     padding: 10px;
     position: relative;
@@ -42,9 +39,8 @@ a{
   .list li::before {
     content: "";
     position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 100%;
+    left: 0;
+    bottom: 0;
     width: 0;
     height: 2px;
     background: white;
@@ -67,7 +63,7 @@ a{
     text-align: justify;
 }
 .social-links i:hover{
-    color: $warning-color;
+    color: $warning;
 }
 .bottom-bar {
     background: $footer-dark;

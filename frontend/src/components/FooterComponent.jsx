@@ -19,11 +19,11 @@ const FooterComponent = () => {
                                 Our Clinic, where you can get quality and trusted health care. 
                                 We are a clinic committed to providing the best health services for the whole family.
                                 </p>
-                                <button className="btn btn-appo-foot">Appointment</button>
+                                <button className="btn btn-appo-foot">LOGIN/REGIST</button>
                             </div>
                         </div>
                         <div className="col-xl-4 col-md-6 col-lg-4">
-                            <div className="footer-widget">
+                            <div className="footer-widget mt-4 mt-lg-0 d-flex align-items-start align-items-lg-center flex-column">
                                 <h3 className="footer-title-use mb-3">Useful Links</h3>
                                 <ul className="list">
                                 <li>

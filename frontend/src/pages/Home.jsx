@@ -1,16 +1,11 @@
 import React from 'react'
-import NavbarComponent from '../components/NavbarComponent'
-import FooterComponent from '../components/FooterComponent'
+import UserLayout from '../components/UserLayout'
 
 
 export default function Home() {
   return (
-    <div>
-      <NavbarComponent/>
-
+    <UserLayout>
       <button className="btn btn-warning">Button contoh</button>
-
-      <FooterComponent/>
-    </div>
+    </UserLayout>
   )
 }
