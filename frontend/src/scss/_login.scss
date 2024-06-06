@@ -1,0 +1,136 @@
+.container1 {
+  display: flex;
+  width: 80%;
+  max-width: 1000px;
+  background-color: white;
+
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0 auto; /* Meletakkan kontainer di tengah secara horizontal */
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-form {
+  flex: 1;
+  padding: 40px;
+}
+
+.login-form h1 {
+  font-size: 40px;
+  margin-bottom: 50px;
+  color: #333;
+  text-align: center;
+  font-weight: bold;
+  margin-right: 90px;
+}
+
+.login-form p {
+  font-size: 16px;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+.login-form label {
+  display: block;
+  font-size: 16px;
+  color: #000000;
+  margin-bottom: 5px;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.login-form input[type="email"] {
+  width: calc(
+    100% - 120px
+  ); /* Mengurangi panjang input dari sisi kiri dan kanan */
+  padding: 10px; /* Sesuaikan dengan kebutuhan */
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.login-form input[type="password"] {
+  width: calc(
+    100% - 120px
+  ); /* Mengurangi panjang input dari sisi kiri dan kanan */
+  padding: 10px; /* Sesuaikan dengan kebutuhan */
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.forgot-password {
+  display: block;
+  font-size: 16px;
+  color: #000000;
+  text-align: right;
+  margin-bottom: 20px;
+  text-decoration: none;
+  width: calc(100% - 125px);
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.login-btn {
+  background-color: #3dc5cc;
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.login-btn:hover {
+  background-color: #3dc5cc;
+}
+
+.register-btn {
+  background-color: white;
+  border: 2px solid #3dc5cc;
+  color: #3dc5cc;
+  padding: 10px 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: 120px;
+}
+
+.register-btn:hover {
+  background-color: #3dc5cc;
+  color: white;
+  margin-right: 120px;
+}
+
+.login-image {
+  flex: 1;
+  overflow: hidden;
+}
+
+.login-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
