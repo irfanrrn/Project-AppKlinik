@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Doctorschedule from "./pages/Doctorschedule";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 import "@fortawesome/fontawesome-free/css/all.css";
 
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/Doctorschedule" element={<Doctorschedule />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/Register" element={<Register />} />
       </Routes>
     </BrowserRouter>
   );
