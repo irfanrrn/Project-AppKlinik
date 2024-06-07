@@ -1,0 +1,150 @@
+.container2 {
+  display: flex;
+  width: 80%;
+  max-width: 1000px;
+  background-color: white;
+
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0 auto; /* Meletakkan kontainer di tengah secara horizontal */
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.register-form2 {
+  flex: 1;
+  padding: 40px;
+  margin-left: 75px;
+}
+
+.register-form2 h1 {
+  font-size: 40px;
+  margin-bottom: 50px;
+  color: #333;
+  text-align: center;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-form2 p {
+  font-size: 16px;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+.register-form2 label {
+  display: block;
+  font-size: 16px;
+  color: #000000;
+  margin-bottom: 5px;
+}
+
+.register-form2 input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.register-form2 input[type="text"] {
+  width: calc(
+    100% - 100px
+  ); /* Mengurangi panjang input dari sisi kiri dan kanan */
+  padding: 10px; /* Sesuaikan dengan kebutuhan */
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.register-form2 input[type="email"] {
+  width: calc(
+    100% - 100px
+  ); /* Mengurangi panjang input dari sisi kiri dan kanan */
+  padding: 10px; /* Sesuaikan dengan kebutuhan */
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.register-form2 input[type="password"] {
+  width: calc(
+    100% - 100px
+  ); /* Mengurangi panjang input dari sisi kiri dan kanan */
+  padding: 10px; /* Sesuaikan dengan kebutuhan */
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.forgot-password2 {
+  display: block;
+  font-size: 16px;
+  color: #000000;
+  text-align: right;
+  margin-bottom: 20px;
+  text-decoration: none;
+  width: calc(100% - 100px);
+}
+
+.forgot-password2:hover {
+  text-decoration: underline;
+}
+
+.buttons2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.login-btn2 {
+  background-color: #3dc5cc;
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.login-btn2:hover {
+  background-color: #3dc5cc;
+}
+
+.register-btn2 {
+  background-color: white;
+  border: 2px solid #3dc5cc;
+  color: #3dc5cc;
+  padding: 10px 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: 100px;
+}
+
+.register-btn2:hover {
+  background-color: #3dc5cc;
+  color: white;
+  margin-right: 100px;
+}
+
+.register-image2 {
+  flex: 1;
+  overflow: hidden;
+}
+
+.register-image2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
