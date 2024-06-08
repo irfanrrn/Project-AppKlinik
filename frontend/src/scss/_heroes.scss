@@ -3,7 +3,7 @@
     min-height: 300px;
 }
 .carousel-caption{
-    bottom: 180px;
+    bottom: 170px;
     z-index: 2;
 }
 .carousel-caption h5{
@@ -28,4 +28,21 @@
     height: 100%;
     top: 0;
     left: 0;
+    background: rgba(0,0,0,0.3);
+    z-index: 1;
 }
+.appo-hero{
+    margin-top: 20px;
+    font-size: 18px;
+    border: 1px solid #ffc107;
+    border-radius: 10px;
+    background: transparent;
+    color: #ffc107;
+    padding: 10px 10px;
+    transition: all .3s ease;
+}
+.appo-hero:hover{
+    background: #ffc107;
+    color: black;
+}
+  
