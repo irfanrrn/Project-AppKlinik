@@ -4,8 +4,6 @@ import Doctorschedule from "./pages/Doctorschedule";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
-import "@fortawesome/fontawesome-free/css/all.css";
-
 import "./scss/styles.scss";
 import * as bootstrap from "bootstrap";
 

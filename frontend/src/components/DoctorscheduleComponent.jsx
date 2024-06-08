@@ -31,7 +31,7 @@ const DoctorscheduleComponent = () => {
         </div>
       </div>
 
-      <div className="container">
+      <div className="container" id="container-search">
         <div className="search-container">
           <input type="text" placeholder="Search" />
           <button className="search-btn" onClick={handleSearchClick}>

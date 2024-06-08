@@ -4,7 +4,7 @@ const FooterComponent = () => {
     <div>
          <footer className="footer">
             <div className="footer-top">
-                <div className="container ">
+                <div className="container container-footer">
                     <div className="row">
                         <div className="col-xl-4 col-md-6 col-lg-4">
                             <div className="footer-widget">
