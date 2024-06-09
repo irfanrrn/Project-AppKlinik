@@ -31,17 +31,24 @@ const InformationComponent = () => {
                             <h2>our facilities</h2>
                             <ul className="w-hours">
                                 <li>
-                                6 <span>Experienced Doctor</span>
+                                <span className="span-circle">
+                                    6 </span>
+                                <span className="span-caption">Experienced Doctor</span>
                                 </li>
                                 <li>
-                                20 <span>Rooms
-                                Available</span>
+                                <span className="span-circle">
+                                    20</span>
+                                <span className="span-caption">Rooms Available</span>
                                 </li>
+                                {/* <li>
+                                <span className="align-items-center justify-content-center spanbest">
+                                    IGD</span>
+                                    <span>Emergency Departments</span>
+                                </li> */}
                                 <li>
-                                IGD <span>Emergency Departments</span>
-                                </li>
-                                <li>
-                                <i className="fa fa-capsules fs-5"></i> <span>Pharmacy & LAB</span>
+                                <span className="span-circle">
+                                    <i className="fa fa-capsules fs-5"></i></span>
+                                <span className="span-caption">Pharmacy & LAB</span>
                                 </li>
                             </ul>
                         </div>

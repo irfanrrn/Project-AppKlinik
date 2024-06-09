@@ -1,0 +1,28 @@
+#about{
+    align-items: center;
+    background-color: #fff;
+    padding: 50px;
+}
+
+.img-fluid.rounded-image{
+    border-radius: 10px;
+}
+.about-text {
+    margin-top: 70px;
+    margin-bottom: 70px;
+    h3{
+        color: #000;
+        margin-bottom: 30px;
+        font-weight: 700;
+    }
+    p{
+        color: #000;
+        margin-bottom: 30px;
+        text-align: justify;
+        font-size: 16px;
+    }
+    a{
+        color: #fff;
+        font-size: 16px;
+    }
+}

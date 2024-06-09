@@ -3,6 +3,10 @@ import UserLayout from '../components/UserLayout'
 import HeroesComponent from '../components/HeroesComponent'
 import InformationComponent from '../components/InformationComponent'
 import ServiceComponent from '../components/ServiceComponent'
+import WhychoiceComponent from '../components/WhychoiceComponent'
+import AboutComponent from '../components/AboutComponent'
+import SecdoctorsComponent from '../components/SecdoctorsComponent'
+
 
 
 export default function Home() {
@@ -11,6 +15,9 @@ export default function Home() {
       <HeroesComponent />
       <InformationComponent />
       <ServiceComponent />
+      <AboutComponent />
+      <WhychoiceComponent />
+      <SecdoctorsComponent />
     </UserLayout>
   )
 }

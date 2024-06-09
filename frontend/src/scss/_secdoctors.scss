@@ -1,14 +1,14 @@
-.service-section{
-    background: $primary;
+.doctor-section{
+    background: #fff;
     padding-top: 90px;
     padding-bottom: 90px;
 
-    .section-title {
+    .doctor-title {
         position: relative;
     
         h1 {
             text-align: center;
-            color: #fff;
+            color: #000;
             font-weight: 700;
             padding-bottom: 20px; // Added to create space for the border
             position: relative; // Ensure the pseudo-element is positioned relative to the heading
@@ -17,7 +17,7 @@
                 position: absolute;
                 bottom: 0; // Position it at the bottom of the h3
                 left: 50%;
-                background: #fff;
+                background: #000;
                 height: 2px;
                 width: 50px;
                 content: '';
@@ -26,36 +26,35 @@
         }
         p{
             text-align: center;
-            color: #fff;
+            color: #000;
             margin: 20px 0 20px 0;
             font-size: 16px;
         }
     }
     
-    .service-single{
+    .doctor-single{
         background: #fff;
         margin-bottom: 30px;
         box-shadow: 0 6px 10px rgba(0, 0, 0, .04);
         border-radius: 10px;
-        height: 480px;
-        .service-img{
+        height: 400px;
+        .doctor-img{
             overflow: hidden;
             border-top-right-radius: 5px;
             border-top-left-radius: 5px;
             img{
                 width: 100%;
+                height: 280px;
                 transform: scale(1);
                 transition: .3s;
-                // @include transform(scale(1));
-                // @include transition(.3s);
             }
         }
-        .service-content{
+        .doctor-content{
             padding: 22px 30px 24px 30px;
             text-align: center;
-            h3{
+            h5{
                 margin-bottom: 0;
-                font-size: 22px;
+                font-size: 18px;
                 color: #1F1F1F;
                 line-height: 33px;
                 font-weight: 700;
@@ -69,12 +68,12 @@
             }
         }
         &:hover{
-            .service-img{
+            .doctor-img{
                 img{
                     transform: scale(1.2);
-                    // @include transform(scale(1.2));
                 }
             }
         }
     }
 }
+

@@ -1,6 +1,6 @@
 
 .cta {
-    background-color: #f9f9f9;
+    background-color: #fff;
     padding: 40px 0;
   
     .container {
@@ -13,23 +13,25 @@
           padding: 30px;
           border-radius: 8px;
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-          height: 250px;
+          height: 270px;
   
           i {
             font-size: 30px;
             color: #fff;
             margin-bottom: 20px;
+            
           }
   
           h2 {
             font-size: 24px;
             color: #fff;
             text-transform: uppercase;
+            margin-bottom: 20px;
           }
           
           h3 {
             display: inline-block;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             text-decoration: none;
             font-weight: 700;
             font-size: 24px;
@@ -39,7 +41,7 @@
 
           h4 {
             display: inline-block;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             text-decoration: none;
             font-weight: 700;
             font-size: 16px;
@@ -59,14 +61,31 @@
             color: #fff;
   
             li {
-              margin-bottom: 5px;
+              margin-bottom: 20px;
               font-weight: 700;
+
             }
-  
-            span {
-                font-weight: normal;
+            .span-circle{
+              position: absolute; 
+              display: flex; 
+              align-items: center;
+              justify-content: center;
+              margin-left: 1px;
+              width: 35px;
+              height: 35px;
+              border-radius: 50%;
+              background-color: #fff; /* Warna latar belakang label */
+              color: $primary; /* Warna teks */
+              font-weight: bold;
+              i{
+                margin-bottom: 4px;
+                color: $primary;
+              }
+            }
+            .span-caption {
+              font-weight: normal;
               color: #fff;
-              margin-left: 10px;
+              margin-left: 40px;
             }
           }
         }

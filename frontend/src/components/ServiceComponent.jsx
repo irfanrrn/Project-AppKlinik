@@ -1,56 +1,63 @@
+import service1 from "../assets/img/service1.jpg";
+import service2 from "../assets/img/service2.jpg";
+import service3 from "../assets/img/service3.jpg";
+import service4 from "../assets/img/service4.jpg";
+import service5 from "../assets/img/service5.jpg";
+import service6 from "../assets/img/service6.jpg";
+
 const ServiceComponent = () => {
     return (
-        <div className="our_department_area">
+        <div className="service-section">
             <div className="container">
                 <div className="row">
                     <div className="col-xl-12">
-                        <div className="section_title text-center mb-55">
-                        <h3>OUR AVAILABLE SERVICES</h3>
-                        <p>
-                        By providing this service, we hope that your health care needs are met.
-                        <br />
-                        Your health is our priority.{" "}
-                        </p>
+                        <div className="section-title">
+                            <h1>OUR AVAILABLE SERVICES</h1>
+                            <p>
+                            By providing this service, we hope that your health care needs are met.
+                            <br />
+                            Your health is our priority.{" "}
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-xl-4 col-md-6 col-lg-4">
-                        <div className="single_department">
-                            <div className="department_thumb">
-                                <img src="img/department/1.png" alt="" />
+                        <div className="service-single">
+                            <div className="service-img">
+                                <img src={service1} alt="" />
                             </div>
-                            <div className="department_content">
+                            <div className="service-content">
                                 <h3>
-                                <a href="#">Dental and Oral Specialist</a>
+                                Dental and Oral Specialist
                                 </h3>
                                 <p>Our services include routine check-ups, teeth cleaning, fillings, root canal treatment, tooth extraction.</p>
                             </div>
                         </div>
                     </div>
                     <div className="col-xl-4 col-md-6 col-lg-4">
-                        <div className="single_department">
-                            <div className="department_thumb">
-                                <img src="img/department/2.png" alt="" />
+                        <div className="service-single">
+                            <div className="service-img">
+                                <img src={service2} alt="" />
                             </div>
-                            <div className="department_content">
+                            <div className="service-content">
                                 <h3>
-                                <a href="#">Child Specialist</a>
+                                Child Specialist
                                 </h3>
-                                <p>Kami menawarkan layanan imunisasi, 
-                                    pemeriksaan kesehatan rutin, penanganan penyakit anak, 
-                                    konsultasi tumbuh kembang.</p>
+                                <p>We offer immunization services, 
+                                    routine health check-ups, child disease management, 
+                                    and growth and development consultations.</p>
                             </div>
                         </div>
                     </div>
                     <div className="col-xl-4 col-md-6 col-lg-4">
-                        <div className="single_department">
-                            <div className="department_thumb">
-                                <img src="img/department/3.png" alt="" />
+                        <div className="service-single">
+                            <div className="service-img">
+                                <img src={service3} alt="" />
                             </div>
-                            <div className="department_content">
+                            <div className="service-content">
                                 <h3>
-                                <a href="#">General Specialist</a>
+                                General Specialist
                                 </h3>
                                 <p>Our services include medical consultations, 
                                     physical examinations, vaccinations, 
@@ -59,13 +66,13 @@ const ServiceComponent = () => {
                         </div>
                     </div>
                     <div className="col-xl-4 col-md-6 col-lg-4">
-                        <div className="single_department">
-                            <div className="department_thumb">
-                                <img src="img/department/4.png" alt="" />
+                        <div className="service-single">
+                            <div className="service-img">
+                                <img src={service4} alt="" />
                             </div>
-                            <div className="department_content">
+                            <div className="service-content">
                                 <h3>
-                                <a href="#">Heart Specialist</a>
+                                Heart Specialist
                                 </h3>
                                 <p>Our services include cardiology consultation, 
                                     ECG examination, cardiac stress test, 
@@ -74,27 +81,27 @@ const ServiceComponent = () => {
                         </div>
                     </div>
                     <div className="col-xl-4 col-md-6 col-lg-4">
-                        <div className="single_department">
-                        <div className="department_thumb">
-                            <img src="img/department/5.png" alt="" />
+                        <div className="service-single">
+                        <div className="service-img">
+                            <img src={service5} alt="" />
                         </div>
-                            <div className="department_content">
+                            <div className="service-content">
                                 <h3>
-                                <a href="#">OBGYN</a>
+                                OBGYN
                                 </h3>
-                                <p>EProviding health services for women, 
+                                <p>Providing health services for women, 
                                     including pregnancy, childbirth and post-natal check-ups.</p>
                             </div>
                         </div>
                     </div>
                     <div className="col-xl-4 col-md-6 col-lg-4">
-                        <div className="single_department">
-                        <div className="department_thumb">
-                            <img src="img/department/6.png" alt="" />
+                        <div className="service-single">
+                        <div className="service-img">
+                            <img src={service6} alt="" />
                         </div>
-                            <div className="department_content">
+                            <div className="service-content">
                                 <h3>
-                                <a href="#">Psychology</a>
+                                Psychology
                                 </h3>
                                 <p>We offer individual counseling, 
                                     family therapy, treatment for mental 
