@@ -2,11 +2,11 @@ import hero1 from "../assets/img/hero1.jpg";
 
 const HeroesComponent = () => {
   return (
-    <div id="carouselExampleCaptions" className="carousel slide">
+    <div id="hero-carousel" className="carousel slide">
       <div className="carousel-indicators">
         <button
           type="button"
-          data-bs-target="#carouselExampleCaptions"
+          data-bs-target="#hero-carousel"
           data-bs-slide-to={0}
           className="active"
           aria-current="true"
@@ -14,13 +14,13 @@ const HeroesComponent = () => {
         />
         <button
           type="button"
-          data-bs-target="#carouselExampleCaptions"
+          data-bs-target="#hero-carousel"
           data-bs-slide-to={1}
           aria-label="Slide 2"
         />
         <button
           type="button"
-          data-bs-target="#carouselExampleCaptions"
+          data-bs-target="#hero-carousel"
           data-bs-slide-to={2}
           aria-label="Slide 3"
         />
@@ -56,7 +56,7 @@ const HeroesComponent = () => {
       <button
         className="carousel-control-prev"
         type="button"
-        data-bs-target="#carouselExampleCaptions"
+        data-bs-target="#hero-carousel"
         data-bs-slide="prev"
       >
         <span className="carousel-control-prev-icon" aria-hidden="true" />
@@ -65,7 +65,7 @@ const HeroesComponent = () => {
       <button
         className="carousel-control-next"
         type="button"
-        data-bs-target="#carouselExampleCaptions"
+        data-bs-target="#hero-carousel"
         data-bs-slide="next"
       >
         <span className="carousel-control-next-icon" aria-hidden="true" />

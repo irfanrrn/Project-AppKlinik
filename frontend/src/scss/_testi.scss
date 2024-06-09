@@ -1,0 +1,52 @@
+.testimonial{
+    .container{
+        color: #fff;
+        background-color: $primary;
+        text-align: center;
+        h1{
+            font-weight: 700;
+        }
+    }
+    
+    #testi-carousel{
+        .carousel-indicators{
+            position: relative;
+            margin-top: 2rem;
+           }
+           
+           .items{
+            max-width: 800px;
+            margin: auto;
+           }
+           
+           .items img{
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 100%;
+           }
+           
+           .stars{
+            margin-bottom: 1.5rem;
+           }
+           
+           .stars i{
+            color: #ffc107;
+            font-size: 1.5rem;
+            padding: 0 .5rem;
+           }
+           
+           .items q{
+            font-size: 1.2rem;
+           }
+           
+           .carousel-indicators [data-bs-target]{
+            background-color: #fff;
+            width: 20px;
+            height: 20px;
+            border-radius: 100%;
+           }
+    }
+    
+}

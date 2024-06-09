@@ -3,8 +3,7 @@ const NavbarComponent = () => {
     <div>
       <div
         className="container-fluid bg-white p-0 wow fadeIn"
-        data-wow-delay="0.1s"
-      >
+        data-wow-delay="0.1s">
         <div className="row gx-0 d-none d-lg-flex">
           <div className="col-lg-7 px-5 text-start">
             <div className="h-100 d-inline-flex align-items-center py-3 me-4">
@@ -33,11 +32,11 @@ const NavbarComponent = () => {
         </div>
       </div>
       <nav
-        class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top p-0 wow fadeIn"
+        class="navbar navbar-expand-lg bg-primary sticky-top p-0 wow fadeIn"
         data-wow-delay="0.1s"
       >
         <a
-          href="index.html"
+          href=" "
           class="navbar-brand d-flex align-items-center px-4 px-lg-5"
         >
           <h3 class="m-0 text-white">
