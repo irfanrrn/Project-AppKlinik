@@ -23,11 +23,13 @@ const DoctorscheduleComponent = () => {
   return (
     <>
       <div
-        className="container-fluid page-header py-5 mb-5 wow fadeIn"
+        className="container-fluid page-header3 py-5 mb-5 wow fadeIn"
         data-wow-delay="0.1s"
       >
-        <div className="container">
-          <h3 className="display-3">DOCTOR'S SCHEDULE</h3>
+        <div className="container7 py-5">
+          <h1 className="display-3 text-white mb-3 animated slideInDown">
+            About Us
+          </h1>
         </div>
       </div>
 
