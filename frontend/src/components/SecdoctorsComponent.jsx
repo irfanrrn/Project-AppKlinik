@@ -102,6 +102,15 @@ const SecdoctorsComponent = () => {
                         </div>
                     </div>
                 </div>
+                <div className="row">
+                    <div className="col-12 text-center">
+                        <hr />
+                        <a href="#" className="btn btn-secdoc">
+                            See Doctor's Schedule
+                        </a>
+                        <hr />
+                    </div>
+                </div>
             </div>
         </div>
     );

@@ -1,7 +1,7 @@
 .doctor-section{
     background: #fff;
     padding-top: 90px;
-    padding-bottom: 90px;
+    padding-bottom: 50px;
 
     .doctor-title {
         position: relative;
@@ -75,5 +75,15 @@
             }
         }
     }
+    .btn-secdoc{
+        font-size: 18px;
+        color: #000;
+        font-weight: 700;
+        &:hover{
+            font-size: 18px;
+            color: $primary;
+            font-weight: 700;
+          }
+      }
 }
 

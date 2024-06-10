@@ -3,7 +3,7 @@ const InformationComponent = () => {
         <section className="cta">
             <div className="container">
                 <div className="row justify-content-between">
-                    <div className="col-md-4">
+                    <div className="col-md-6 col-lg-4 mt-3">
                         <div className="cta-block emergency item">
                             <i className="fa fa-phone" />
                             <h2>Emergency Cases</h2>
@@ -12,7 +12,7 @@ const InformationComponent = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-md-6 col-lg-4 mt-3">
                         <div className="cta-block top-doctor item text-center">
                             <i className=" fa fa-hourglass-half"></i>
                             <h2>working hours</h2>
@@ -25,7 +25,7 @@ const InformationComponent = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-md-6 col-lg-4 mt-3">
                         <div className="cta-block working-time item">
                             <i className="fa fa-bookmark"></i>
                             <h2>our facilities</h2>

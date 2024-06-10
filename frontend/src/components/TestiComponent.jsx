@@ -1,3 +1,4 @@
+
 const TestiComponent = () => {
     return (
         <section className="testimonial">
@@ -7,7 +8,7 @@ const TestiComponent = () => {
                     <div className="carousel-inner">
                     <div className="carousel-item">
                         <div className="items">
-                            <img src="img/dr-alisa.png" className="shadow" alt="dr-alisa" />
+                            <img src="" className="shadow" alt="customer1" />
                             <h4 className="mt-3">Alisa Gracia</h4>
                             <div className="stars">
                                 <i class="fa fa-star"></i>
@@ -26,7 +27,7 @@ const TestiComponent = () => {
                     </div>
                     <div className="carousel-item">
                         <div className="items">
-                            <img src="img/dr-khalid (3).png" className="shadow" alt="dr-khalid" />
+                            <img src="" className="shadow" alt="customer2" />
                             <h4 className="mt-3">Khalid Gracia</h4>
                             <div className="stars">
                                 <i class="fa fa-star"></i>
@@ -46,9 +47,9 @@ const TestiComponent = () => {
                     <div className="carousel-item">
                         <div className="items">
                             <img
-                                src="img/doctor-linda.png"
+                                src=" "
                                 className="shadow"
-                                alt="doctor-linda"
+                                alt="customer3"
                             />
                             <h4 className="mt-3">Linda Gracia</h4>
                             <div className="stars">
@@ -68,7 +69,7 @@ const TestiComponent = () => {
                     </div>
                     <div className="carousel-item active">
                         <div className="items">
-                            <img src="img/dr-antony (1).png" className="shadow" alt="dr-antony" />
+                            <img src=" " className="shadow" alt="customer4" />
                             <h4 className="mt-3">Hover Antony</h4>
                             <div className="stars">
                                 <i class="fa fa-star"></i>
