@@ -1,125 +1,15 @@
-.header-carousel .owl-carousel-text {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  padding: 3rem;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-}
-
-.header-carousel .owl-nav {
-  position: absolute;
-  width: 200px;
-  height: 45px;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  justify-content: space-between;
-}
-
-.header-carousel .owl-nav .owl-prev,
-.header-carousel .owl-nav .owl-next {
-  width: 45px;
-  height: 45px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  background: transparent;
-  border: 1px solid #ffffff;
-  border-radius: 45px;
-  font-size: 22px;
-  transition: 0.5s;
-}
-
-.header-carousel .owl-nav .owl-prev:hover,
-.header-carousel .owl-nav .owl-next:hover {
-  background: #3dc5cc;
-  border-color: #3dc5cc;
-}
-
-.header-carousel .owl-dots {
-  position: absolute;
-  height: 45px;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.header-carousel .owl-dot {
-  position: relative;
-  display: inline-block;
-  margin: 0 5px;
-  width: 15px;
-  height: 15px;
-  background: transparent;
-  border: 1px solid #ffffff;
-  border-radius: 15px;
-  transition: 0.5s;
-}
-
-.header-carousel .owl-dot::after {
-  position: absolute;
-  content: "";
-  width: 5px;
-  height: 5px;
-  top: 4px;
-  left: 4px;
-  background: #ffffff;
-  border-radius: 5px;
-}
-
-.header-carousel .owl-dot.active {
-  background: #3dc5cc;
-  border-color: #3dc5cc;
-}
-
-.page-header {
-  position: relative;
-  text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
-  overflow: hidden;
-}
-
-.page-header::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+.page-header3 {
   background: url(../assets/img/header-page.jpg) top center no-repeat;
   background-size: cover;
-  filter: blur(5px);
-  z-index: -1;
+  text-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  height: 50vh;
 }
 
-.container {
-  h3 {
-    &.display-3 {
-      font-weight: bold; // Tambahkan ini agar tulisan "Tentang Kami" menjadi tebal
-      color: #fff; // Sesuaikan warna sesuai kebutuhan
-      margin-bottom: 3rem; // Sesuaikan margin-bottom sesuai kebutuhan
-      font-size: 20px;
-      margin: auto;
-    }
-  }
-}
-
-.page-header .container {
-  position: relative;
-  z-index: 1;
-}
-
-.breadcrumb-item + .breadcrumb-item::before {
-  color: var(--light);
+.container7 h1 {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 60px;
 }
 
 .search-container {
@@ -155,7 +45,7 @@
   border-radius: 50%;
 }
 
-#container-search{
+#container-search {
   display: flex;
   justify-content: center;
   padding: 20px;
