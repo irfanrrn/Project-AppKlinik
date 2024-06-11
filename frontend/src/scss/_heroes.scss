@@ -47,4 +47,30 @@
     background: #ffc107;
     color: black;
 }
+
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    .carousel-caption{
+        bottom: 500px;
+    }
+    .carousel-caption p{
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 767px){
+    .carousel-caption{
+        bottom: 525px;
+    }
+    .carousel-caption h1{
+        font-size: 17px;
+    }
+    .carousel-caption a{
+     padding: 10px 15px;   
+    }
+    .carousel-caption p{
+        width: 100%;
+        line-height: 1.6;
+        font-size: 12px;
+    }
+}
   

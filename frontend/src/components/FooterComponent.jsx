@@ -9,7 +9,7 @@ const FooterComponent = () => {
                         <div className="col-xl-4 col-md-6 col-lg-4">
                             <div className="footer-widget">
                                 <div className="footer-logo mb-3">
-                                    <a href="index.html">
+                                    <a href="#">
                                         <h3 className="logo-footer m-0 text-white">
                                             <i className="far fa-hospital me-3" /> GHEALTH
                                         </h3>

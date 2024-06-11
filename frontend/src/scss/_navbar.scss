@@ -1,6 +1,13 @@
 .navbar{
     text-transform: uppercase;
-    
+    position:sticky;
+    // width: 100%;
+    // top: 0px;
+    // // left: 0;
+    // // right: 0;
+    // z-index: 99;
+    // transition: transform 500ms ease, background 500ms ease;
+    // -webkit-transition: transform 500ms ease, background 500ms ease;
     .nav-link.active {
         font-weight: 700;
         color: white;
@@ -19,4 +26,21 @@
 }
 .btn-appo:hover{
     background-color: $primary;
+    width: auto;
+}
+.navbar .navbar-brand,
+.navbar a.btn {
+    height: 75px;
+}
+
+@media (max-width: 991.98px) {
+  .navbar .navbar-nav .nav-link  {
+      margin-right: 0;
+      padding: 10px 0;
+  }
+
+  .navbar .navbar-nav {
+      border-top: 1px solid #fff;
+      width: 100%;
+  }
 }
