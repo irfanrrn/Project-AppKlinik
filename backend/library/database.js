@@ -3,7 +3,7 @@
 //     host                : 'localhost',
 //     user                : 'root',
 //     password            : '',
-//     database            : 'klinik'
+//     database            : 'klinik-app'
 // };
 
 let mysql = require('mysql');
