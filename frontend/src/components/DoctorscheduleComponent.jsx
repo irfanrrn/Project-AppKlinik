@@ -28,7 +28,7 @@ const DoctorscheduleComponent = () => {
       >
         <div className="container7 py-5">
           <h1 className="display-3 text-white mb-3 animated slideInDown">
-            About Us
+            Doctor's Schedule
           </h1>
         </div>
       </div>
