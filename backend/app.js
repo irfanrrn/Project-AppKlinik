@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -12,8 +13,17 @@ var doctor_scheduleRouter = require('./routes/doctor_schedule');
 var userRouter = require('./routes/user');
 var patientRouter = require('./routes/patient');
 var appointmentRouter = require('./routes/appointment');
+var registerRouter = require('./routes/register');
+var loginRouter = require('./routes/login');
 
 var app = express();
+
+app.use(express.json());
+app.use(session({
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: false
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -33,6 +43,8 @@ app.use('/doctor_schedule', doctor_scheduleRouter);
 app.use('/user', userRouter);
 app.use('/patient', patientRouter);
 app.use('/appointment', appointmentRouter);
+app.use('/register', registerRouter);
+app.use('/login', loginRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
