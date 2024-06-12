@@ -17,7 +17,7 @@ import * as bootstrap from "bootstrap";
 
 function App() {
   return (
-    <BrowserRouter>
+   <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Doctorschedule" element={<Doctorschedule />} />
