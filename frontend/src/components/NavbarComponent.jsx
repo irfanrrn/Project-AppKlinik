@@ -70,10 +70,10 @@ const NavbarComponent = () => {
         <a href="/" className="nav-item nav-link active">
           Home
         </a>
-        <a href="#" className="nav-item nav-link">
+        <a href="/Doctorschedule" className="nav-item nav-link">
             Doctor's Schedule
         </a>
-        <a href="#" className="nav-item nav-link">
+        <a href="/AboutUs" className="nav-item nav-link">
         About Us
         </a>
         <a href="#" className="nav-item nav-link">
@@ -81,7 +81,7 @@ const NavbarComponent = () => {
         </a>
       </div>
       <a
-        href="" className="btn text-white btn-warning btn-appo border-0 rounded-0 py-4 px-lg-5 d-none d-lg-block"
+        href="/Login" className="btn text-white btn-warning btn-appo border-0 rounded-0 py-4 px-lg-5 d-none d-lg-block"
       >
         LOGIN/REGIST
       </a>
