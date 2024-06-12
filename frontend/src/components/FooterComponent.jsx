@@ -44,9 +44,9 @@ const FooterComponent = () => {
                         <div className="col-xl-4 col-md-6 col-lg-4">
                             <div className="footer-widget">
                                 <h3 className="footer-title mb-3">Information</h3>
-                                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Kalisombo Street No 18, Salatiga, Central Java</p>
-                                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                                <p class="mb-2"><i class="fa fa-envelope me-3"></i>infoghealth@gmail.com</p>
+                                <p className="mb-2"><i className="fa fa-map-marker-alt me-3"></i>Kalisombo Street No 18, Salatiga, Central Java</p>
+                                <p className="mb-2"><i className="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+                                <p className="mb-2"><i className="fa fa-envelope me-3"></i>infoghealth@gmail.com</p>
                                 <ul className="social-links">
                                     <li>
                                     <a href="#">
@@ -74,7 +74,7 @@ const FooterComponent = () => {
                     </div>
                 </div>
             </div>
-            <div class="bottom-bar">
+            <div className="bottom-bar">
             <p>&copy; 2024 GHEALTH KLINIK . All rights reserved</p>
             </div>
         </footer>
