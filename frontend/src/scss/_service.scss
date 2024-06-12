@@ -10,18 +10,18 @@
             text-align: center;
             color: #fff;
             font-weight: 700;
-            padding-bottom: 20px; // Added to create space for the border
-            position: relative; // Ensure the pseudo-element is positioned relative to the heading
+            padding-bottom: 20px; 
+            position: relative; 
     
             &::before {
                 position: absolute;
-                bottom: 0; // Position it at the bottom of the h3
+                bottom: 0; 
                 left: 50%;
                 background: #fff;
                 height: 2px;
                 width: 50px;
                 content: '';
-                transform: translateX(-50%); // Center it horizontally
+                transform: translateX(-50%);
             }
         }
         p{
@@ -46,8 +46,6 @@
                 width: 100%;
                 transform: scale(1);
                 transition: .3s;
-                // @include transform(scale(1));
-                // @include transition(.3s);
             }
         }
         .service-content{
@@ -72,7 +70,6 @@
             .service-img{
                 img{
                     transform: scale(1.2);
-                    // @include transform(scale(1.2));
                 }
             }
         }

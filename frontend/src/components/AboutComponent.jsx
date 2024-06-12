@@ -12,18 +12,18 @@ const AbouthomeComponent = () => {
                     </div>
                     <div className="col-lg-8 col-md-12 col-12 ps-lg-5">
                         <div className="about-text">
-                        <h3>ABOUT US</h3>
-                        <p>
-                        Welcome to Our Clinic, where you can get quality 
-                        and trusted health care. We are a clinic committed 
-                        to providing the best health services for the whole family. 
-                        With a team of professional doctors and medical personnel, 
-                        we are here to meet your health needs with friendly, fast, 
-                        and precise service.
-                        </p>
-                        <a className="btn btn-primary" href=" ">
-                            Read More
-                        </a>
+                            <h3>ABOUT US</h3>
+                            <p>
+                            Welcome to Our Clinic, where you can get quality 
+                            and trusted health care. We are a clinic committed 
+                            to providing the best health services for the whole family. 
+                            With a team of professional doctors and medical personnel, 
+                            we are here to meet your health needs with friendly, fast, 
+                            and precise service.
+                            </p>
+                            <a className="btn btn-primary" href="/aboutus">
+                                Read More
+                            </a>
                         </div>
                     </div>
                 </div>

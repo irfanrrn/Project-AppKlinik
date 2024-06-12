@@ -1,14 +1,14 @@
-
+import cust1 from "../assets/img/cust1.jpg"
 const TestiComponent = () => {
     return (
-        <section className="testimonial">
+        <section className="testimonial" id="reviewcust">
             <div className="container my-5 py-4 shadow">
                 <h1>REVIEWS PATIENT</h1>
                 <div id="testi-carousel" className="carousel slide">
                     <div className="carousel-inner">
-                    <div className="carousel-item">
+                    <div className="carousel-item active">
                         <div className="items">
-                            <img src="" className="shadow" alt="customer1" />
+                            <img src={cust1} className="shadow" alt="customer1" />
                             <h4 className="mt-3">Alisa Gracia</h4>
                             <div className="stars">
                                 <i class="fa fa-star"></i>
@@ -18,8 +18,7 @@ const TestiComponent = () => {
                                 <i class="fa fa-star"></i>
                             </div>
                             <q>
-                                The best thing about Dev is the community and the great developers
-                                behind this ingenious software. It gives me great confidence in the
+                                It gives me great confidence in the
                                 quality of the product &amp; the assurance that dev product will be
                                 around for years to come.
                             </q>
@@ -27,7 +26,7 @@ const TestiComponent = () => {
                     </div>
                     <div className="carousel-item">
                         <div className="items">
-                            <img src="" className="shadow" alt="customer2" />
+                            <img src={cust1} className="shadow" alt="customer2" />
                             <h4 className="mt-3">Khalid Gracia</h4>
                             <div className="stars">
                                 <i class="fa fa-star"></i>
@@ -47,7 +46,7 @@ const TestiComponent = () => {
                     <div className="carousel-item">
                         <div className="items">
                             <img
-                                src=" "
+                                src={cust1}
                                 className="shadow"
                                 alt="customer3"
                             />
@@ -60,16 +59,15 @@ const TestiComponent = () => {
                                 <i class="fa fa-star"></i>
                             </div>
                             <q>
-                                The best thing about Dev is the community and the great developers
-                                behind this ingenious software. It gives me great confidence in the
+                                It gives me great confidence in the
                                 quality of the product &amp; the assurance that dev product will be
                                 around for years to come.
                             </q>
                         </div>
                     </div>
-                    <div className="carousel-item active">
+                    <div className="carousel-item">
                         <div className="items">
-                            <img src=" " className="shadow" alt="customer4" />
+                            <img src={cust1} className="shadow" alt="customer4" />
                             <h4 className="mt-3">Hover Antony</h4>
                             <div className="stars">
                                 <i class="fa fa-star"></i>

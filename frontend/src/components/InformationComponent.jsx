@@ -40,11 +40,6 @@ const InformationComponent = () => {
                                     20</span>
                                 <span className="span-caption">Rooms Available</span>
                                 </li>
-                                {/* <li>
-                                <span className="align-items-center justify-content-center spanbest">
-                                    IGD</span>
-                                    <span>Emergency Departments</span>
-                                </li> */}
                                 <li>
                                 <span className="span-circle">
                                     <i className="fa fa-capsules fs-5"></i></span>

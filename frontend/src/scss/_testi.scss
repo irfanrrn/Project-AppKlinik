@@ -3,11 +3,25 @@
         color: #fff;
         background-color: $primary;
         text-align: center;
+        width: 100%;
+        height: 100%;
         h1{
             font-weight: 700;
         }
     }
-    
+      
+      .carousel-slide {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+      
+      .carousel-slide.active {
+        opacity: 1;
+      }
+
     #testi-carousel{
         .carousel-indicators{
             position: relative;

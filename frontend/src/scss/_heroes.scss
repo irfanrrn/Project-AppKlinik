@@ -1,4 +1,5 @@
 #hero-carousel{
+    min-height: 600px;
     .carousel-inner::before{
         content: '';
         position: absolute;
@@ -9,27 +10,42 @@
         background: rgba(0,0,0,0.3);
         z-index: 1;
     }
-    .carousel.item{
-        height: 100vh;
-        min-height: 300px;
+    
+    .carousel-inner{
+        height: 600px;
+        .carousel-item{
+            height: 600px;
+            img{
+                height: 600px;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+    }
+    .carousel-indicator{
+        z-index: 999;
     }
     .carousel-caption{
-        bottom: 170px;
+        bottom: 0 !important;
+        top: 0 !important;
+        left: 10% !important;
+        right: 10% !important;
         z-index: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
     }
     .carousel-caption h1{
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        margin-top: 25px;
-        text-align: center;
+       font-weight: 700;
+       text-transform: uppercase;
+       letter-spacing: 2px;
+       text-align: center;
     }
     .carousel-caption p{
-        width: 60%;
-        margin: auto;
-        font-size: 18px;
-        line-height: 1.9;
-        text-align: center;
+       width: 100%;
+       font-size: 18px;
+       text-align: center;
     }
 }
 
@@ -48,29 +64,12 @@
     color: black;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px){
-    .carousel-caption{
-        bottom: 500px;
+@media (min-width: 768px){
+    #hero-carousel .carousel-caption{
+        bottom: 170px;
     }
-    .carousel-caption p{
-        width: 100%;
-    }
-}
-
-@media only screen and (max-width: 767px){
-    .carousel-caption{
-        bottom: 525px;
-    }
-    .carousel-caption h1{
-        font-size: 17px;
-    }
-    .carousel-caption a{
-     padding: 10px 15px;   
-    }
-    .carousel-caption p{
-        width: 100%;
-        line-height: 1.6;
-        font-size: 12px;
+    #hero-carousel .carousel-caption p{
+        width: 50%;
+        line-height: 1.9;
     }
 }
-  

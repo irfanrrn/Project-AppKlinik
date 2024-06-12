@@ -105,7 +105,7 @@ const SecdoctorsComponent = () => {
                 <div className="row">
                     <div className="col-12 text-center">
                         <hr />
-                        <a href="#" className="btn btn-secdoc">
+                        <a href="/Doctorschedule" className="btn btn-secdoc">
                             See Doctor's Schedule
                         </a>
                         <hr />

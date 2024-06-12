@@ -19,25 +19,25 @@ const NavbarComponent = () => {
       <div className="col-lg-5 px-5 text-end">
         <div className="h-100 d-inline-flex align-items-center">
           <a
-            className="btn btn-sm-square rounded-circle bg-white text-primary me-1"
+            className="btn btn-sm-square text-primary me-1"
             href=""
           >
             <i className="fab fa-facebook-f" />
           </a>
           <a
-            className="btn btn-sm-square rounded-circle bg-white text-primary me-1"
+            className="btn btn-sm-square text-primary me-1"
             href=""
           >
             <i className="fab fa-twitter" />
           </a>
           <a
-            className="btn btn-sm-square rounded-circle bg-white text-primary me-1"
+            className="btn btn-sm-square text-primary me-1"
             href=""
           >
             <i className="fab fa-linkedin-in" />
           </a>
           <a
-            className="btn btn-sm-square rounded-circle bg-white text-primary me-0"
+            className="btn btn-sm-square text-primary me-0"
             href=""
           >
             <i className="fab fa-instagram" />
@@ -50,7 +50,7 @@ const NavbarComponent = () => {
   {/* Navbar Start */}
   <nav className="navbar navbar-expand-lg navbar-dark bg-primary p-0">
       <a
-          href="index.html"
+          href="/"
           className="navbar-brand d-flex align-items-center px-4 px-lg-5"
         >
           <h3 className="m-0 text-white">
@@ -67,24 +67,25 @@ const NavbarComponent = () => {
     </button>
     <div className="collapse navbar-collapse" id="navbarCollapse">
       <div className="navbar-nav ms-auto p-4 p-lg-0 gap-5 me-5">
-        <a href="/" className="nav-item nav-link active">
+        <a href="/" className="nav-item nav-link py-4">
           Home
         </a>
-        <a href="/Doctorschedule" className="nav-item nav-link">
+        <a href="/doctorschedule" className="nav-item nav-link py-4">
             Doctor's Schedule
         </a>
-        <a href="/AboutUs" className="nav-item nav-link">
+        <a href="/aboutUs" className="nav-item nav-link py-4">
         About Us
         </a>
-        <a href="#" className="nav-item nav-link">
+        <a href="#reviewcust" className="nav-item nav-link py-4">
         Customer Reviews
         </a>
-      </div>
-      <a
-        href="/Login" className="btn text-white btn-warning btn-appo border-0 rounded-0 py-4 px-lg-5 d-none d-lg-block"
+        <a
+        href="/login" className="btn text-white btn-warning btn-appo border-0 rounded-0 py-4 px-lg-5"
       >
         LOGIN/REGIST
       </a>
+      </div>
+      
     </div>
   </nav>
     </div>
