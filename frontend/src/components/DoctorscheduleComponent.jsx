@@ -123,7 +123,7 @@ const DoctorscheduleComponent = () => {
             </button>
           </div>
         </div>
-        <div className="profile-container1">
+        <div className="profile-container">
           <div className="profile-image">
             <img src={dokterImg5} alt="Dr. Rina Sari" />
           </div>
