@@ -53,12 +53,6 @@ const createUser = function (req, res) {
     }
 
     if(!errors) {
-        let formData = {
-            username: username,
-            email: email,
-            password: password
-        }
-
         connection.query(`INSERT INTO tbl_users (username,email,password) VALUES (?,?,SHA2(?,512));`, [username, email, password], function(err, result) {
             if (err) {
                 res.json({pesan: err});
