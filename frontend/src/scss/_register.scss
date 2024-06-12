@@ -3,7 +3,6 @@
   width: 80%;
   max-width: 1000px;
   background-color: white;
-
   border-radius: 10px;
   overflow: hidden;
   margin: 0 auto; /* Meletakkan kontainer di tengah secara horizontal */
@@ -11,6 +10,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  flex-direction: row;
 }
 
 .register-form2 {
@@ -85,57 +85,55 @@
   font-size: 14px;
 }
 
-.forgot-password2 {
-  display: block;
-  font-size: 16px;
-  color: #000000;
-  text-align: right;
-  margin-bottom: 20px;
-  text-decoration: none;
-  width: calc(100% - 100px);
-}
-
-.forgot-password2:hover {
-  text-decoration: underline;
-}
-
 .buttons2 {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .login-btn2 {
   background-color: #3dc5cc;
   border: none;
   color: white;
-  padding: 10px 10px;
+  padding: 10px 20px;
   font-size: 14px;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
+  flex: 1;
+  margin: 5px;
+  text-align: center;
 }
 
 .login-btn2:hover {
-  background-color: #3dc5cc;
+  background-color: #36b0b6;
 }
 
 .register-btn2 {
   background-color: white;
   border: 2px solid #3dc5cc;
   color: #3dc5cc;
-  padding: 10px 10px;
+  padding: 10px 20px;
   font-size: 14px;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
-  margin-left: auto;
-  margin-right: 100px;
+  flex: 1;
+  margin: 5px;
+  text-align: center;
 }
 
 .register-btn2:hover {
   background-color: #3dc5cc;
   color: white;
-  margin-right: 100px;
+}
+
+/* Mengatur lebar tombol dan tata letak input */
+.register-form2 input[type="text"],
+.register-form2 input[type="email"],
+.register-form2 input[type="password"],
+.forgot-password2 {
+  width: 100%;
 }
 
 .register-image2 {
@@ -147,4 +145,45 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Media queries untuk responsivitas */
+@media (max-width: 768px) {
+  .container2 {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .register-form2 {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .register-btn2 {
+    margin-right: 0;
+  }
+
+  .buttons2 {
+    flex-direction: column;
+  }
+
+  .login-btn2,
+  .register-btn2 {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-form2 h1 {
+    font-size: 30px;
+  }
+
+  .register-form2 p,
+  .register-form2 label,
+  .forgot-password2,
+  .login-btn2,
+  .register-btn2 {
+    font-size: 14px;
+  }
 }
