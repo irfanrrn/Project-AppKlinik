@@ -84,7 +84,7 @@
   position: relative;
 }
 
-.profile-container1 {
+.profile-container {
   display: flex;
   background: #3dc5cc;
   border-radius: 20px;
@@ -130,6 +130,7 @@
   color: #333;
   margin: 10px 0;
   margin-left: 60px;
+  margin-right: 40px;
 }
 
 .book-btn {
@@ -153,10 +154,32 @@
 
 /* Tablets */
 @media (max-width: 768px) {
+  .page-header3 {
+    height: 40vh;
+  }
+
+  .container7 h1 {
+    font-size: 18px;
+    padding-top: 40px;
+  }
+
+  #container-search {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .search-container {
+    width: 100%;
+    padding: 10px;
+  }
+
   .profile-container {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .profile-details {
@@ -167,26 +190,39 @@
   .book-btn {
     position: static;
     margin-top: 20px;
+    right: 0;
+    bottom: 0;
   }
 }
 
 /* Smartphones */
 @media (max-width: 480px) {
-  .container {
-    width: 90%;
+  .page-header3 {
+    height: 30vh;
+  }
+
+  .container7 h1 {
+    font-size: 16px;
+    padding-top: 20px;
+  }
+
+  #container-search {
+    width: 100%;
     padding: 10px;
   }
 
   .search-container {
     width: 100%;
-    padding: 10px;
     flex-direction: column;
+    padding: 10px;
   }
 
   .profile-container {
     width: 100%;
     flex-direction: column;
     align-items: center;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .profile-image img {
@@ -200,7 +236,7 @@
   }
 
   .profile-details h2 {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .profile-details p {
