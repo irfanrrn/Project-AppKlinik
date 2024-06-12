@@ -17,12 +17,12 @@ import * as bootstrap from "bootstrap";
 function App() {
   return (
    <BrowserRouter>
-      <Routes>
+     <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Doctorschedule" element={<Doctorschedule />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/Register" element={<Register />} />
-        <Route path="/AboutUs" element={<AboutUs />} />
+        <Route path="/doctorschedule" element={<Doctorschedule />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/aboutus" element={<AboutUs />} />
       </Routes>
     </BrowserRouter>
   );
