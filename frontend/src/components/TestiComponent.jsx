@@ -52,11 +52,11 @@ const TestiComponent = () => {
                             />
                             <h4 className="mt-3">Linda Gracia</h4>
                             <div className="stars">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
                             </div>
                             <q>
                                 It gives me great confidence in the
@@ -70,11 +70,11 @@ const TestiComponent = () => {
                             <img src={cust1} className="shadow" alt="customer4" />
                             <h4 className="mt-3">Hover Antony</h4>
                             <div className="stars">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
                             </div>
                             <q>
                                 The best thing about Dev is the community and the great developers
