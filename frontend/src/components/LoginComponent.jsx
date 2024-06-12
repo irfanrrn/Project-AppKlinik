@@ -26,10 +26,6 @@ const LoginComponent = () => {
               required
             />
 
-            <a href="#" className="forgot-password">
-              Forgot password?
-            </a>
-
             <div className="buttons">
               <button type="submit" className="login-btn">
                 LOGIN ACCOUNT
