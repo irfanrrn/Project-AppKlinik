@@ -73,7 +73,7 @@ const NavbarComponent = () => {
         <a href="/doctorschedule" className="nav-item nav-link py-4">
             Doctor's Schedule
         </a>
-        <a href="/aboutUs" className="nav-item nav-link py-4">
+        <a href="/aboutus" className="nav-item nav-link py-4">
         About Us
         </a>
         <a href="#reviewcust" className="nav-item nav-link py-4">
