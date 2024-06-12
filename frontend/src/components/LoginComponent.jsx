@@ -13,7 +13,7 @@ const LoginComponent = () => {
               type="email"
               id="email"
               name="email"
-              placeholder="full name"
+              placeholder="email"
               required
             />
 
