@@ -38,10 +38,6 @@ const RegisterComponent = () => {
               required
             />
 
-            <a href="#" className="forgot-password2">
-              Forgot password?
-            </a>
-
             <div className="buttons2">
               <button type="submit" className="login-btn2">
                 LOGIN ACCOUNT
