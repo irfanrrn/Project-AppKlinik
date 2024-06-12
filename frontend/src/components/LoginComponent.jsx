@@ -1,5 +1,7 @@
 import dokterImg from "../assets/img/doctor-masuk.jpg";
 
+import { Link } from "react-router-dom";
+
 const LoginComponent = () => {
   return (
     <div>
@@ -8,7 +10,7 @@ const LoginComponent = () => {
           <h1>Login to Account</h1>
           <p>Welcome back, Please log in to your Account.</p>
           <form>
-            <label for="email">EMAIL</label>
+            <label htmlFor="email">EMAIL</label>
             <input
               type="email"
               id="email"
@@ -17,7 +19,7 @@ const LoginComponent = () => {
               required
             />
 
-            <label for="password">PASSWORD</label>
+            <label htmlFor="password">PASSWORD</label>
             <input
               type="password"
               id="password"
@@ -30,9 +32,9 @@ const LoginComponent = () => {
               <button type="submit" className="login-btn">
                 LOGIN ACCOUNT
               </button>
-              <button type="button" className="register-btn">
+              <Link to="/register" className="register-btn">
                 REGISTER ACCOUNT
-              </button>
+              </Link>
             </div>
           </form>
         </div>
