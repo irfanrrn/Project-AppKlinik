@@ -12,4 +12,8 @@ router.put('/:id', appointment.updateAppointement);
 
 router.delete('/:id', appointment.deleteAppointment);
 
+router.put('/status/:id', appointment.updateAppointmentStatus);
+
+router.put('/feedback/:id', appointment.updateAppointementFeedback);
+
 module.exports = router;

@@ -220,11 +220,67 @@ const deleteAppointment = function (req, res) {
     })
 }
 
+const updateAppointmentStatus = function(req, res){
+    let id = req.params.id;
+    let status = req.body.status;
+    let errors = false;
+
+    if (!status) {
+        errors = true;
+        res.json({ pesan: 'Field status tidak boleh kosong!' });
+    }
+
+    connection.query('UPDATE tbl_appointments SET ? WHERE appointment_id = ' + id, {status}, function (err, result) {
+
+        if (err) {
+            res.send('error', err);
+            res.json({
+                id: req.params.id,
+                status: status
+            })
+        } else {
+            res.send('Data berhasil diupdate!');
+        }
+    })
+}
+
+const updateAppointementFeedback = function(req, res) {
+    let id = req.params.id;
+    let rating = req.body.rating;
+    let review = req.body.review;
+    let errors = false;
+
+    if (!rating) {
+        errors = true;
+        res.json({ pesan: 'Field rating tidak boleh kosong!' });
+    }
+
+    if (!review) {
+        errors = true;
+        res.json({ pesan: 'Field review tidak boleh kosong!' });
+    }
+
+    connection.query('UPDATE tbl_appointments SET ? WHERE appointment_id = ' + id, {rating, review}, function (err, result) {
+
+        if (err) {
+            res.send('error', err);
+            res.json({
+                id: req.params.id,
+                rating: formData.rating,
+                review: formData.review
+            })
+        } else {
+            res.send('Data berhasil diupdate!');
+        }
+    })
+}
+
 module.exports = {
     getAllAppointment,
     getAppointmentId,
     createAppointment,
     updateAppointement,
-    deleteAppointment
+    deleteAppointment,
+    updateAppointmentStatus,
+    updateAppointementFeedback
 }
-
