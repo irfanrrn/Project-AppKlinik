@@ -48,13 +48,13 @@ const NavbarComponent = () => {
   </div>
   {/* Topbar End */}
   {/* Navbar Start */}
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary p-0">
+  <nav className="navbar navbar-expand-lg navbar-dark bg-primary p-0">
       <a
           href="index.html"
-          class="navbar-brand d-flex align-items-center px-4 px-lg-5"
+          className="navbar-brand d-flex align-items-center px-4 px-lg-5"
         >
-          <h3 class="m-0 text-white">
-            <i class="far fa-hospital me-3"></i>GHEALTH
+          <h3 className="m-0 text-white">
+            <i className="far fa-hospital me-3"></i>GHEALTH
           </h3>
         </a>
     <button
