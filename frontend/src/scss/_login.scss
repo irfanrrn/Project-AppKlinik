@@ -47,19 +47,6 @@
   font-size: 14px;
 }
 
-.forgot-password {
-  display: block;
-  font-size: 16px;
-  color: #000000;
-  text-align: right;
-  margin-bottom: 20px;
-  text-decoration: none;
-}
-
-.forgot-password:hover {
-  text-decoration: underline;
-}
-
 .buttons {
   display: flex;
   justify-content: space-between;
@@ -92,6 +79,7 @@
   cursor: pointer;
   font-weight: bold;
   flex: 1;
+  text-align: center;
 }
 
 .register-btn:hover {
@@ -145,6 +133,7 @@
   }
 
   .login-image {
+    order: -1;
     margin-top: 20px;
     height: auto;
     width: 100%;
@@ -196,6 +185,12 @@
     font-size: 14px;
     width: 100%;
     margin-right: 0;
+  }
+
+  .login-image {
+    order: -1;
+    width: 100%;
+    margin-bottom: 20px;
   }
 
   .login-image img {
