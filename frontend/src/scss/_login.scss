@@ -3,10 +3,9 @@
   width: 80%;
   max-width: 1000px;
   background-color: white;
-
   border-radius: 10px;
   overflow: hidden;
-  margin: 0 auto; /* Meletakkan kontainer di tengah secara horizontal */
+  margin: 0 auto;
   padding: 0;
   justify-content: center;
   align-items: center;
@@ -24,7 +23,6 @@
   color: #333;
   text-align: center;
   font-weight: bold;
-  margin-right: 90px;
 }
 
 .login-form p {
@@ -49,28 +47,6 @@
   font-size: 14px;
 }
 
-.login-form input[type="email"] {
-  width: calc(
-    100% - 120px
-  ); /* Mengurangi panjang input dari sisi kiri dan kanan */
-  padding: 10px; /* Sesuaikan dengan kebutuhan */
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
-}
-
-.login-form input[type="password"] {
-  width: calc(
-    100% - 120px
-  ); /* Mengurangi panjang input dari sisi kiri dan kanan */
-  padding: 10px; /* Sesuaikan dengan kebutuhan */
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
-}
-
 .forgot-password {
   display: block;
   font-size: 16px;
@@ -78,7 +54,6 @@
   text-align: right;
   margin-bottom: 20px;
   text-decoration: none;
-  width: calc(100% - 125px);
 }
 
 .forgot-password:hover {
@@ -94,43 +69,137 @@
   background-color: #3dc5cc;
   border: none;
   color: white;
-  padding: 10px 10px;
+  padding: 10px 20px;
   font-size: 14px;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
+  flex: 1;
+  margin-right: 10px;
 }
 
 .login-btn:hover {
-  background-color: #3dc5cc;
+  background-color: #33b5b9;
 }
 
 .register-btn {
   background-color: white;
   border: 2px solid #3dc5cc;
   color: #3dc5cc;
-  padding: 10px 10px;
+  padding: 10px 20px;
   font-size: 14px;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
-  margin-left: auto;
-  margin-right: 120px;
+  flex: 1;
 }
 
 .register-btn:hover {
   background-color: #3dc5cc;
   color: white;
-  margin-right: 120px;
 }
 
 .login-image {
   flex: 1;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .login-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .container1 {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+  }
+
+  .login-form {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .login-form h1 {
+    font-size: 30px;
+    margin-right: 0;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .login-btn,
+  .register-btn {
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .login-image {
+    margin-top: 20px;
+    height: auto;
+    width: 100%;
+  }
+
+  .login-image img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* Smartphones */
+@media (max-width: 480px) {
+  .container1 {
+    width: 90%;
+    padding: 10px;
+  }
+
+  .login-form {
+    padding: 10px;
+  }
+
+  .login-form h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .login-form p {
+    font-size: 14px;
+  }
+
+  .login-form label {
+    font-size: 14px;
+  }
+
+  .login-form input {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .login-btn,
+  .register-btn {
+    padding: 8px;
+    font-size: 14px;
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .login-image img {
+    width: 100%;
+    height: auto;
+  }
 }
