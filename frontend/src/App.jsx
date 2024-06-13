@@ -4,6 +4,8 @@ import Doctorschedule from "./pages/Doctorschedule";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AboutUs from "./pages/AboutUs";
+import AppointmentAll from "./pages/AppointmentAll";
+import FormAppointment from "./pages/FormAppointment";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
@@ -23,6 +25,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/appointmentall" element={<AppointmentAll />} />
+        <Route path="/formappointment" element={<FormAppointment />} />
       </Routes>
     </BrowserRouter>
   );
