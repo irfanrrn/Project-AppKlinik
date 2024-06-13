@@ -5,11 +5,11 @@ const getAllDoctorSchedule = function (req, res) {
         if (err) {
             res.send('error', err);
             res.json({
-                data_doctor_schedule: ''
+                doctor_schedule_data: ''
             });
         } else {
             res.json( {
-                data_doctor_schedule: rows
+                doctor_schedule_data: rows
             });
         }
     });
@@ -21,11 +21,11 @@ const getDoctorScheduleId = function (req, res) {
         if (err) {
             res.send('error', err);
             res.json({
-                data_doctor_schedule: ''
+                doctor_schedule_data: ''
             });
         } else {
             res.json( {
-                data_doctor_schedule: rows
+                doctor_schedule_data: rows
             });
         }
     });
@@ -41,40 +41,40 @@ const createDoctorSchedule = function (req, res) {
     let errors = [];
 
     if (!doctor_id) {
-        errors.push('Field doctor_id belum diisi, mohon isi dengan lengkap.');
+        errors.push('The doctor_id field has not been filled in, please fill it in completely.');
     }
 
     if (!from_day) {
-        errors.push('Field from_day belum diisi, mohon isi dengan lengkap.');
+        errors.push('The from_day field has not been filled in, please fill it in completely.');
     }
 
     if (!until_day) {
-        errors.push('Field until_day belum diisi, mohon isi dengan lengkap.');
+        errors.push('The until_day field has not been filled in, please fill it in completely.');
     }
 
     if (!start_time) {
-        errors.push('Field start_time belum diisi, mohon isi dengan lengkap.');
+        errors.push('The start_time field has not been filled in, please fill it in completely.');
     }
 
     if (!end_time) {
-        errors.push('Field end_time belum diisi, mohon isi dengan lengkap.');
+        errors.push('The end_time field has not been filled in, please fill it in completely.');
     }
 
     if (!room_number) {
-        errors.push('Field room_number belum diisi, mohon isi dengan lengkap.');
+        errors.push('The room_number field has not been filled in, please fill it in completely.');
     }
 
     if (errors.length > 0) {
-        return res.status(400).json({ pesan: errors });
+        return res.status(400).json({ message: errors });
     }
 
     connection.query('SELECT * FROM tbl_doctors WHERE doctor_id = ?', [doctor_id], function (err, results) {
         if (err) {
-            return res.status(500).json({ pesan: 'Terjadi kesalahan pada server saat memeriksa dokter_id' });
+            return res.status(500).json({ message: 'An error occurred on the server while checking the doctor_id' });
         }
 
         if (results.length === 0) {
-            return res.status(400).json({ pesan: 'Dokter dengan ID tersebut tidak ditemukan' });
+            return res.status(400).json({ message: 'The doctor with the ID was not found' });
         }
 
         let formData = {
@@ -88,9 +88,9 @@ const createDoctorSchedule = function (req, res) {
         
         connection.query('INSERT INTO tbl_doctors_schedules SET ?', formData, function(err, result) {
             if (err) {
-                res.json({pesan: 'Data gagal disimpan'});
+                res.json({message: 'Data failed to save'});
             } else {
-                res.send('Data berhasil disimpan!');
+                res.send('Data saved successfully!');
             }
         });
     });
@@ -107,40 +107,40 @@ const updateDoctorSchedule = function(req, res) {
     let errors = [];
 
     if (!doctor_id) {
-        errors.push('Field doctor_id tidak boleh kosong!');
+        errors.push('The doctor_id field cannot be empty!');
     }
 
     if (!from_day) {
-        errors.push('Field from_day tidak boleh kosong!');
+        errors.push('The from_day field cannot be empty!');
     }
 
     if (!until_day) {
-        errors.push('Field until_day tidak boleh kosong!');
+        errors.push('The until_day field cannot be empty!');
     }
 
     if (!start_time) {
-        errors.push('Field start_time tidak boleh kosong!');
+        errors.push('The start_time field cannot be empty!');
     }
 
     if (!end_time) {
-        errors.push('Field end_time tidak boleh kosong!');
+        errors.push('The end_time field cannot be empty!');
     }
 
     if (!room_number) {
-        errors.push('Field room_number tidak boleh kosong!');
+        errors.push('The room_number field cannot be empty!');
     }
 
     if (errors.length > 0) {
-        return res.status(400).json({ pesan: errors });
+        return res.status(400).json({ message: errors });
     }
 
     connection.query('SELECT * FROM tbl_doctors WHERE doctor_id = ?', [doctor_id], function (err, results) {
         if (err) {
-            return res.status(500).json({ pesan: 'Terjadi kesalahan pada server saat memeriksa dokter_id' });
+            return res.status(500).json({ message: 'An error occurred on the server while checking the doctor_id' });
         }
 
         if (results.length === 0) {
-            return res.status(400).json({ pesan: 'Dokter dengan ID tersebut tidak ditemukan' });
+            return res.status(400).json({ message: 'The doctor with the ID was not found' });
         }
 
         let formData = {
@@ -165,7 +165,7 @@ const updateDoctorSchedule = function(req, res) {
                     room_number: formData.room_number
             }) 
         } else {
-                res.send('Data berhasil diupdate!');
+                res.send('Data updated successfully!');
             }
         });
     });
@@ -176,12 +176,12 @@ const deleteDoctorSchedule = function(req, res) {
 
     connection.query('DELETE FROM tbl_doctors_schedules WHERE schedule_id = ?', [id], function(err, result) {
         if (err) {
-            res.status(500).send({ pesan: 'Terjadi kesalahan', error: err });
+            res.status(500).send({ message: 'There is an error', error: err });
         } else {
             if (result.affectedRows === 0) {
-                res.status(404).send({ pesan: 'ID tidak ada' });
+                res.status(404).send({ message: 'ID does not exist' });
             } else {
-                res.send('Data berhasil dihapus!');
+                res.send('Data deleted successfully!');
             }
         }
     });
