@@ -6,6 +6,7 @@ import Register from "./pages/Register";
 import AboutUs from "./pages/AboutUs";
 import AppointmentAll from "./pages/AppointmentAll";
 import FormAppointment from "./pages/FormAppointment";
+import Dashboard from "./pages/Dashboard";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
@@ -27,6 +28,7 @@ function App() {
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/appointmentall" element={<AppointmentAll />} />
         <Route path="/formappointment" element={<FormAppointment />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   );
