@@ -5,11 +5,11 @@ const getAllAppointment = function (req, res) {
         if (err) {
             res.send('error', err);
             res.json({
-                data_appointment: ''
+                appointment_data: ''
             });
         } else {
             res.json({
-                data_appointment: rows
+                appointment_data: rows
             });
         }
     });
@@ -21,11 +21,11 @@ const getAppointmentId = function (req, res) {
         if (err) {
             res.send('error', err);
             res.json({
-                data_appointment: ''
+                appointment_data: ''
             });
         } else {
             res.json({
-                data_appointment: rows
+                appointment_data: rows
             });
         }
     });
@@ -37,12 +37,12 @@ const createAppointment = async function (req, res) {
     let { name, gender, address, date_of_birth, phone_number } = req.body;
     let date = req.body.date;
     let queue_no;
-    let status = "Akan Datang";
+    let status = "Will come";
     let errors = false;
 
     if (!doctor_id) {
         errors = true;
-        res.json({ pesan: 'Field doctor_id belum diisi, mohon isi dengan lengkap.' });
+        res.json({ message: 'The doctor_id field has not been filled in, please fill it in completely.' });
     }
 
     if (!patient_id) {
@@ -54,44 +54,34 @@ const createAppointment = async function (req, res) {
                         reject('error')
                     }
                     patient_id = result.insertId;
-                    resolve('berhasil');
+                    resolve('succeed');
                 })
         })
     }
 
     if (!date) {
         errors = true;
-        res.json({ pesan: 'Field date belum diisi, mohon isi dengan lengkap.' });
+        res.json({ message: 'The date field has not been filled in, please fill it in completely.' });
     }
 
     if (!status) {
         errors = true;
-        res.json({ pesan: 'Field status belum diisi, mohon isi dengan lengkap.' });
+        res.json({ message: 'The status field has not been filled in, please fill it in completely.' });
     }
 
     connection.query('SELECT * FROM tbl_doctors WHERE doctor_id = ?', [doctor_id], function (err, result) {
         if (err) {
-            return res.status(500).json({ pesan: 'Terjadi kesalahan pada server saat memeriksa doctor_id', err });
+            return res.status(500).json({ message: 'An error occurred on the server while checking doctor_id', err });
         }
         if (result.length === 0) {
-            return res.status(400).json({ pesan: 'Doctor dengan id tersebut tidak ditemukan' });
+            return res.status(400).json({ message: 'The doctor with this ID was not found' });
         }
     })
-
-    // connection.query('SELECT * FROM tbl_patients WHERE id_patient = ?', [id_patient], function (err, result){
-    //     if(err){
-    //         return res.status(500).json({pesan : 'Terjadi kesalahan pada server saat memeriksa id_patient'});
-    //     }
-
-    //     if(result.length === 0){
-    //         return res.status(400).json({pesan : 'Patient dengan id tersebut tidak ditemukan'});
-    //     }
-    // })
 
     // Menentukan nomor antrian berikutnya untuk dokter tersebut pada tanggal tertentu
     connection.query('SELECT MAX(queue_no) AS max_queue_no FROM tbl_appointments WHERE doctor_id = ? AND date = ?', [doctor_id, date], function (err, result) {
         if (err) {
-            return res.status(500).json({ pesan: 'Terjadi kesalahan pada server saat menentukan nomor antrian', err });
+            return res.status(500).json({ message: 'An error occurred on the server when determining the queue number', err });
         }
 
         queue_no = (result[0].max_queue_no || 0) + 1;
@@ -109,7 +99,7 @@ const createAppointment = async function (req, res) {
                 if (err) {
                     res.json(err);
                 } else {
-                    res.send('Data berhasil disimpan!');
+                    res.send('Data saved successfully!');
                 }
             });
         }
@@ -129,46 +119,46 @@ const updateAppointement = function (req, res) {
 
     if (!date) {
         errors = true;
-        res.json({ pesan: 'Field date tidak boleh kosong!' });
+        res.json({ message: 'The date field cannot be empty!' });
     }
 
     if (!queue_no) {
         errors = true;
-        res.json({ pesan: 'Field queue_no tidak boleh kosong!' });
+        res.json({ message: 'The queue_no field cannot be empty!' });
     }
 
     if (!status) {
         errors = true;
-        res.json({ pesan: 'Field status tidak boleh kosong!' });
+        res.json({ message: 'The status field cannot be empty!' });
     }
 
     if (!rating) {
         errors = true;
-        res.json({ pesan: 'Field rating tidak boleh kosong!' });
+        res.json({ message: 'The rating field cannot be empty!' });
     }
 
     if (!review) {
         errors = true;
-        res.json({ pesan: 'Field review tidak boleh kosong!' });
+        res.json({ message: 'The review field cannot be empty!' });
     }
 
     connection.query('SELECT * FROM tbl_doctors WHERE doctor_id = ?', [doctor_id], function (err, result) {
         if (err) {
-            return res.status(500).json({ pesan: 'Terjadi kesalahan pada server saat memeriksa doctor_id', err });
+            return res.status(500).json({ message: 'An error occurred on the server while checking doctor_id', err });
         }
 
         if (result.length === 0) {
-            return res.status(400).json({ pesan: 'User dengan id tersebut tidak ditemukan' });
+            return res.status(400).json({ message: 'The user with this ID was not found' });
         }
     })
 
     connection.query('SELECT * FROM tbl_patients WHERE patient_id = ?', [patient_id], function (err, result) {
         if (err) {
-            return res.status(500).json({ pesan: 'Terjadi kesalahan pada server saat memeriksa patient_id' });
+            return res.status(500).json({ message: 'An error occurred on the server while checking patient_id' });
         }
 
         if (result.length === 0) {
-            return res.status(400).json({ pesan: 'User dengan id tersebut tidak ditemukan' });
+            return res.status(400).json({ message: 'The user with this ID was not found' });
         }
     })
 
@@ -198,7 +188,7 @@ const updateAppointement = function (req, res) {
                     review: formData.review,
                 })
             } else {
-                res.send('Data berhasil diupdate!');
+                res.send('Data updated successfully!');
             }
         })
     }
@@ -212,9 +202,9 @@ const deleteAppointment = function (req, res) {
             res.send('error', err)
         } else {
             if (result.affectedRows === 0) {
-                res.send('Id tidak ada');
+                res.send('ID does not exist');
             } else {
-                res.send('Data berhasil dihapus!');
+                res.send('Data deleted successfully!');
             }
         }
     })
@@ -227,7 +217,7 @@ const updateAppointmentStatus = function(req, res){
 
     if (!status) {
         errors = true;
-        res.json({ pesan: 'Field status tidak boleh kosong!' });
+        res.json({ message: 'The status field cannot be empty!' });
     }
 
     connection.query('UPDATE tbl_appointments SET ? WHERE appointment_id = ' + id, {status}, function (err, result) {
@@ -239,7 +229,7 @@ const updateAppointmentStatus = function(req, res){
                 status: status
             })
         } else {
-            res.send('Data berhasil diupdate!');
+            res.send('Data updated successfully!');
         }
     })
 }
@@ -252,12 +242,12 @@ const updateAppointementFeedback = function(req, res) {
 
     if (!rating) {
         errors = true;
-        res.json({ pesan: 'Field rating tidak boleh kosong!' });
+        res.json({ message: 'The rating field cannot be empty!' });
     }
 
     if (!review) {
         errors = true;
-        res.json({ pesan: 'Field review tidak boleh kosong!' });
+        res.json({ message: 'The review field cannot be empty!' });
     }
 
     connection.query('UPDATE tbl_appointments SET ? WHERE appointment_id = ' + id, {rating, review}, function (err, result) {
@@ -270,7 +260,7 @@ const updateAppointementFeedback = function(req, res) {
                 review: formData.review
             })
         } else {
-            res.send('Data berhasil diupdate!');
+            res.send('Data updated successfully!');
         }
     })
 }
