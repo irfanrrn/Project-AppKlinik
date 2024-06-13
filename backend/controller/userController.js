@@ -5,11 +5,11 @@ const getAllUser = function (req, res) {
         if (err) {
             res.send('error', err);
             res.json({
-                data_user: ''
+                user_data: ''
             });
         } else {
             res.json( {
-                data_user: rows
+                user_data: rows
             });
         }
     });
@@ -21,11 +21,11 @@ const getUserId = function (req, res) {
         if (err) {
             res.send('error', err);
             res.json({
-                data_user: ''
+                user_data: ''
             });
         } else {
             res.json( {
-                data_user: rows
+                user_data: rows
             });
         }
     });
@@ -39,25 +39,25 @@ const createUser = function (req, res) {
 
     if(!username) {
         errors = true;
-        res.json({pesan: 'Field username belum diisi, mohon isi dengan lengkap.'});
+        res.json({message: 'The username field has not been filled in, please fill it in completely.'});
     }
 
     if(!email) {
         errors = true;
-        res.json({pesan: 'Field email belum diisi, mohon isi dengan lengkap.'});
+        res.json({message: 'The email field has not been filled in, please fill it in completely.'});
     }
 
     if(!password) {
         errors = true;
-        res.json({pesan: 'Field password belum diisi, mohon isi dengan lengkap.'});
+        res.json({message: 'The password field has not been filled in, please fill it in completely.'});
     }
 
     if(!errors) {
         connection.query(`INSERT INTO tbl_users (username,email,password) VALUES (?,?,SHA2(?,512));`, [username, email, password], function(err, result) {
             if (err) {
-                res.json({pesan: err});
+                res.json({message: err});
             } else {
-                res.send('Data berhasil disimpan!');
+                res.send('Data saved successfully!');
             }
         })
     }
@@ -72,17 +72,17 @@ const updateUser = function(req, res) {
 
     if(!username) {
         errors = true;
-        res.json({pesan: 'Field username tidak boleh kosong!'});
+        res.json({message: 'The username field cannot be empty!'});
     }
 
     if(!email) {
         errors = true;
-        res.json({pesan: 'Field email tidak boleh kosong!'});
+        res.json({message: 'The email field cannot be empty!'});
     }
 
     if(!password) {
         errors = true;
-        res.json({pesan: 'Field password tidak boleh kosong!'});
+        res.json({message: 'The password field cannot be empty!'});
     }
 
     if(!errors) {
@@ -104,7 +104,7 @@ const updateUser = function(req, res) {
                     password: formData.password
                 })
             } else {
-                res.send('Data berhasil diupdate!');
+                res.send('Data updated successfully!');
             }
         })
     }
@@ -118,9 +118,9 @@ const deleteUser = function(req, res) {
             res.send('error', err)
         } else {
             if(result.affectedRows === 0){
-                res.send('Id tidak ada');
+                res.send('ID does not exist');
             }else {
-                res.send('Data berhasil dihapus!');
+                res.send('Data deleted successfully!');
             }
         }
     })
