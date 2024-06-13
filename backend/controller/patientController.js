@@ -5,11 +5,11 @@ const getAllPatient = function (req, res) {
         if (err) {
             res.send('error', err);
             res.json({
-                data_patient: ''
+                patient_data: ''
             });
         } else {
             res.json( {
-                data_patient: rows
+                patient_data: rows
             });
         }
     });
@@ -21,11 +21,11 @@ const getPatientId = function (req, res) {
         if (err) {
             res.send('error', err);
             res.json({
-                data_patient: ''
+                patient_data: ''
             });
         } else {
             res.json( {
-                data_patient: rows
+                patient_data: rows
             });
         }
     });
@@ -41,27 +41,27 @@ const createPatient = function (req, res) {
 
     if(!name) {
         errors = true;
-        res.json({pesan: 'Field name belum diisi, mohon isi dengan lengkap.'});
+        res.json({message: 'The name field has not been filled in, please fill it in completely.'});
     }
 
     if(!gender) {
         errors = true;
-        res.json({pesan: 'Field gender belum diisi, mohon isi dengan lengkap.'});
+        res.json({message: 'The gender field has not been filled in, please fill it in completely.'});
     }
 
     if(!address) {
         errors = true;
-        res.json({pesan: 'Field address belum diisi, mohon isi dengan lengkap.'});
+        res.json({message: 'The address field has not been filled in, please fill it in completely.'});
     }
 
     if(!date_of_birth) {
         errors = true;
-        res.json({pesan: 'Field date_of_birth belum diisi, mohon isi dengan lengkap.'});
+        res.json({message: 'The date_of_birth field has not been filled in, please fill it in completely.'});
     }
 
     if(!phone_number) {
         errors = true;
-        res.json({pesan: 'Field phone_number belum diisi, mohon isi dengan lengkap.'});
+        res.json({message: 'The phone_number field has not been filled in, please fill it in completely.'});
     }
 
     if(!errors) {
@@ -77,7 +77,7 @@ const createPatient = function (req, res) {
             if (err) {
                 res.json({err});
             } else {
-                res.send('Data berhasil disimpan!');
+                res.send('Data saved successfully!');
             }
         })
     }
@@ -94,27 +94,27 @@ const updatePatient = function(req, res) {
 
     if(!name) {
         errors = true;
-        res.json({pesan: 'Field name tidak boleh kosong!'});
+        res.json({message: 'The name field cannot be empty!'});
     }
 
     if(!gender) {
         errors = true;
-        res.json({pesan: 'Field gender tidak boleh kosong!'});
+        res.json({message: 'The gender field cannot be empty!'});
     }
 
     if(!address) {
         errors = true;
-        res.json({pesan: 'Field address tidak boleh kosong!'});
+        res.json({message: 'The address field cannot be empty!'});
     }
 
     if(!date_of_birth) {
         errors = true;
-        res.json({pesan: 'Field date_of_birth tidak boleh kosong!'});
+        res.json({message: 'The date_of_birth field cannot be empty!'});
     }
 
     if(!phone_number) {
         errors = true;
-        res.json({pesan: 'Field phone_number tidak boleh kosong!'});
+        res.json({message: 'The phone_number field cannot be empty!'});
     }
 
     if(!errors) {
@@ -139,7 +139,7 @@ const updatePatient = function(req, res) {
                     phone_number: formData.phone_number
                 })
             } else {
-                res.send('Data berhasil diupdate!');
+                res.send('Data updated successfully!');
             }
         })
     }
@@ -153,9 +153,9 @@ const deletePatient = function(req, res) {
             res.send('error', err)
         } else {
             if(result.affectedRows === 0){
-                res.send('Id tidak ada');
+                res.send('ID does not exist');
             }else {
-                res.send('Data berhasil dihapus!');
+                res.send('Data deleted successfully!');
             }
         }
     })
