@@ -51,7 +51,7 @@ body {
     object-fit: cover;
   }
   
-  .form-container {
+  .form-container-app {
     background-color: #e0f7fa;
     padding: 20px;
     border-radius: 10px;
@@ -90,35 +90,44 @@ body {
   .button1 {
     background-color: #00d9ff; 
     color: #ffffff; 
-    padding-left: 13px;
-    padding-top: 7px;
-    padding-bottom: 3px;
-    padding-right: 13px;
+    padding-left: 15px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 15px;
     margin-right: 5px; 
     cursor: pointer; 
     transition: background-color 0.3s ease, color 0.3s ease; 
     border-radius: 10px;
     margin-top: 10px;
     font-weight: 600;
-    margin-left: 114vh;
+    margin-left: 120vh;
+    height: 50px;
+    border: none;
   }
   
   .button2 {
     background-color: #ffffff; 
-    border: 1px solid #00d9ff; 
+    border: 2px solid #00d9ff; 
     color: #00d9ff; 
-    padding: 7px 15px; 
+    padding: 5px 5px; 
     margin-right: 69vh; 
+    margin-left: 12px;
     cursor: pointer; 
     transition: background-color 0.3s ease, color 0.3s ease; 
     border-radius: 10px;
     margin-top: 10px;
     font-weight: 600;
+    height: 50px;
+    width: 250px; 
+    display: inline-block;
+    text-align: center;
+    line-height: 35px;
+    white-space: nowrap;
   }
   
   .button1:hover {
     background-color: #ffffff; 
-    border: 1px solid #00d9ff; 
+    border: 2px solid #00d9ff; 
     color: #00d9ff; 
   }
   
