@@ -8,24 +8,24 @@ const createRegister = function (req, res) {
 
     if(!username) {
         errors = true;
-        res.json({pesan: 'Field username belum diisi, mohon isi dengan lengkap.'});
+        res.json({message: 'The username field has not been filled in, please fill it in completely.'});
     }
 
     if(!email) {
         errors = true;
-        res.json({pesan: 'Field email belum diisi, mohon isi dengan lengkap.'});
+        res.json({message: 'The email field has not been filled in, please fill it in completely.'});
     }
 
     if(!password) {
         errors = true;
-        res.json({pesan: 'Field password belum diisi, mohon isi dengan lengkap.'});
+        res.json({message: 'The password field has not been filled in, please fill it in completely.'});
     }
 
         connection.query(`INSERT INTO tbl_users (username,email,password) VALUES (?,?,SHA2(?,512));`, [username, email, password], function(err, result) {
             if (err) {
-                res.json({pesan: err});
+                res.json({message: err});
             } else {
-                res.send('Data berhasil disimpan!');
+                res.send('Data saved successfully!');
             }
         })
     
