@@ -36,6 +36,7 @@ const createDoctor = function (req, res) {
     let phone_number = req.body.phone_number;
     let specialization = req.body.specialization;
     let qualification = req.body.qualification;
+    let image = req.file.filename;
     let errors = [];
 
     if (!name) {
@@ -62,7 +63,8 @@ const createDoctor = function (req, res) {
         name: name,
         phone_number: phone_number,
         specialization: specialization,
-        qualification: qualification
+        qualification: qualification,
+        image: image
     }
 
     connection.query('INSERT INTO tbl_doctors SET ?', formData, function(err, result) {
@@ -80,6 +82,7 @@ const updateDoctor = function(req, res) {
     let phone_number = req.body.phone_number;
     let specialization = req.body.specialization;
     let qualification = req.body.qualification;
+    let image = req.body.image;
     let errors = [];
 
     if (!name) {
@@ -106,7 +109,8 @@ const updateDoctor = function(req, res) {
         name: name,
         phone_number: phone_number,
         specialization: specialization,
-        qualification: qualification
+        qualification: qualification,
+        image: image
     }
 
     connection.query('UPDATE tbl_doctors SET ? WHERE doctor_id = ?', [formData, id], function(err, result) {

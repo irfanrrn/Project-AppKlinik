@@ -23,7 +23,7 @@ const createLogin = function(req, res){
               res.status(500).json({ message: 'Error logging in' });
             } else if (adminResults.length > 0) {
               const admin = adminResults[0];
-              const match = await  crypto.createHash('sha256').update(password).digest('hex');
+              const match = await crypto.createHash('sha256').update(password).digest('hex');
     
               if (match) {
                 req.session.admin = admin;
@@ -32,7 +32,7 @@ const createLogin = function(req, res){
                 res.status(401).json({ message: 'Invalid email or password' });
               }
             } else {
-              res.status(401).json({ message: 'User not found' });
+              res.status(401).json({ message: 'user not found' });
             }
           });
         }
