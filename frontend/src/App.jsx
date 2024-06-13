@@ -7,8 +7,16 @@ import AboutUs from "./pages/AboutUs";
 import AppointmentAll from "./pages/AppointmentAll";
 import FormAppointment from "./pages/FormAppointment";
 import Dashboard from "./pages/Dashboard";
+import FormAdmin from "./pages/FormAdmin";
+import AppointmentForm from "./pages/AppointmentForm";
+import DoctorForm from "./pages/DoctorForm";
+import DoctorScheduleForm from "./pages/DoctorScheduleForm";
+import PatientForm from "./pages/PatientForm";
+import UserForm from "./pages/UserForm";
+
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import "animate.css/animate.min.css";
 import "owl.carousel/dist/assets/owl.carousel.min.css";
@@ -29,6 +37,12 @@ function App() {
         <Route path="/appointmentall" element={<AppointmentAll />} />
         <Route path="/formappointment" element={<FormAppointment />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/formAdmin" element={<FormAdmin />} />
+        <Route path="/formAppointment" element={<AppointmentForm />} />
+        <Route path="/formDoctor" element={<DoctorForm />} />
+        <Route path="/formDoctorSchedule" element={<DoctorScheduleForm />} />
+        <Route path="/formPatient" element={<PatientForm />} />
+        <Route path="/formUser" element={<UserForm />} />
       </Routes>
     </BrowserRouter>
   );
