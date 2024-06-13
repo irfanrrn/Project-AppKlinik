@@ -34,7 +34,7 @@ const HeroesComponent = () => {
               <h1>"YOUR HEALTH IS OUR PRIORITY"</h1>
               <p>Our Clinic, where you can get quality and trusted health care. 
                 We are a clinic committed to providing the best health services for the whole family.</p>
-                <a href="/appointment" className ="btn appo-hero">APPOINTMENT</a>
+                <a href="/formappointment" className ="btn appo-hero">APPOINTMENT</a>
             </div>
         </div>
         <div className="carousel-item">
