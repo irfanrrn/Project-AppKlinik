@@ -5,11 +5,11 @@ const getAllAdministrator = function (req, res) {
         if (err) {
             res.send('error', err);
             res.json({
-                data_administrator: ''
+                administrator_data: ''
             });
         } else {
             res.json( {
-                data_administrator: rows
+                administrator_data: rows
             });
         }
     });
@@ -21,11 +21,11 @@ const getAdministratorId = function (req, res) {
         if (err) {
             res.send('error', err);
             res.json({
-                data_administrator: ''
+                administrator_data: ''
             });
         } else {
             res.json( {
-                data_administrator: rows
+                administrator_data: rows
             });
         }
     });
@@ -39,28 +39,28 @@ const createAdministrator = function (req, res) {
     let errors = [];
 
     if (!username) {
-        errors.push('Field username belum diisi, mohon isi dengan lengkap.');
+        errors.push('The username field has not been filled in, please fill it in completely.');
     }
 
     if (!email) {
-        errors.push('Field email belum diisi, mohon isi dengan lengkap.');
+        errors.push('The email field has not been filled in, please fill it in completely.');
     } else if (!emailRegex.test(email)) {
-        errors.push('Format email tidak valid, mohon isi dengan email yang benar.');
+        errors.push('The email format is invalid, please fill in the correct email.');
     }
 
     if (!password) {
-        errors.push('Field password belum diisi, mohon isi dengan lengkap.');
+        errors.push('The password field has not been filled in, please fill it in completely.');
     }
 
     if (errors.length > 0) {
-        return res.status(400).json({ pesan: errors });
+        return res.status(400).json({ message: errors });
     }
 
     connection.query(`INSERT INTO tbl_administrators (username, email, password) VALUES (?,?,SHA2(?,512));`, [username, email, password], function(err, result) {
         if (err) {
-            res.json({ pesan: 'Data gagal disimpan' });
+            res.json({ message: 'Data failed to save' });
         } else {
-            res.send('Data berhasil disimpan!');
+            res.send('Data saved successfully!');
         }
     });
 }
@@ -74,21 +74,21 @@ const updateAdministrator = function(req, res) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!username) {
-        errors.push('Field username tidak boleh kosong!');
+        errors.push('The username field cannot be empty!');
     }
 
     if (!email) {
-        errors.push('Field email tidak boleh kosong!');
+        errors.push('The email field cannot be empty!');
     } else if (!emailRegex.test(email)) {
-        errors.push('Format email tidak valid, mohon isi dengan email yang benar.');
+        errors.push('The email format is invalid, please fill in the correct email.');
     }
 
     if (!password) {
-        errors.push('Field password tidak boleh kosong!');
+        errors.push('The password field cannot be empty!');
     }
 
     if (errors.length > 0) {
-        return res.status(400).json({ pesan: errors });
+        return res.status(400).json({ message: errors });
     }
 
     connection.query(
@@ -96,9 +96,9 @@ const updateAdministrator = function(req, res) {
         [username, email, password, id], 
         function(err, result) {
             if (err) {
-                res.status(500).json({ pesan: 'Data gagal diupdate', error: err });
+                res.status(500).json({ message: 'Data failed to update', error: err });
             } else {
-                res.send('Data berhasil diupdate!');
+                res.send('Data updated successfully!');
             }
         }
     );
@@ -109,12 +109,12 @@ const deleteAdministrator = function(req, res) {
 
     connection.query('DELETE FROM tbl_administrators WHERE admin_id = ?', [id], function(err, result) {
         if (err) {
-            res.status(500).send({ pesan: 'Terjadi kesalahan', error: err });
+            res.status(500).send({ message: 'There is an error', error: err });
         } else {
             if (result.affectedRows === 0) {
-                res.status(404).send({ pesan: 'ID tidak ada' });
+                res.status(404).send({ message: 'ID does not exist' });
             } else {
-                res.send('Data berhasil dihapus!');
+                res.send('Data deleted successfully!');
             }
         }
     });
