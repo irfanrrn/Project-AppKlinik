@@ -1,0 +1,165 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .page-header {
+    background: url(../assets/img/appointment/header-app2.jpg) top center no-repeat;
+    background-size: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.1); 
+    height: 140px;
+    margin-bottom: 7vh;
+  }
+  
+  .header-content,
+  .header-content2 a {
+    color: white;
+    text-shadow: 1px 3px 3px rgb(109, 109, 109);
+    font-weight: 700;
+    margin-top: 25px;
+  }
+  
+  .header-content2 a1 {
+    color: #ffc107;
+    text-shadow: 1px 3px 3px rgb(109, 109, 109);
+    font-weight: 700;
+    margin-top: 20px;
+  }
+  
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    float: left;
+  }
+  
+  .content img {
+    width: 50%;
+    max-height: 300px;
+    object-fit: cover;
+  }
+  
+  .form-container {
+    background-color: #e0f7fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: 50px;
+    flex: 1;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-top: 10px;
+    color: #333;
+  }
+  
+  input,
+  select,
+  textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    margin-bottom: 15vh;
+  }
+  
+  .button1 {
+    background-color: #00d9ff; 
+    color: #ffffff; 
+    padding-left: 13px;
+    padding-top: 7px;
+    padding-bottom: 3px;
+    padding-right: 13px;
+    margin-right: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease, color 0.3s ease; 
+    border-radius: 10px;
+    margin-top: 10px;
+    font-weight: 600;
+    margin-left: 114vh;
+  }
+  
+  .button2 {
+    background-color: #ffffff; 
+    border: 1px solid #00d9ff; 
+    color: #00d9ff; 
+    padding: 7px 15px; 
+    margin-right: 69vh; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease, color 0.3s ease; 
+    border-radius: 10px;
+    margin-top: 10px;
+    font-weight: 600;
+  }
+  
+  .button1:hover {
+    background-color: #ffffff; 
+    border: 1px solid #00d9ff; 
+    color: #00d9ff; 
+  }
+  
+  .button2:hover {
+    background-color: #00d9ff; 
+    color: white; 
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  /* Additional CSS for form layout */
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .horizontal-group {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .horizontal-group label,
+  .horizontal-group input {
+    flex: 1;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .form-row > div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  button {
+    margin-top: 1rem;
+  }
+  
