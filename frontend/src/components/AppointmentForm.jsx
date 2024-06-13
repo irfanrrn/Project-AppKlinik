@@ -13,7 +13,7 @@ const AppointmentForm = () => {
       <div className="container">
         <div className="content">
           <img src={appImg2} alt="Content Image" />
-          <div className="form-container">
+          <div className="form-container-app">
             <form>
               <div className="horizontal-group">
                 <div>
@@ -77,15 +77,16 @@ const AppointmentForm = () => {
                 name="message"
                 placeholder="Convey your message here"
               ></textarea>
-              <div className="button-group">
-                <button className="button1" type="submit">Submit</button>
-                <a className="button2" href="#">My Appointment</a>
-              </div>
             </form>
           </div>
         </div>
       </div>
+      <div className="button-group">
+        <button className="button1" type="submit">Submit</button>
+        <a className="button2" href="/appointmentAll">My Appointment</a>
+      </div>
     </div>
+
   )
 }
 
