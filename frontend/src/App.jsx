@@ -6,6 +6,9 @@ import Register from "./pages/Register";
 import AboutUs from "./pages/AboutUs";
 import AppointmentAll from "./pages/AppointmentAll";
 import FormAppointment from "./pages/FormAppointment";
+import AppointmentCan from "./pages/AppointmentCan";
+import AppointmentCom from "./pages/AppointmentCom";
+import AppointmentUp from "./pages/AppointmentUp";
 import Dashboard from "./pages/Dashboard";
 import FormAdmin from "./pages/FormAdmin";
 import AppointmentForm from "./pages/AppointmentForm";
@@ -36,6 +39,9 @@ function App() {
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/appointmentall" element={<AppointmentAll />} />
         <Route path="/formappointment" element={<FormAppointment />} />
+        <Route path="/appointmentcan" element={<AppointmentCan />} />
+        <Route path="/appointmentcom" element={<AppointmentCom />} />
+        <Route path="/appointmentup" element={<AppointmentUp />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/formAdmin" element={<FormAdmin />} />
         <Route path="/formAppointment" element={<AppointmentForm />} />
