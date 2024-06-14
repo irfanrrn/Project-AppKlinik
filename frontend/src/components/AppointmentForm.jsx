@@ -3,7 +3,7 @@ import appImg2 from "../assets/img/appointment/doctor-app.jpg";
 const AppointmentForm = () => {
   return (
     <div>
-      <div className="page-header">
+      <div className="page-header2">
         <h1 className="header-content">Appointment</h1>
         <nav className="header-content2">
           <a className="page-1" href="/">Home /</a>
@@ -41,12 +41,27 @@ const AppointmentForm = () => {
                   <input type="date" id="date" name="date" />
                 </div>
                 <div>
-                  <label htmlFor="phone">No. Hp</label>
+                  <label htmlFor="phone">Phone Number</label>
                   <input
                     type="text"
                     id="phone"
                     name="phone"
                     placeholder="08xx-xxxx-xxx"
+                  />
+                </div>
+              </div>
+              <div className="form-row">
+                <div>
+                  <label htmlFor="date-birth">Date of Birth</label>
+                  <input type="date" id="date-birth" name="date-birth" />
+                </div>
+                <div>
+                  <label htmlFor="phone">Gender</label>
+                  <input
+                    type="text"
+                    id="gender"
+                    name="gender"
+                    placeholder="Male / Female"
                   />
                 </div>
               </div>

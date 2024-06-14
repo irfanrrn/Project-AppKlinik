@@ -32,6 +32,7 @@ const getPatientId = function (req, res) {
 }
 
 const createPatient = function (req, res) {
+    let user_id = req.body.user_id
     let name = req.body.name;
     let gender = req.body.gender;
     let address = req.body.address;
@@ -39,6 +40,11 @@ const createPatient = function (req, res) {
     let phone_number = req.body.phone_number;
     let email = req.body.email;
     let errors = false;
+
+    if(!user_id) {
+        errors = true;
+        res.json({message: 'The user_id field has not been filled in, please fill it in completely.'});
+    }
 
     if(!name) {
         errors = true;
@@ -70,8 +76,18 @@ const createPatient = function (req, res) {
         res.json({message: 'The email field has not been filled in, please fill it in completely.'});
     }
 
+    connection.query('SELECT * FROM tbl_users WHERE user_id = ?', [user_id], function (err, result) {
+        if (err) {
+            return res.status(500).json({ message: 'An error occurred on the server while checking user_id', err });
+        }
+        if (result.length === 0) {
+            return res.status(400).json({ message: 'The user with this ID was not found' });
+        }
+    })
+
     if(!errors) {
         let formData = {
+            user_id: user_id,
             name: name,
             gender: gender,
             address: address,
@@ -92,6 +108,7 @@ const createPatient = function (req, res) {
 
 const updatePatient = function(req, res) {
     let id = req.params.id;
+    let user_id = req.params.user_id;
     let name = req.body.name;
     let gender = req.body.gender;
     let address = req.body.address;
@@ -99,6 +116,11 @@ const updatePatient = function(req, res) {
     let phone_number = req.body.phone_number;
     let email = req.body.email;
     let errors = false;
+
+    if(!user_id) {
+        errors = true;
+        res.json({message: 'The user_id field cannot be empty!'});
+    }
 
     if(!name) {
         errors = true;
@@ -132,6 +154,7 @@ const updatePatient = function(req, res) {
 
     if(!errors) {
         let formData = {
+            user_id: user_id,
             name: name,
             gender: gender,
             address: address,
@@ -146,6 +169,7 @@ const updatePatient = function(req, res) {
                 res.send('error', err);
                 res.json({
                     id: req.params.id,
+                    user_id: formData.user_id,
                     name: formData.name,
                     gender: formData.gender,
                     address: formData.address,
