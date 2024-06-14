@@ -11,7 +11,7 @@ const createLogin = function (req, res) {
             req.session.user = user;
             res.status(200).json({
                 message: 'Login successful',
-                user: {id: user.id, username: user.username, email: user.email, role: 'user'}
+                user: {user_id: user.user_id, username: user.username, email: user.email, role: 'user'}
             });
         } else {
             connection.query('SELECT * FROM tbl_administrators WHERE email = ?  AND password = SHA2(?, 512)', [email, password], async (err, adminResults) => {
@@ -22,7 +22,7 @@ const createLogin = function (req, res) {
                     req.session.admin = admin;
                     res.status(200).json({
                         message: 'Login successful',
-                        user: {id: admin.id, username: admin.username, email: admin.email, role: 'admin'}
+                        user: {admin_id: admin.admin_id, username: admin.username, email: admin.email, role: 'admin'}
                     });
                 } else {
                     res.status(400).json({message: 'Invalid email or password'});
