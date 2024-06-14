@@ -14,7 +14,7 @@ const AppointmentUpcComponent = () => {
 
       <div className="button-container">
         <a className="nav-button" href="/appointmentall">All</a>
-        <a className="nav-button" href="/appointmenupc">Upcoming</a>
+        <a className="nav-button" href="/appointmenup">Upcoming</a>
         <a className="nav-button" href="/appointmentcom">Completed</a>
         <a className="nav-button" href="/appointmentcan">Canceled</a>
       </div>
