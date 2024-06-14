@@ -16,6 +16,7 @@ const RegisterComponent = () => {
               type="text"
               id="nama"
               name="nama"
+              className="form-control"
               placeholder="full name"
               required
             />
@@ -25,6 +26,7 @@ const RegisterComponent = () => {
               type="email"
               id="email"
               name="email"
+              className="form-control"
               placeholder="email"
               required
             />
@@ -34,6 +36,7 @@ const RegisterComponent = () => {
               type="password"
               id="password"
               name="password"
+              className="form-control"
               placeholder="password"
               required
             />

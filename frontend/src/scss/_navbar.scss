@@ -1,17 +1,8 @@
 .navbar{
     text-transform: uppercase;
-    position:sticky;
-    // width: 100%;
-    // top: 0px;
-    // // left: 0;
-    // // right: 0;
-    // z-index: 99;
-    // transition: transform 500ms ease, background 500ms ease;
-    // -webkit-transition: transform 500ms ease, background 500ms ease;
-    // .nav-link.active {
-    //     font-weight: 700;
-    //     color: white;
-    //   }
+    position: sticky;
+    top: 0;
+    z-index: 9999999;
       .nav-link.active:hover {
         font-weight: 700;
         transition: 0.5s;

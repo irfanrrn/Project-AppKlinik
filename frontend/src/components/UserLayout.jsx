@@ -4,10 +4,10 @@ import FooterComponent from './FooterComponent'
 
 export default function UserLayout({children}) {
   return (
-    <>
+    <div>
         <NavbarComponent />
         {children}
         <FooterComponent />
-    </>
+    </div>
   )
 }

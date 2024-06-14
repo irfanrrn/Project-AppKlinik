@@ -11,11 +11,11 @@ const TestiComponent = () => {
                             <img src={cust1} className="shadow" alt="customer1" />
                             <h4 className="mt-3">Alisa Gracia</h4>
                             <div className="stars">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
                             </div>
                             <q>
                                 It gives me great confidence in the
@@ -29,11 +29,11 @@ const TestiComponent = () => {
                             <img src={cust1} className="shadow" alt="customer2" />
                             <h4 className="mt-3">Khalid Gracia</h4>
                             <div className="stars">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
+                                <i className="fa fa-star"></i>
                             </div>
                             <q>
                                 The best thing about Dev is the community and the great developers

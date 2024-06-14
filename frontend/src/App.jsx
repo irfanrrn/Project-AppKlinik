@@ -16,7 +16,6 @@ import UserForm from "./pages/UserForm";
 
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 import "animate.css/animate.min.css";
 import "owl.carousel/dist/assets/owl.carousel.min.css";
