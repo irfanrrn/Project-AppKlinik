@@ -1,18 +1,28 @@
 var connection = require('../library/database');
 
 const getAllPatient = function (req, res) {
-    connection.query('SELECT * FROM tbl_patients', function (err, rows) {
-        if (err) {
-            res.send('error', err);
-            res.json({
-                patient_data: ''
-            });
-        } else {
-            res.json( {
-                patient_data: rows
-            });
-        }
-    });
+    const q = req.query.q;
+
+    if(q) {
+        const searchTerm = `%${q}%`;
+        connection.query('SELECT * FROM tbl_patients WHERE name LIKE ?', [searchTerm], (err, results) => {
+            if (err) throw err;
+            res.json(results);
+        });
+    } else {
+        connection.query('SELECT * FROM tbl_patients', function (err, rows) {
+            if (err) {
+                res.send('error', err);
+                res.json({
+                    patient_data: ''
+                });
+            } else {
+                res.json( {
+                    patient_data: rows
+                });
+            }
+        });
+    }
 }
 
 const getPatientId = function (req, res) {
