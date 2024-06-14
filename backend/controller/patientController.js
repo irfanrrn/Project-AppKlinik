@@ -37,6 +37,7 @@ const createPatient = function (req, res) {
     let address = req.body.address;
     let date_of_birth = req.body.date_of_birth;
     let phone_number = req.body.phone_number;
+    let email = req.body.email;
     let errors = false;
 
     if(!name) {
@@ -64,13 +65,19 @@ const createPatient = function (req, res) {
         res.json({message: 'The phone_number field has not been filled in, please fill it in completely.'});
     }
 
+    if(!email) {
+        errors = true;
+        res.json({message: 'The email field has not been filled in, please fill it in completely.'});
+    }
+
     if(!errors) {
         let formData = {
             name: name,
             gender: gender,
             address: address,
             date_of_birth: date_of_birth,
-            phone_number: phone_number
+            phone_number: phone_number,
+            email: email
         }
 
         connection.query('INSERT INTO tbl_patients SET ?', formData, function(err, result) {
@@ -90,6 +97,7 @@ const updatePatient = function(req, res) {
     let address = req.body.address;
     let date_of_birth = req.body.date_of_birth;
     let phone_number = req.body.phone_number;
+    let email = req.body.email;
     let errors = false;
 
     if(!name) {
@@ -117,13 +125,19 @@ const updatePatient = function(req, res) {
         res.json({message: 'The phone_number field cannot be empty!'});
     }
 
+    if(!email) {
+        errors = true;
+        res.json({message: 'The email field cannot be empty!'});
+    }
+
     if(!errors) {
         let formData = {
             name: name,
             gender: gender,
             address: address,
             date_of_birth: date_of_birth,
-            phone_number: phone_number
+            phone_number: phone_number,
+            email: email
         }
 
         connection.query('UPDATE tbl_patients SET ? WHERE patient_id = ' + id, formData, function(err, result) {
@@ -136,7 +150,8 @@ const updatePatient = function(req, res) {
                     gender: formData.gender,
                     address: formData.address,
                     date_of_birth: formData.date_of_birth,
-                    phone_number: formData.phone_number
+                    phone_number: formData.phone_number,
+                    email: formData.email
                 })
             } else {
                 res.send('Data updated successfully!');

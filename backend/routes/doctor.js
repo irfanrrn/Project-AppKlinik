@@ -9,8 +9,6 @@ var {
    } = require("../middleware/validation.js");
 var { upload } = require("../middleware/uploadImage.js");
 
-//var image = req.file.fieldname;
-
 router.get('/', doctor.getAllDoctor);
 
 router.get('/:id', doctor.getDoctorId);
