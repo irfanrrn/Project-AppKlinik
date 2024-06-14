@@ -3,13 +3,13 @@ var connection = require('../library/database');
 const getAllDoctor = function (req, res) {
     const q = req.query.q;
 
-    if(q){
+    if(q) {
         const searchTerm = `%${q}%`;
         connection.query('SELECT * FROM tbl_doctors WHERE name LIKE ?', [searchTerm], (err, results) => {
             if (err) throw err;
             res.json(results);
         });
-    }else {
+    } else {
         connection.query('SELECT * FROM tbl_doctors', function (err, rows) {
             if (err) {
                 res.send('error', err);

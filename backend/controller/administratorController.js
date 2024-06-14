@@ -1,18 +1,28 @@
 var connection = require('../library/database');
 
 const getAllAdministrator = function (req, res) {
-    connection.query('SELECT * FROM tbl_administrators', function (err, rows) {
-        if (err) {
-            res.send('error', err);
-            res.json({
-                administrator_data: ''
-            });
-        } else {
-            res.json( {
-                administrator_data: rows
-            });
-        }
-    });
+    const q = req.query.q;
+
+    if(q) {
+        const searchTerm = `%${q}%`;
+        connection.query('SELECT * FROM tbl_administrators WHERE username LIKE ?', [searchTerm], (err, results) => {
+            if (err) throw err;
+            res.json(results);
+        });
+    } else {
+        connection.query('SELECT * FROM tbl_administrators', function (err, rows) {
+            if (err) {
+                res.send('error', err);
+                res.json({
+                    administrator_data: ''
+                });
+            } else {
+                res.json( {
+                    administrator_data: rows
+                });
+            }
+        });
+    } 
 }
 
 const getAdministratorId = function (req, res) {
