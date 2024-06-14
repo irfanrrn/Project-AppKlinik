@@ -14,10 +14,12 @@ const getAllUser = function (req, res) {
             if (err) {
                 res.send('error', err);
                 res.json({
+                    message: "successfully",
                     user_data: ''
                 });
             } else {
                 res.json( {
+                    message: "successfully",
                     user_data: rows
                 });
             }
@@ -31,10 +33,12 @@ const getUserId = function (req, res) {
         if (err) {
             res.send('error', err);
             res.json({
+                message: "successfully",
                 user_data: ''
             });
         } else {
-            res.json( {
+            res.json({
+                message: "successfully",
                 user_data: rows
             });
         }
@@ -67,7 +71,7 @@ const createUser = function (req, res) {
             if (err) {
                 res.json({message: err});
             } else {
-                res.send('Data saved successfully!');
+                res.send({ message: 'Data saved successfully!'});
             }
         })
     }
@@ -114,7 +118,7 @@ const updateUser = function(req, res) {
                     password: formData.password
                 })
             } else {
-                res.send('Data updated successfully!');
+                res.send({ message: 'Data updated successfully!'});
             }
         })
     }
@@ -128,9 +132,9 @@ const deleteUser = function(req, res) {
             res.send('error', err)
         } else {
             if(result.affectedRows === 0){
-                res.send('ID does not exist');
+                res.send({ message: 'ID does not exist'});
             }else {
-                res.send('Data deleted successfully!');
+                res.send({ message: 'Data deleted successfully!'});
             }
         }
     })

@@ -25,7 +25,7 @@ const createRegister = function (req, res) {
             if (err) {
                 res.json({message: err});
             } else {
-                res.send('Data saved successfully!');
+                res.send({ message: 'Data saved successfully!'});
             }
         })
     

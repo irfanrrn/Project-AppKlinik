@@ -5,10 +5,12 @@ const getAllAppointment = function (req, res) {
         if (err) {
             res.send('error', err);
             res.json({
+                message: "successfully",
                 appointment_data: ''
             });
         } else {
             res.json({
+                message: "successfully",
                 appointment_data: rows
             });
         }
@@ -21,10 +23,12 @@ const getAppointmentId = function (req, res) {
         if (err) {
             res.send('error', err);
             res.json({
+                message: "successfully",
                 appointment_data: ''
             });
         } else {
             res.json({
+                message: "successfully",
                 appointment_data: rows
             });
         }
@@ -99,7 +103,7 @@ const createAppointment = async function (req, res) {
                 if (err) {
                     res.json(err);
                 } else {
-                    res.send('Data saved successfully!');
+                    res.send({ message: 'Data saved successfully!'});
                 }
             });
         }
@@ -188,7 +192,7 @@ const updateAppointement = function (req, res) {
                     review: formData.review,
                 })
             } else {
-                res.send('Data updated successfully!');
+                res.send({ message: 'Data updated successfully!'});
             }
         })
     }
@@ -202,9 +206,9 @@ const deleteAppointment = function (req, res) {
             res.send('error', err)
         } else {
             if (result.affectedRows === 0) {
-                res.send('ID does not exist');
+                res.send({message: 'ID does not exist'});
             } else {
-                res.send('Data deleted successfully!');
+                res.send({ message: 'Data deleted successfully!'});
             }
         }
     })
@@ -229,7 +233,7 @@ const updateAppointmentStatus = function(req, res){
                 status: status
             })
         } else {
-            res.send('Data updated successfully!');
+            res.send({ message: 'Data updated successfully!'});
         }
     })
 }
@@ -260,7 +264,7 @@ const updateAppointementFeedback = function(req, res) {
                 review: formData.review
             })
         } else {
-            res.send('Data updated successfully!');
+            res.send({ message: 'Data updated successfully!'});
         }
     })
 }

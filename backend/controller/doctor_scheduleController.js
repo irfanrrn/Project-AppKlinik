@@ -5,10 +5,12 @@ const getAllDoctorSchedule = function (req, res) {
         if (err) {
             res.send('error', err);
             res.json({
+                message: "successfully",
                 doctor_schedule_data: ''
             });
         } else {
-            res.json( {
+            res.json({
+                message: "successfully",
                 doctor_schedule_data: rows
             });
         }
@@ -21,10 +23,12 @@ const getDoctorScheduleId = function (req, res) {
         if (err) {
             res.send('error', err);
             res.json({
+                message: "successfully",
                 doctor_schedule_data: ''
             });
         } else {
-            res.json( {
+            res.json({
+                message: "successfully",
                 doctor_schedule_data: rows
             });
         }
@@ -90,7 +94,7 @@ const createDoctorSchedule = function (req, res) {
             if (err) {
                 res.json({message: 'Data failed to save'});
             } else {
-                res.send('Data saved successfully!');
+                res.send({ message: 'Data saved successfully!'});
             }
         });
     });
@@ -165,7 +169,7 @@ const updateDoctorSchedule = function(req, res) {
                     room_number: formData.room_number
             }) 
         } else {
-                res.send('Data updated successfully!');
+                res.send({ message: 'Data updated successfully!'});
             }
         });
     });
@@ -181,7 +185,7 @@ const deleteDoctorSchedule = function(req, res) {
             if (result.affectedRows === 0) {
                 res.status(404).send({ message: 'ID does not exist' });
             } else {
-                res.send('Data deleted successfully!');
+                res.send({ message: 'Data deleted successfully!'});
             }
         }
     });

@@ -14,10 +14,12 @@ const getAllPatient = function (req, res) {
             if (err) {
                 res.send('error', err);
                 res.json({
+                    message: "successfully",
                     patient_data: ''
                 });
             } else {
-                res.json( {
+                res.json({
+                    message: "successfully",
                     patient_data: rows
                 });
             }
@@ -31,10 +33,12 @@ const getPatientId = function (req, res) {
         if (err) {
             res.send('error', err);
             res.json({
+                message: "successfully",
                 patient_data: ''
             });
         } else {
-            res.json( {
+            res.json({
+                message: "successfully",
                 patient_data: rows
             });
         }
@@ -110,7 +114,7 @@ const createPatient = function (req, res) {
             if (err) {
                 res.json({err});
             } else {
-                res.send('Data saved successfully!');
+                res.send({ message: 'Data saved successfully!'});
             }
         })
     }
@@ -188,7 +192,7 @@ const updatePatient = function(req, res) {
                     email: formData.email
                 })
             } else {
-                res.send('Data updated successfully!');
+                res.send({ message: 'Data updated successfully!'});
             }
         })
     }
@@ -202,9 +206,9 @@ const deletePatient = function(req, res) {
             res.send('error', err)
         } else {
             if(result.affectedRows === 0){
-                res.send('ID does not exist');
+                res.send({ message: 'ID does not exist'});
             }else {
-                res.send('Data deleted successfully!');
+                res.send({ message: 'Data deleted successfully!'});
             }
         }
     })

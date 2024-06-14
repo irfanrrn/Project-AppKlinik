@@ -14,10 +14,12 @@ const getAllAdministrator = function (req, res) {
             if (err) {
                 res.send('error', err);
                 res.json({
+                    message: "successfully",
                     administrator_data: ''
                 });
             } else {
                 res.json( {
+                    message: "successfully",
                     administrator_data: rows
                 });
             }
@@ -31,10 +33,12 @@ const getAdministratorId = function (req, res) {
         if (err) {
             res.send('error', err);
             res.json({
+                message: "successfully",
                 administrator_data: ''
             });
         } else {
             res.json( {
+                message: "successfully",
                 administrator_data: rows
             });
         }
@@ -70,7 +74,8 @@ const createAdministrator = function (req, res) {
         if (err) {
             res.json({ message: 'Data failed to save' });
         } else {
-            res.send('Data saved successfully!');
+            res.send({
+                message: 'Data saved successfully!'});
         }
     });
 }
@@ -108,7 +113,7 @@ const updateAdministrator = function(req, res) {
             if (err) {
                 res.status(500).json({ message: 'Data failed to update', error: err });
             } else {
-                res.send('Data updated successfully!');
+                res.send({ message: 'Data updated successfully!'});
             }
         }
     );
@@ -124,7 +129,7 @@ const deleteAdministrator = function(req, res) {
             if (result.affectedRows === 0) {
                 res.status(404).send({ message: 'ID does not exist' });
             } else {
-                res.send('Data deleted successfully!');
+                res.send({ message: 'Data deleted successfully!'});
             }
         }
     });

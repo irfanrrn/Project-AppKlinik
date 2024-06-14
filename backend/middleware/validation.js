@@ -3,36 +3,36 @@ const { body, check, validationResult } = require('express-validator');
 const createPostValidation = [
     body('name')
         .exists({ checkFalsy: true })
-        .withMessage('name wajib diisi')
+        .withMessage('The name field has not been filled in, please fill it in completely')
         .isString()
-        .withMessage('name harus string'),
+        .withMessage('name must be a string'),
     body('phone_number')
         .exists({ checkFalsy: true })
-        .withMessage('phone_number wajib diisi')
+        .withMessage('The phone_number field has not been filled in, please fill it in completely')
         .isString()
-        .withMessage('phone_number harus string')
+        .withMessage('phone_number must be a string')
         .isLength({ min: 5 })
-        .withMessage("phone_number minimal 12 number"),
+        .withMessage("phone_number minimum 12 numbers"),
     body('specialization')
         .exists({ checkFalsy: true })
-        .withMessage('specialization wajib diisi')
+        .withMessage('The specialization field has not been filled in, please fill it in completely')
         .isString()
-        .withMessage('specialization harus string'),
+        .withMessage('specialization must be a string'),
     body('qualification')
         .exists({ checkFalsy: true })
-        .withMessage('qualification wajib diisi')
+        .withMessage('qThe qualification field has not been filled in, please fill it in completely')
         .isString()
-        .withMessage('qualification harus string'),
+        .withMessage('qualification must be a string'),
     check('image')
         .custom((value, {req}) => {
             // console.log("File yang diunggah di validasi:", req.file); 
             if(!req.file){
-                throw new Error('Silahkan upload gambar terlebih dulu')
+                throw new Error('Please upload an image first')
             }
             const allowedExtensions = ['image/jpeg', 'image/png'];
             // mime : file extensions
             if (!allowedExtensions.includes(req.file.mimetype)) {
-                throw new Error('Hanya file JPG atau PNG yang diperbolehkan');
+                throw new Error('Only JPG or PNG files are allowed');
             }
             return true;
         })
@@ -42,19 +42,19 @@ const updatePostValidation = [
     body('name')
         .optional()
         .isLength({ min: 3, max: 20 })
-        .withMessage('Panjang konten antara 3-20 karakter'),
+        .withMessage('Content length between 3-20 characters'),
     body('phone_number')
         .optional()
         .isLength({ min: 12, max: 20 })
-        .withMessage('Panjang konten antara 5-20 karakter'),
+        .withMessage('Content length between 12-20 characters'),
     body('specialization')
         .optional()
         .isLength({ min: 5, max: 30 })
-        .withMessage('Panjang konten antara 5-20 karakter'),
+        .withMessage('Content length between 5-30 characters'),
     body('qualification')
         .optional()
         .isLength({ min: 5, max: 30 })
-        .withMessage('Panjang konten antara 5-20 karakter'),
+        .withMessage('Content length between 5-30 characters'),
     check('image')
         .custom((value, {req}) => {
 		   if(!req.file){
@@ -63,7 +63,7 @@ const updatePostValidation = [
            const allowedExtensions = ['image/jpeg', 'image/png']; 
 
            if (!allowedExtensions.includes(req.file.mimetype)) {
-           		throw new Error('Hanya file JPG atau PNG yang diperbolehkan');
+           		throw new Error('Only JPG or PNG files are allowed');
            }
 		   return true;
         })

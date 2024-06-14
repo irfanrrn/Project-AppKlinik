@@ -1,14 +1,6 @@
-// import multer from "multer";
-// import path from "path";
-// import { dirname } from 'path';
-// import { fileURLToPath } from 'url';
-// import fs from 'fs';
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
-
-// const __filename = __filename;
-// const __dirname = __dirname;
 
 const storage = multer.diskStorage({
     destination: (req, file, cb)=>{

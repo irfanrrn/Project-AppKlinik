@@ -14,10 +14,12 @@ const getAllDoctor = function (req, res) {
             if (err) {
                 res.send('error', err);
                 res.json({
+                    message: "successfully",
                     doctor_data: ''
                 });
             } else {
                 res.json( {
+                    message: "successfully",
                     doctor_data: rows
                 });
             }
@@ -31,10 +33,12 @@ const getDoctorId = function (req, res) {
         if (err) {
             res.send('error', err);
             res.json({
+                message: "successfully",
                 doctor_data: ''
             });
         } else {
             res.json( {
+                message: "successfully",
                 doctor_data: rows
             });
         }
@@ -49,21 +53,23 @@ const createDoctor = function (req, res) {
     let image = req.file.filename;
     let errors = [];
 
-    if (!name) {
-        errors.push('The name field has not been filled in, please fill it in completely.');
-    }
+    // if (!name) {
+    //     errors.push({
+    //         message: 'The name field has not been filled in, please fill it in completely.'
+    //     });
+    // }
 
-    if (!phone_number) {
-        errors.push('The phone_number field has not been filled in, please fill it in completely.');
-    }
+    // if (!phone_number) {
+    //     errors.push('The phone_number field has not been filled in, please fill it in completely.');
+    // }
 
-    if (!specialization) {
-        errors.push('The specialization field has not been filled in, please fill it in completely.');
-    }
+    // if (!specialization) {
+    //     errors.push('The specialization field has not been filled in, please fill it in completely.');
+    // }
 
-    if (!qualification) {
-        errors.push('The qualification field has not been filled in, please fill it in completely.');
-    }
+    // if (!qualification) {
+    //     errors.push('The qualification field has not been filled in, please fill it in completely.');
+    // }
 
     if (errors.length > 0) {
         return res.status(400).json({ message: errors });
@@ -81,7 +87,9 @@ const createDoctor = function (req, res) {
         if (err) {
             res.status(500).json({ message: 'Data failed to save' });
         } else {
-            res.send('Data saved successfully!');
+            res.send({
+            message: 'Data saved successfully!'
+            });
         }
     });
 }
@@ -95,21 +103,21 @@ const updateDoctor = function(req, res) {
     let image = req.body.image;
     let errors = [];
 
-    if (!name) {
-        errors.push('The name field cannot be empty!');
-    }
+    // if (!name) {
+    //     errors.push('The name field cannot be empty!');
+    // }
 
-    if (!phone_number) {
-        errors.push('The phone_number field cannot be empty!');
-    }
+    // if (!phone_number) {
+    //     errors.push('The phone_number field cannot be empty!');
+    // }
 
-    if (!specialization) {
-        errors.push('The specialization field cannot be empty!');
-    }
+    // if (!specialization) {
+    //     errors.push('The specialization field cannot be empty!');
+    // }
 
-    if (!qualification) {
-        errors.push('The qualification field cannot be empty!');
-    }
+    // if (!qualification) {
+    //     errors.push('The qualification field cannot be empty!');
+    // }
 
     if (errors.length > 0) {
         return res.status(400).json({ message: errors });
@@ -127,7 +135,9 @@ const updateDoctor = function(req, res) {
         if (err) {
             return res.status(500).json({ message: 'Data failed to update', error: err });
         } else {
-            res.send('Data updated successfully!');
+            res.send({
+                message: 'Data updated successfully!'
+            });
         }
     });
 }
@@ -142,7 +152,9 @@ const deleteDoctor = function(req, res) {
             if (result.affectedRows === 0) {
                 res.status(404).send({ message: 'ID does not exist' });
             } else {
-                res.send('Data deleted successfully!');
+                res.send({
+                    message: 'Data deleted successfully!'
+                });
             }
         }
     });
