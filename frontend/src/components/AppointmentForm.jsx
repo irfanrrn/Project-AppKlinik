@@ -2,7 +2,7 @@ import appImg2 from "../assets/img/appointment/doctor-app.jpg";
 
 const AppointmentForm = () => {
   return (
-    <div>
+    <div id="form-appointment">
       <div className="page-header2">
         <h1 className="header-content">Appointment</h1>
         <nav className="header-content2">
@@ -31,7 +31,7 @@ const AppointmentForm = () => {
                     type="email"
                     id="email"
                     name="email"
-                    placeholder="name@***.com"
+                    placeholder="name@*.com"
                   />
                 </div>
               </div>
@@ -86,12 +86,25 @@ const AppointmentForm = () => {
                   />
                 </div>
               </div>
+            <div className="form-row">
+            <div>
+            <label htmlFor="address">Address</label>
+                <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    placeholder="Your Address"
+                  />
+              </div>
+              <div>
               <label htmlFor="message">Message</label>
               <textarea
                 id="message"
                 name="message"
                 placeholder="Convey your message here"
               ></textarea>
+              </div>
+              </div>
             </form>
           </div>
         </div>
