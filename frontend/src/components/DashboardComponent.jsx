@@ -3,10 +3,10 @@ import "../scss/dashboard/app-dark.css";
 import "../scss/dashboard/iconly.css";
 import "../scss/dashboard/app-dark.rtl.css";
 
-import React, { useEffect } from "react";
+// import React, { useEffect } from "react";
 
-import "../js/dark.js";
-import "../js/sidebar.js";
+// import "../js/dark.js";
+// import "../js/sidebar.js";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
