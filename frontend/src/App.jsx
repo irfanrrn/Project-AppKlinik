@@ -9,7 +9,7 @@ import FormAppointment from "./pages/FormAppointment";
 import AppointmentCan from "./pages/AppointmentCan";
 import AppointmentCom from "./pages/AppointmentCom";
 import AppointmentUp from "./pages/AppointmentUp";
-import Dashboard from "./pages/Dashboard";
+
 import FormAdmin from "./pages/FormAdmin";
 import AppointmentForm from "./pages/AppointmentForm";
 import DoctorForm from "./pages/DoctorForm";
