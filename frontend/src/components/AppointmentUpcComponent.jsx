@@ -29,7 +29,7 @@ const AppointmentUpcComponent = () => {
             <p className="status upcoming">Upcoming</p>
             <h3>Dr. Agus Widodo, M.D.</h3>
             <p>General Specialist</p>
-            <hr className="short-hr-upc" />
+            <hr className="short-hr-all" />
             <p><b>Date :</b> Friday, 24/05/2024</p>
           </div>
         </div>
