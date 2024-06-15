@@ -17,7 +17,7 @@ const DoctorscheduleComponent = () => {
   };
 
   const handleBookNowClick = () => {
-    navigate("/appointment");
+    navigate("/formappointment");
   };
 
   return (
