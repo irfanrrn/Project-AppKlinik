@@ -49,32 +49,34 @@ const createUser = function (req, res) {
     let username = req.body.username;
     let email = req.body.email;
     let password = req.body.password;
-    let errors = false;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let errors = [];
 
     if(!username) {
-        errors = true;
-        res.json({message: 'The username field has not been filled in, please fill it in completely.'});
+        errors.push('The username field has not been filled in, please fill it in completely.');
     }
 
     if(!email) {
-        errors = true;
-        res.json({message: 'The email field has not been filled in, please fill it in completely.'});
+        errors.push('The email field has not been filled in, please fill it in completely.');
+    } else if (!emailRegex.test(email)) {
+        errors.push('The email format is invalid, please fill in the correct email.');
     }
 
     if(!password) {
-        errors = true;
-        res.json({message: 'The password field has not been filled in, please fill it in completely.'});
+        errors.push('The password field has not been filled in, please fill it in completely.');
     }
 
-    if(!errors) {
-        connection.query(`INSERT INTO tbl_users (username,email,password) VALUES (?,?,SHA2(?,512));`, [username, email, password], function(err, result) {
-            if (err) {
-                res.json({message: err});
-            } else {
-                res.send({ message: 'Data saved successfully!'});
-            }
-        })
+    if (errors.length > 0) {
+        return res.status(400).json({ message: errors });
     }
+
+    connection.query(`INSERT INTO tbl_users (username,email,password) VALUES (?,?,SHA2(?,512));`, [username, email, password], function(err, result) {
+        if (err) {
+            res.json({message: err});
+        } else {
+            res.send({ message: 'Data saved successfully!'});
+        }
+    })
 }
 
 const updateUser = function(req, res) {
@@ -82,31 +84,28 @@ const updateUser = function(req, res) {
     let username = req.body.username;
     let email = req.body.email;
     let password = req.body.password;
-    let errors = false;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let errors = [];
 
     if(!username) {
-        errors = true;
-        res.json({message: 'The username field cannot be empty!'});
+        errors.push('The username field cannot be empty!');
     }
 
     if(!email) {
-        errors = true;
-        res.json({message: 'The email field cannot be empty!'});
+        errors.push('The email field cannot be empty!');
+    } else if (!emailRegex.test(email)) {
+        errors.push('The email format is invalid, please fill in the correct email.');
     }
 
     if(!password) {
-        errors = true;
-        res.json({message: 'The password field cannot be empty!'});
+        errors.push('The password field cannot be empty!');
     }
 
-    if(!errors) {
-        let formData = {
-            username: username,
-            email: email,
-            password: password
-        }
+    if (errors.length > 0) {
+        return res.status(400).json({ message: errors });
+    }
 
-        connection.query(`UPDATE tbl_users SET username = ?, email = ?, password = SHA2(?, 512) WHERE user_id = ?`,
+    connection.query(`UPDATE tbl_users SET username = ?, email = ?, password = SHA2(?, 512) WHERE user_id = ?`,
         [username, email, password, id], function(err, result) {
 
             if (err) {
@@ -121,7 +120,6 @@ const updateUser = function(req, res) {
                 res.send({ message: 'Data updated successfully!'});
             }
         })
-    }
 }
 
 const deleteUser = function(req, res) {
