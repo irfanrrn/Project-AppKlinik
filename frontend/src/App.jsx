@@ -43,9 +43,9 @@ function App() {
         <Route path="/appointmentcan" element={<AppointmentCan />} />
         <Route path="/appointmentcom" element={<AppointmentCom />} />
         <Route path="/appointmentup" element={<AppointmentUp />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        
         <Route path="/formAdmin" element={<FormAdmin />} />
-        <Route path="/formAppointment" element={<AppointmentForm />} />
+        <Route path="/appointmentform" element={<AppointmentForm />} />
         <Route path="/formDoctor" element={<DoctorForm />} />
         <Route path="/formDoctorSchedule" element={<DoctorScheduleForm />} />
         <Route path="/formPatient" element={<PatientForm />} />
