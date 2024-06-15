@@ -16,6 +16,8 @@ import DoctorForm from "./pages/DoctorForm";
 import DoctorScheduleForm from "./pages/DoctorScheduleForm";
 import PatientForm from "./pages/PatientForm";
 import UserForm from "./pages/UserForm";
+import Dashboard from "./pages/Dashboard";
+import DoctorAppintment from "./pages/DoctorAppintment";
 
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -48,6 +50,8 @@ function App() {
         <Route path="/formDoctorSchedule" element={<DoctorScheduleForm />} />
         <Route path="/formPatient" element={<PatientForm />} />
         <Route path="/formUser" element={<UserForm />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/doctorappointment" element={<DoctorAppintment />} />
       </Routes>
     </BrowserRouter>
   );
