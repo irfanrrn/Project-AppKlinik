@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
 var cors = require('cors');
+var bodyParser = require('body-parser');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -16,8 +17,11 @@ var patientRouter = require('./routes/patient');
 var appointmentRouter = require('./routes/appointment');
 var registerRouter = require('./routes/register');
 var loginRouter = require('./routes/login');
+var reminderRouter = require('./routes/reminder');
 
 var app = express();
+
+app.use(bodyParser.json());
 
 app.use(cors("*"));
 app.use(express.json());
@@ -47,6 +51,7 @@ app.use('/patient', patientRouter);
 app.use('/appointment', appointmentRouter);
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);
+app.use('/reminder', reminderRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

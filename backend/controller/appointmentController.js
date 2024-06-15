@@ -38,7 +38,7 @@ const getAppointmentId = function (req, res) {
 const createAppointment = async function (req, res) {
     let doctor_id = req.body.doctor_id;
     let patient_id = req.body.patient_id;
-    let { name, gender, address, date_of_birth, phone_number } = req.body;
+    let { user_id, name, gender, address, date_of_birth, phone_number } = req.body;
     let date = req.body.date;
     let queue_no;
     let status = "Will come";
@@ -51,7 +51,7 @@ const createAppointment = async function (req, res) {
 
     if (!patient_id) {
         await new Promise(function (resolve, reject) {
-            connection.query('INSERT INTO tbl_patients set ?', { name, gender, address, date_of_birth, phone_number },
+            connection.query('INSERT INTO tbl_patients set ?', { user_id, name, gender, address, date_of_birth, phone_number },
                 function (err, result) {
                     if (err) {
                         res.json(err);
@@ -79,6 +79,16 @@ const createAppointment = async function (req, res) {
         }
         if (result.length === 0) {
             return res.status(400).json({ message: 'The doctor with this ID was not found' });
+        }
+    })
+
+    connection.query('SELECT * FROM tbl_patients WHERE patient_id = ?', [patient_id], function (err, result) {
+        if (err) {
+            return res.status(500).json({ message: 'An error occurred on the server while checking patient_id' });
+        }
+
+        if (result.length === 0) {
+            return res.status(400).json({ message: 'The patient with this ID was not found' });
         }
     })
 
@@ -162,7 +172,7 @@ const updateAppointement = function (req, res) {
         }
 
         if (result.length === 0) {
-            return res.status(400).json({ message: 'The user with this ID was not found' });
+            return res.status(400).json({ message: 'The patient with this ID was not found' });
         }
     })
 

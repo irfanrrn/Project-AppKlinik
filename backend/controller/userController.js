@@ -108,13 +108,7 @@ const updateUser = function(req, res) {
     connection.query(`UPDATE tbl_users SET username = ?, email = ?, password = SHA2(?, 512) WHERE user_id = ?`,
         [username, email, password, id], function(err, result) {
             if (err) {
-                res.send('error', err);
-                res.json({
-                    id: req.params.id,
-                    username: formData.username,
-                    email: formData.email,
-                    password: formData.password
-                })
+                res.status(500).json({ message: 'Data failed to update', error: err });
             } else {
                 res.send({ message: 'Data updated successfully!'});
             }
