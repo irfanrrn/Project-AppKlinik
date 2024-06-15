@@ -35,7 +35,7 @@ const AboutUsComponent = () => {
             <div className="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
               <div className="d-flex flex-column">
                 <img
-                  className="img-fluid rounded w-75 align-self-end"
+                  className="img-fluid rounded w-100 align-self-end"
                   src={aboutImg}
                   alt=""
                 />
