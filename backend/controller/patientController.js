@@ -53,41 +53,41 @@ const createPatient = function (req, res) {
     let date_of_birth = req.body.date_of_birth;
     let phone_number = req.body.phone_number;
     let email = req.body.email;
-    let errors = false;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let errors = [];
 
     if(!user_id) {
-        errors = true;
-        res.json({message: 'The user_id field has not been filled in, please fill it in completely.'});
+        errors.push('The user_id field has not been filled in, please fill it in completely.');
     }
 
     if(!name) {
-        errors = true;
-        res.json({message: 'The name field has not been filled in, please fill it in completely.'});
+        errors.push('The name field has not been filled in, please fill it in completely.');
     }
 
     if(!gender) {
-        errors = true;
-        res.json({message: 'The gender field has not been filled in, please fill it in completely.'});
+        errors.push('The gender field has not been filled in, please fill it in completely.');
     }
 
     if(!address) {
-        errors = true;
-        res.json({message: 'The address field has not been filled in, please fill it in completely.'});
+        errors.push('The address field has not been filled in, please fill it in completely.');
     }
 
     if(!date_of_birth) {
-        errors = true;
-        res.json({message: 'The date_of_birth field has not been filled in, please fill it in completely.'});
+        errors.push('The date_of_birth field has not been filled in, please fill it in completely.');
     }
 
     if(!phone_number) {
-        errors = true;
-        res.json({message: 'The phone_number field has not been filled in, please fill it in completely.'});
+        errors.push('The phone_number field has not been filled in, please fill it in completely.');
     }
 
     if(!email) {
-        errors = true;
-        res.json({message: 'The email field has not been filled in, please fill it in completely.'});
+        errors.push('The email field has not been filled in, please fill it in completely.');
+    } else if (!emailRegex.test(email)) {
+        errors.push('The email format is invalid, please fill in the correct email.');
+    }
+
+    if (errors.length > 0) {
+        return res.status(400).json({ message: errors });
     }
 
     connection.query('SELECT * FROM tbl_users WHERE user_id = ?', [user_id], function (err, result) {
@@ -99,103 +99,98 @@ const createPatient = function (req, res) {
         }
     })
 
-    if(!errors) {
-        let formData = {
-            user_id: user_id,
-            name: name,
-            gender: gender,
-            address: address,
-            date_of_birth: date_of_birth,
-            phone_number: phone_number,
-            email: email
-        }
-
-        connection.query('INSERT INTO tbl_patients SET ?', formData, function(err, result) {
-            if (err) {
-                res.json({err});
-            } else {
-                res.send({ message: 'Data saved successfully!'});
-            }
-        })
+    let formData = {
+        user_id: user_id,
+        name: name,
+        gender: gender,
+        address: address,
+        date_of_birth: date_of_birth,
+        phone_number: phone_number,
+        email: email
     }
+
+    connection.query('INSERT INTO tbl_patients SET ?', formData, function(err, result) {
+        if (err) {
+            res.json({err});
+        } else {
+            res.send({ message: 'Data saved successfully!'});
+        }
+    })
 }
 
 const updatePatient = function(req, res) {
     let id = req.params.id;
-    let user_id = req.params.user_id;
+    let user_id = req.body.user_id;
     let name = req.body.name;
     let gender = req.body.gender;
     let address = req.body.address;
     let date_of_birth = req.body.date_of_birth;
     let phone_number = req.body.phone_number;
     let email = req.body.email;
-    let errors = false;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    let errors = [];
 
     if(!user_id) {
-        errors = true;
-        res.json({message: 'The user_id field cannot be empty!'});
+        errors.push('The user_id field cannot be empty!');
     }
 
     if(!name) {
-        errors = true;
-        res.json({message: 'The name field cannot be empty!'});
+        errors.push('The name field cannot be empty!');
     }
 
     if(!gender) {
-        errors = true;
-        res.json({message: 'The gender field cannot be empty!'});
+        errors.push('The gender field cannot be empty!');
     }
 
     if(!address) {
-        errors = true;
-        res.json({message: 'The address field cannot be empty!'});
+        errors.push('The address field cannot be empty!');
     }
 
     if(!date_of_birth) {
-        errors = true;
-        res.json({message: 'The date_of_birth field cannot be empty!'});
+        errors.push('The date_of_birth field cannot be empty!');
     }
 
     if(!phone_number) {
-        errors = true;
-        res.json({message: 'The phone_number field cannot be empty!'});
+        errors.push('The phone_number field cannot be empty!');
     }
 
     if(!email) {
-        errors = true;
-        res.json({message: 'The email field cannot be empty!'});
+        errors.push('The email field cannot be empty!');
+    } else if (!emailRegex.test(email)) {
+        errors.push('The email format is invalid, please fill in the correct email.');
     }
 
-    if(!errors) {
-        let formData = {
-            user_id: user_id,
-            name: name,
-            gender: gender,
-            address: address,
-            date_of_birth: date_of_birth,
-            phone_number: phone_number,
-            email: email
+    if (errors.length > 0) {
+        return res.status(400).json({ message: errors });
+    }
+
+    let formData = {
+        user_id: user_id,
+        name: name,
+        gender: gender,
+        address: address,
+        date_of_birth: date_of_birth,
+        phone_number: phone_number,
+        email: email
+    }
+
+    connection.query('UPDATE tbl_patients SET ? WHERE patient_id = ' + id, formData, function(err, result) {
+        if (err) {
+            res.send('error', err);
+            res.json({
+                id: req.params.id,
+                user_id: formData.user_id,
+                name: formData.name,
+                gender: formData.gender,
+                address: formData.address,
+                date_of_birth: formData.date_of_birth,
+                phone_number: formData.phone_number,
+                email: formData.email
+            })
+        } else {
+            res.send({ message: 'Data updated successfully!'});
         }
-
-        connection.query('UPDATE tbl_patients SET ? WHERE patient_id = ' + id, formData, function(err, result) {
-
-            if (err) {
-                res.send('error', err);
-                res.json({
-                    id: req.params.id,
-                    user_id: formData.user_id,
-                    name: formData.name,
-                    gender: formData.gender,
-                    address: formData.address,
-                    date_of_birth: formData.date_of_birth,
-                    phone_number: formData.phone_number,
-                    email: formData.email
-                })
-            } else {
-                res.send({ message: 'Data updated successfully!'});
-            }
-        })
-    }
+    })
 }
 
 const deletePatient = function(req, res) {
