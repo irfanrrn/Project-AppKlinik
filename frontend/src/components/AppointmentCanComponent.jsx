@@ -29,7 +29,7 @@ const AppointmentCanComponent = () => {
             <p className="status canceled">Canceled</p>
             <h3>Dr. Budi Santoso, Sp.A.</h3>
             <p>Child Specialist</p>
-            <hr className="short-hr-can"/>
+            <hr className="short-hr-all"/>
             <p><b>Date :</b> Thursday, 17/05/2024</p>
           </div>
         </div>

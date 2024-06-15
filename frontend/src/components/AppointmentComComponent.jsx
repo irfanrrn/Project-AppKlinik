@@ -30,7 +30,7 @@ const AppointmentComComponent = () => {
             <p className="status completed">Completed</p>
             <h3>Dr. Maya Putri, Sp.JP.</h3>
             <p>Heart Specialist</p>
-            <hr className="short-hr-com" />
+            <hr className="short-hr-all" />
             <p><b>Date :</b> Monday, 20/05/2024</p>
             <div className="review-section">
               <p className="review-order">Give your review :</p>
@@ -94,7 +94,7 @@ const AppointmentComComponent = () => {
             <p className="status completed">Completed</p>
             <h3>Dr. Budi Santoso, Sp.A.</h3>
             <p>Child Specialist</p>
-            <hr className="short-hr-com" />
+            <hr className="short-hr-all" />
             <p><b>Date :</b> Tuesday, 15/05/2024</p>
             <div className="review-section">
               <p className="review-order">Give your review :</p>
