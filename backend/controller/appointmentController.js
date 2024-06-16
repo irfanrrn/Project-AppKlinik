@@ -42,11 +42,10 @@ const createAppointment = async function (req, res) {
     let date = req.body.date;
     let queue_no;
     let status = "Will come";
-    let errors = false;
+    let errors = [];
 
     if (!doctor_id) {
-        errors = true;
-        res.json({ message: 'The doctor_id field has not been filled in, please fill it in completely.' });
+        errors.push('The doctor_id field has not been filled in, please fill it in completely.');
     }
 
     if (!patient_id) {
@@ -64,13 +63,11 @@ const createAppointment = async function (req, res) {
     }
 
     if (!date) {
-        errors = true;
-        res.json({ message: 'The date field has not been filled in, please fill it in completely.' });
+        errors.push('The date field has not been filled in, please fill it in completely.' );
     }
 
-    if (!status) {
-        errors = true;
-        res.json({ message: 'The status field has not been filled in, please fill it in completely.' });
+    if (errors.length > 0) {
+        return res.status(400).json({ message: errors });
     }
 
     connection.query('SELECT * FROM tbl_doctors WHERE doctor_id = ?', [doctor_id], function (err, result) {
@@ -92,7 +89,6 @@ const createAppointment = async function (req, res) {
         }
     })
 
-    // Menentukan nomor antrian berikutnya untuk dokter tersebut pada tanggal tertentu
     connection.query('SELECT MAX(queue_no) AS max_queue_no FROM tbl_appointments WHERE doctor_id = ? AND date = ?', [doctor_id, date], function (err, result) {
         if (err) {
             return res.status(500).json({ message: 'An error occurred on the server when determining the queue number', err });
@@ -129,31 +125,30 @@ const updateAppointement = function (req, res) {
     let status = req.body.status;
     let rating = req.body.rating;
     let review = req.body.review;
-    let errors = false;
+    let errors = [];
 
     if (!date) {
-        errors = true;
-        res.json({ message: 'The date field cannot be empty!' });
+        errors.push('The date field cannot be empty!');
     }
 
     if (!queue_no) {
-        errors = true;
-        res.json({ message: 'The queue_no field cannot be empty!' });
+        errors.push('The queue_no field cannot be empty!');
     }
 
     if (!status) {
-        errors = true;
-        res.json({ message: 'The status field cannot be empty!' });
+        errors.push('The status field cannot be empty!');
     }
 
     if (!rating) {
-        errors = true;
-        res.json({ message: 'The rating field cannot be empty!' });
+        errors.push('The rating field cannot be empty!');
     }
 
     if (!review) {
-        errors = true;
-        res.json({ message: 'The review field cannot be empty!' });
+        errors.push('The review field cannot be empty!');
+    }
+
+    if (errors.length > 0) {
+        return res.status(400).json({ message: errors });
     }
 
     connection.query('SELECT * FROM tbl_doctors WHERE doctor_id = ?', [doctor_id], function (err, result) {
