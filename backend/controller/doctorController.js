@@ -1,4 +1,6 @@
 var connection = require('../library/database');
+const path = require('path');
+const fs = require('fs');
 
 const getAllDoctor = function (req, res) {
     const q = req.query.q;
@@ -76,35 +78,50 @@ const createDoctor = function (req, res) {
     });
 }
 
-const updateDoctor = function(req, res) {
+const updateDoctor = function (req, res) {
     let id = req.params.id;
     let name = req.body.name;
     let phone_number = req.body.phone_number;
     let specialization = req.body.specialization;
     let qualification = req.body.qualification;
-    let image = req.body.image;
+    let image = req.file.filename;
     let errors = [];
 
-    if (errors.length > 0) {
-        return res.status(400).json({ message: errors });
-    }
-
-    let formData = {
-        name: name,
-        phone_number: phone_number,
-        specialization: specialization,
-        qualification: qualification,
-        image: image
-    }
-
-    connection.query('UPDATE tbl_doctors SET ? WHERE doctor_id = ?', [formData, id], function(err, result) {
+    connection.query('SELECT image FROM tbl_doctors WHERE doctor_id = ?', [id], function (err, rows) {
         if (err) {
-            return res.status(500).json({ message: 'Data failed to update', error: err });
-        } else {
-            res.send({
-                message: 'Data updated successfully!'
-            });
+            return res.status(500).json({ message: 'Failed to fetch current image', error: err });
         }
+
+        if (rows.length > 0) {
+            const oldImageName = rows[0].image;
+            const oldImagePath = path.join(__dirname, '../img', oldImageName);
+
+            if (fs.existsSync(oldImagePath)) {
+                fs.unlink(oldImagePath, (err) => {
+                    if (err) {
+                        console.error('Failed to delete old image:', err);
+                    }
+                });
+            }
+        }
+
+        const formData = {
+            name,
+            phone_number,
+            specialization,
+            qualification,
+            image
+        };
+
+        connection.query('UPDATE tbl_doctors SET ? WHERE doctor_id = ?', [formData, id], function (err, result) {
+            if (err) {
+                return res.status(500).json({ message: 'Data failed to update', error: err });
+            } else {
+                res.send({
+                    message: 'Data updated successfully!'
+                });
+            }
+        });
     });
 }
 

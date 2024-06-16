@@ -51,8 +51,8 @@ const updatePostValidation = [
         .withMessage('Content length between 5-30 characters'),
     body('qualification')
         .optional()
-        .isLength({ min: 5, max: 30 })
-        .withMessage('Content length between 5-30 characters'),
+        .isLength({ min: 1, max: 30 })
+        .withMessage('Content length between 1-30 characters'),
     check('image')
         .custom((value, {req}) => {
 		   if(!req.file){
