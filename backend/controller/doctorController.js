@@ -128,18 +128,37 @@ const updateDoctor = function (req, res) {
 const deleteDoctor = function(req, res) {
     let id = req.params.id;
 
-    connection.query('DELETE FROM tbl_doctors WHERE doctor_id = ?', [id], function(err, result) {
+    connection.query('SELECT image FROM tbl_doctors WHERE doctor_id = ?', [id], function (err, rows) {
+
         if (err) {
-            res.status(500).send({ message: 'There is an error', error: err });
-        } else {
-            if (result.affectedRows === 0) {
-                res.status(404).send({ message: 'ID does not exist' });
-            } else {
-                res.send({
-                    message: 'Data deleted successfully!'
+            return res.status(500).json({ message: 'Failed to fetch image', error: err });
+        }
+
+        if (rows.length > 0) {
+            const imageName = rows[0].image;
+            const imagePath = path.join(__dirname, '../img', imageName);
+
+            if (fs.existsSync(imagePath)) {
+                fs.unlink(imagePath, (err) => {
+                    if (err) {
+                        console.error('Failed to delete image:', err);
+                    }
                 });
             }
-        }
+        }    
+        connection.query('DELETE FROM tbl_doctors WHERE doctor_id = ?', [id], function(err, result) {
+            if (err) {
+                res.status(500).send({ message: 'There is an error', error: err });
+            } else {
+                if (result.affectedRows === 0) {
+                    res.status(404).send({ message: 'ID does not exist' });
+                } else {
+                    res.send({
+                        message: 'Data deleted successfully!'
+                    });
+                }
+            }
+        });
     });
 };
 
