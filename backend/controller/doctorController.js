@@ -53,24 +53,6 @@ const createDoctor = function (req, res) {
     let image = req.file.filename;
     let errors = [];
 
-    // if (!name) {
-    //     errors.push({
-    //         message: 'The name field has not been filled in, please fill it in completely.'
-    //     });
-    // }
-
-    // if (!phone_number) {
-    //     errors.push('The phone_number field has not been filled in, please fill it in completely.');
-    // }
-
-    // if (!specialization) {
-    //     errors.push('The specialization field has not been filled in, please fill it in completely.');
-    // }
-
-    // if (!qualification) {
-    //     errors.push('The qualification field has not been filled in, please fill it in completely.');
-    // }
-
     if (errors.length > 0) {
         return res.status(400).json({ message: errors });
     }
@@ -102,22 +84,6 @@ const updateDoctor = function(req, res) {
     let qualification = req.body.qualification;
     let image = req.body.image;
     let errors = [];
-
-    // if (!name) {
-    //     errors.push('The name field cannot be empty!');
-    // }
-
-    // if (!phone_number) {
-    //     errors.push('The phone_number field cannot be empty!');
-    // }
-
-    // if (!specialization) {
-    //     errors.push('The specialization field cannot be empty!');
-    // }
-
-    // if (!qualification) {
-    //     errors.push('The qualification field cannot be empty!');
-    // }
 
     if (errors.length > 0) {
         return res.status(400).json({ message: errors });

@@ -20,17 +20,15 @@ const createPostValidation = [
         .withMessage('specialization must be a string'),
     body('qualification')
         .exists({ checkFalsy: true })
-        .withMessage('qThe qualification field has not been filled in, please fill it in completely')
+        .withMessage('The qualification field has not been filled in, please fill it in completely')
         .isString()
         .withMessage('qualification must be a string'),
     check('image')
         .custom((value, {req}) => {
-            // console.log("File yang diunggah di validasi:", req.file); 
             if(!req.file){
                 throw new Error('Please upload an image first')
             }
             const allowedExtensions = ['image/jpeg', 'image/png'];
-            // mime : file extensions
             if (!allowedExtensions.includes(req.file.mimetype)) {
                 throw new Error('Only JPG or PNG files are allowed');
             }
