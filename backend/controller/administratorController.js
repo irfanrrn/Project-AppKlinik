@@ -32,15 +32,15 @@ const getAdministratorId = function (req, res) {
     connection.query('SELECT * FROM tbl_administrators WHERE admin_id = '+ id, function (err, rows) {
         if (err) {
             res.send('error', err);
-            res.json({
-                message: "successfully",
-                administrator_data: ''
-            });
         } else {
-            res.json( {
-                message: "successfully",
-                administrator_data: rows
-            });
+            if (rows.length === 0) {
+                res.status(404).send({ message: 'ID does not exist' });
+            } else {
+                res.json ({
+                    message: "successfully",
+                    administrator_data: rows
+                });
+            }
         }
     });
 }
@@ -113,7 +113,11 @@ const updateAdministrator = function(req, res) {
             if (err) {
                 res.status(500).json({ message: 'Data failed to update', error: err });
             } else {
-                res.send({ message: 'Data updated successfully!'});
+                if (result.affectedRows === 0) {
+                    res.status(404).send({ message: 'ID does not exist' });
+                } else {
+                    res.send({ message: 'Data updated successfully!'});
+                }
             }
         }
     );
