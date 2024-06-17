@@ -7,16 +7,15 @@ const NavbarComponent = () => {
   return (
     <>
      <div
-    className="container-fluid bg-white p-0 wow fadeIn"
-    data-wow-delay="0.1s"
+    className="container-fluid bg-white p-0"
   >
     <div className="row gx-0 d-none d-lg-flex">
       <div className="col-lg-7 px-5 text-start">
-        <div className="h-100 d-inline-flex align-items-center py-3 me-4">
+        <div className="h-100 d-inline-flex align-items-center me-4">
           <small className="fa fa-map-marker-alt text-primary me-2" />
           <small>Kalisombo Street No 18, Salatiga, Central Java</small>
         </div>
-        <div className="h-100 d-inline-flex align-items-center py-3">
+        <div className="h-100 d-inline-flex align-items-center">
           <small className="far fa-clock text-primary me-2" />
           <small>Bussiness Hours: Mon-Fri 08.00AM-16.00PM</small>
         </div>
@@ -52,6 +51,8 @@ const NavbarComponent = () => {
     </div>
   </div>
   {/* Topbar End */}
+
+
   {/* Navbar Start */}
   <nav className="navbar shadow navbar-expand-lg navbar-dark bg-primary p-0">
       <NavLink

@@ -1,0 +1,36 @@
+.side-side{
+    .nav-pills li:hover{
+        background-color: #fff;
+        border-radius: 10px;
+        transition: all ease-in .2s;
+        a {
+            i {
+                color: $primary;
+            }
+            span{
+                color: $primary;
+            }
+        }
+    }
+    
+    .nav-pills {
+        font-size: 14px;
+    
+        .nav-item.active{
+            background-color: #fff;
+            border-radius: 10px;
+            transition: all ease-in .2s;
+            a {
+                i {
+                    color: $primary;
+                }
+                span{
+                    color: $primary;
+                }
+            }
+        }
+    }
+}
+#nameadm{
+    font-size: 14px;
+}

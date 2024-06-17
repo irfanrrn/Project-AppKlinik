@@ -1,0 +1,185 @@
+#content-side {
+	width: 100%;
+	padding: 36px 24px;
+	font-family: var(--poppins);
+    height: 100vh;
+	overflow-y: auto;
+}
+#content-side .head-title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	grid-gap: 16px;
+	flex-wrap: wrap;
+}
+#content-side .head-title .left h1 {
+	font-size: 36px;
+	font-weight: 600;
+	margin-bottom: 10px;
+	color: var(--dark);
+}
+#content-side .head-title .left .breadcrumb {
+	display: flex;
+	align-items: center;
+	grid-gap: 16px;
+}
+#content-side .head-title .left .breadcrumb li {
+	color: var(--dark);
+}
+#content-side .head-title .left .breadcrumb li a {
+	color: var(--dark-grey);
+	pointer-events: none;
+}
+#content-side .head-title .left .breadcrumb li a.active {
+	color: var(--blue);
+	pointer-events: unset;
+}
+
+
+
+
+
+#content-side .box-info {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	grid-gap: 24px;
+	margin-top: 36px;
+}
+#content-side .box-info li {
+	padding: 20px;
+	background: var(--light);
+	border-radius: 20px;
+	display: flex;
+	align-items: center;
+	grid-gap: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+#content-side .box-info li .bx {
+	width: 80px;
+	height: 80px;
+	border-radius: 10px;
+	font-size: 36px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#content-side .box-info li:nth-child(1) .bx {
+	background: $warning;
+	color: #fff;
+}
+#content-side .box-info li:nth-child(2) .bx {
+	background: $danger;
+	color: #fff;
+}
+#content-side .box-info li:nth-child(3) .bx {
+	background: $success;
+	color: #fff;
+}
+#content-side .box-info li .text h3 {
+	font-size: 30px;
+	font-weight: 600;
+	color: var(--dark);
+    margin-left: 20px;
+
+    .span-patient {
+        font-size: 14px; /* Contoh ukuran font */
+        padding: 4px; /* Contoh padding */
+        border-radius: 4px; /* Contoh border radius */
+        display: inline-block; /* Agar elemen span berperilaku seperti blok */
+        margin-left: 0;
+    }
+}
+#content-side .box-info li .text p {
+	color: var(--dark);	
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+
+
+
+
+
+#content-side .doc-appo-data {
+	display: flex;
+	flex-wrap: wrap;
+	grid-gap: 24px;
+	margin-top: 24px;
+	width: 100%;
+	color: var(--dark);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+#content-side .doc-appo-data > div {
+	border-radius: 20px;
+	background: var(--light);
+	padding: 24px;
+	overflow-x: auto;
+}
+#content-side .doc-appo-data .head {
+	display: flex;
+	align-items: center;
+	grid-gap: 16px;
+	margin-bottom: 24px;
+}
+#content-side .doc-appo-data .head h3 {
+	margin-right: auto;
+	font-size: 24px;
+	font-weight: 600;
+}
+#content-side .doc-appo-data .head .bx {
+	cursor: pointer;
+}
+
+#content-side .doc-appo-data .doc-appoint {
+	flex-grow: 1;
+	flex-basis: 500px;
+}
+#content-side .box-doc {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr); /* Membuat 2 kolom dengan ukuran yang sama */
+	grid-gap: 24px;
+	margin-top: 36px;
+}
+#content-side .box-doc li {
+	padding: 14px;
+	background: var(--light);
+	border-radius: 20px;
+	display: flex;
+	align-items: center;
+	grid-gap: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#content-side .box-doc li .text1 .doc-name {
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--dark);
+    //margin-left: 20px;
+}
+#content-side .box-doc li .text2 .num-patient {
+	font-size: 18px;
+	font-weight: 600;
+	color: var(--dark);
+    margin-left: 40px;
+}
+.span-patient {
+    font-size: 14px; /* Contoh ukuran font */
+    padding: 4px; /* Contoh padding */
+    border-radius: 4px; /* Contoh border radius */
+    display: inline-block; /* Agar elemen span berperilaku seperti blok */
+    margin-left: 38px;
+    line-height: 1px;
+}
+#content-side .box-doc li .text1 p {
+	color: var(--dark);	
+    //margin-left: 20px;
+    font-size: 14px;
+}
+#content-side .box-doc li img {
+        width: 70px;
+        height: 70px;
+        object-fit: cover;
+        object-position: top;
+        border-radius: 10px;
+    }

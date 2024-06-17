@@ -1,11 +1,12 @@
-import DashboardComponent from "../components/DashboardComponent";
+import DashboardLayout from "../components/DashboardLayout";
+import DashContentComponent from "../components/DashContentComponent";
 
 function Dashboard() {
   return (
-    <div>
-      <DashboardComponent />
-    </div>
+    <DashboardLayout>
+      <DashContentComponent/>
+    </DashboardLayout>
   );
-}
+};
 
 export default Dashboard;
