@@ -119,7 +119,7 @@ const getAppointmentId = function (req, res) {
 const createAppointment = async function (req, res) {
     try {
         let { doctor_id, patient_id, date } = req.body;
-        let { user_id, name, gender, address, date_of_birth, phone_number } = req.body;
+        let { user_id, name, gender, address, date_of_birth, phone_number, email } = req.body;
         let queue_no;
         let status = "Will come";
 
@@ -130,7 +130,7 @@ const createAppointment = async function (req, res) {
         if (!patient_id) {
             // Insert new patient if patient_id is not provided
             const insertPatient = await new Promise((resolve, reject) => {
-                connection.query('INSERT INTO tbl_patients SET ?', { user_id, name, gender, address, date_of_birth, phone_number }, (err, result) => {
+                connection.query('INSERT INTO tbl_patients SET ?', { user_id, name, gender, address, date_of_birth, phone_number, email }, (err, result) => {
                     if (err) {
                         reject(err);
                     } else {
@@ -235,6 +235,8 @@ const createAppointment = async function (req, res) {
         console.error('Error in createAppointment:', error);
         res.status(500).json({ message: 'An error occurred on the server.', error: error.message });
     }
+
+
 };
 
 const updateAppointement = function (req, res) {
