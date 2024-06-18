@@ -50,10 +50,10 @@ const DoctorscheduleComponent = () => {
           <div className="profile-details">
             <h2>Dr. Agus Widodo, M.D.</h2>
             <p style={{ color: "#fff" }}>General Specialist</p>
-            <p style={{ color: "#fff" }}>6 years experience</p>
-            <p>Service Time</p>
+            <p>From - Until Day :</p>
             <p style={{ color: "#fff" }}>Monday - Friday</p>
-            <p style={{ color: "#fff" }}>08.00 - 16.00 WIB</p>
+            <p>Start - End Time :</p>
+            <p style={{ color: "#fff" }}>08:00 - 15:00 </p>
             <button className="book-btn" onClick={handleBookNowClick}>
               Book Now
             </button>
@@ -66,10 +66,10 @@ const DoctorscheduleComponent = () => {
           <div className="profile-details">
             <h2>Dr. Maya Putri, Sp.JP</h2>
             <p style={{ color: "#fff" }}>Heart Specialist</p>
-            <p style={{ color: "#fff" }}>8 years experience</p>
-            <p>Service Time</p>
-            <p style={{ color: "#fff" }}>Monday - Friday</p>
-            <p style={{ color: "#fff" }}>08.00 - 16.00 WIB</p>
+            <p>From - Until Day :</p>
+            <p style={{ color: "#fff" }}>Monday-Wednesday</p>
+            <p>Start - End Time :</p>
+            <p style={{ color: "#fff" }}>08:00 - 14:00 </p>
             <button className="book-btn" onClick={handleBookNowClick}>
               Book Now
             </button>
@@ -82,10 +82,10 @@ const DoctorscheduleComponent = () => {
           <div className="profile-details">
             <h2>Dr. Budi Santoso, Sp.A</h2>
             <p style={{ color: "#fff" }}>Pediatric Specialist</p>
-            <p style={{ color: "#fff" }}>7 years experience</p>
-            <p>Service Time</p>
-            <p style={{ color: "#fff" }}>Monday - Friday</p>
-            <p style={{ color: "#fff" }}>08.00 - 16.00 WIB</p>
+            <p>From - Until Day :</p>
+            <p style={{ color: "#fff" }}>Tuesday - Thursday</p>
+            <p>Start - End Time :</p>
+            <p style={{ color: "#fff" }}>10:00 - 14:00 </p>
             <button className="book-btn" onClick={handleBookNowClick}>
               Book Now
             </button>
@@ -98,10 +98,10 @@ const DoctorscheduleComponent = () => {
           <div className="profile-details">
             <h2>Dr. Andi Pratama, Sp.OG</h2>
             <p style={{ color: "#fff" }}>Gynecology Specialist</p>
-            <p style={{ color: "#fff" }}>5 years experience</p>
-            <p>Service Time</p>
+            <p>From - Until Day :</p>
             <p style={{ color: "#fff" }}>Monday - Friday</p>
-            <p style={{ color: "#fff" }}>08.00 - 16.00 WIB</p>
+            <p>Start - End Time :</p>
+            <p style={{ color: "#fff" }}>08:00 - 11:30 </p>
             <button className="book-btn" onClick={handleBookNowClick}>
               Book Now
             </button>
@@ -114,10 +114,10 @@ const DoctorscheduleComponent = () => {
           <div className="profile-details">
             <h2>Dr. Sinta Dewi, Sp.KJ</h2>
             <p style={{ color: "#fff" }}>Psychology Specialist</p>
-            <p style={{ color: "#fff" }}>4 years experience</p>
-            <p>Service Time</p>
-            <p style={{ color: "#fff" }}>Monday - Friday</p>
-            <p style={{ color: "#fff" }}>08.00 - 16.00 WIB</p>
+            <p>From - Until Day :</p>
+            <p style={{ color: "#fff" }}>Wednesday - Friday</p>
+            <p>Start - End Time :</p>
+            <p style={{ color: "#fff" }}>13:00 - 17:00 </p>
             <button className="book-btn" onClick={handleBookNowClick}>
               Book Now
             </button>
@@ -130,10 +130,10 @@ const DoctorscheduleComponent = () => {
           <div className="profile-details">
             <h2>Dr. Rina Sari, Sp.Pros</h2>
             <p style={{ color: "#fff" }}>Dental and Oral Specialist</p>
-            <p style={{ color: "#fff" }}>3 years experience</p>
-            <p>Service Time</p>
+            <p>From - Until Day :</p>
             <p style={{ color: "#fff" }}>Monday - Friday</p>
-            <p style={{ color: "#fff" }}>08.00 - 16.00 WIB</p>
+            <p>Start - End Time :</p>
+            <p style={{ color: "#fff" }}>08:00 - 16:00 </p>
             <button className="book-btn" onClick={handleBookNowClick}>
               Book Now
             </button>
