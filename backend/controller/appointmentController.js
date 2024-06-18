@@ -1,4 +1,3 @@
-const { queue } = require('jquery');
 var connection = require('../library/database');
 require('dotenv').config();
 var {setReminder, sendEmail} = require ('../library/sendEmail');
@@ -38,86 +37,6 @@ const getAppointmentId = function (req, res) {
     });
 }
 
-// const createAppointment = async function (req, res) {
-//     let doctor_id = req.body.doctor_id;
-//     let patient_id = req.body.patient_id;
-//     let { user_id, name, gender, address, date_of_birth, phone_number } = req.body;
-//     let date = req.body.date;
-//     let queue_no;
-//     let status = "Will come";
-//     let errors = [];
-
-//     if (!doctor_id) {
-//         errors.push('The doctor_id field has not been filled in, please fill it in completely.');
-//     }
-
-//     if (!patient_id) {
-//         await new Promise(function (resolve, reject) {
-//             connection.query('INSERT INTO tbl_patients set ?', { user_id, name, gender, address, date_of_birth, phone_number },
-//                 function (err, result) {
-//                     if (err) {
-//                         res.json(err);
-//                         reject('error')
-//                     }
-//                     patient_id = result.insertId;
-//                     resolve('succeed');
-//                 })
-//         })
-//     }
-
-//     if (!date) {
-//         errors.push('The date field has not been filled in, please fill it in completely.' );
-//     }
-
-//     connection.query('SELECT * FROM tbl_doctors WHERE doctor_id = ?', [doctor_id], function (err, result) {
-//         if (err) {
-//             return res.status(500).json({ message: 'An error occurred on the server while checking doctor_id', err });
-//         }
-//         if (result.length === 0) {
-//             return res.status(400).json({ message: 'The doctor with this ID was not found' });
-//         }
-//     })
-
-//     connection.query('SELECT * FROM tbl_patients WHERE patient_id = ?', [patient_id], function (err, result) {
-//         if (err) {
-//             return res.status(500).json({ message: 'An error occurred on the server while checking patient_id' });
-//         }
-
-//         if (result.length === 0) {
-//             return res.status(400).json({ message: 'The patient with this ID was not found' });
-//         }
-//     })
-
-//     if (errors.length > 0) {
-//         return res.status(400).json({ message: errors });
-//     }
-
-//     connection.query('SELECT MAX(queue_no) AS max_queue_no FROM tbl_appointments WHERE doctor_id = ? AND date = ?', [doctor_id, date], function (err, result) {
-//         if (err) {
-//             return res.status(500).json({ message: 'An error occurred on the server when determining the queue number', err });
-//         }
-
-//         queue_no = (result[0].max_queue_no || 0) + 1;
-
-//         if (!errors) {
-//             let formData = {
-//                 doctor_id,
-//                 patient_id,
-//                 date,
-//                 queue_no,
-//                 status
-//             };
-
-//             connection.query('INSERT INTO tbl_appointments SET ?', formData, function (err, result) {
-//                 if (err) {
-//                     res.json(err);
-//                 } else {
-//                     res.send({ message: 'Data saved successfully!'});
-//                 }
-//             });
-//         }
-//     });
-// }
 const createAppointment = async function (req, res) {
     try {
         let { doctor_id, patient_id, day } = req.body;
@@ -245,7 +164,6 @@ const createAppointment = async function (req, res) {
                 }
             });
         });
-
 
         const timeOpen = process.env.TIME_OPEN;
         const timeSend = process.env.TIME_SEND_REMINDER;
