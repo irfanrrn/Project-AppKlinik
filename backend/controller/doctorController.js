@@ -84,18 +84,41 @@ const updateDoctor = function (req, res) {
     let phone_number = req.body.phone_number;
     let specialization = req.body.specialization;
     let qualification = req.body.qualification;
-    let image = req.file.filename;
-    let errors = [];
+    let image = req.file ? req.file.filename : null;
 
     connection.query('SELECT image FROM tbl_doctors WHERE doctor_id = ?', [id], function (err, rows) {
         if (err) {
+            if (image) {
+                const newImagePath = path.join(__dirname, '../img', image);
+                if (fs.existsSync(newImagePath)) {
+                    fs.unlink(newImagePath, (err) => {
+                        if (err) {
+                            console.error('Failed to delete new image on error:', err);
+                        }
+                    });
+                }
+            }
             return res.status(500).json({ message: 'Failed to fetch current image', error: err });
         }
 
-        if (rows.length > 0) {
-            const oldImageName = rows[0].image;
-            const oldImagePath = path.join(__dirname, '../img', oldImageName);
+        if (rows.length === 0) {
+            if (image) {
+                const newImagePath = path.join(__dirname, '../img', image);
+                if (fs.existsSync(newImagePath)) {
+                    fs.unlink(newImagePath, (err) => {
+                        if (err) {
+                            console.error('Failed to delete new image when ID not found:', err);
+                        }
+                    });
+                }
+            }
+            return res.status(404).json({ message: 'Doctor ID not found' });
+        }
 
+        const oldImageName = rows[0].image;
+        const oldImagePath = path.join(__dirname, '../img', oldImageName);
+
+        if (image) {
             if (fs.existsSync(oldImagePath)) {
                 fs.unlink(oldImagePath, (err) => {
                     if (err) {
@@ -103,6 +126,8 @@ const updateDoctor = function (req, res) {
                     }
                 });
             }
+        } else {
+            image = oldImageName;
         }
 
         const formData = {
@@ -118,9 +143,9 @@ const updateDoctor = function (req, res) {
                 return res.status(500).json({ message: 'Data failed to update', error: err });
             } else {
                 if (result.affectedRows === 0) {
-                    res.status(404).send({ message: 'ID does not exist' });
+                    return res.status(404).send({ message: 'ID does not exist' });
                 } else {
-                    res.send({
+                    return res.send({
                         message: 'Data updated successfully!'
                     });
                 }
