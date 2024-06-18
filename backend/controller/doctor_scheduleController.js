@@ -87,21 +87,31 @@ const createDoctorSchedule = function (req, res) {
             return res.status(400).json({ message: 'The doctor with the ID was not found' });
         }
 
-        let formData = {
-            doctor_id: doctor_id,
-            from_day: from_day,
-            until_day: until_day,
-            start_time: start_time,
-            end_time: end_time,
-            room_number: room_number
-        }
-        
-        connection.query('INSERT INTO tbl_doctors_schedules SET ?', formData, function(err, result) {
+        connection.query('SELECT * FROM tbl_doctors_schedules WHERE doctor_id = ?', [doctor_id], function (err, scheduleResults) {
             if (err) {
-                res.json({message: 'Data failed to save'});
-            } else {
-                res.send({ message: 'Data saved successfully!'});
+                return res.status(500).json({ message: 'An error occurred on the server while checking the schedule' });
             }
+
+            if (scheduleResults.length > 0) {
+                return res.status(400).json({ message: 'The doctor with this ID already has a schedule' });
+            }
+
+            let formData = {
+                doctor_id: doctor_id,
+                from_day: from_day,
+                until_day: until_day,
+                start_time: start_time,
+                end_time: end_time,
+                room_number: room_number
+            }
+            
+            connection.query('INSERT INTO tbl_doctors_schedules SET ?', formData, function(err, result) {
+                if (err) {
+                    res.json({message: 'Data failed to save'});
+                } else {
+                    res.send({ message: 'Data saved successfully!'});
+                }
+            });
         });
     });
 }
@@ -201,7 +211,6 @@ const deleteDoctorSchedule = function(req, res) {
         }
     });
 };
-
 
 module.exports = {
     getAllDoctorSchedule,
