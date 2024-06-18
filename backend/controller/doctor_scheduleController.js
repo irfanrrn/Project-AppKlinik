@@ -16,6 +16,7 @@ const getAllDoctorSchedule = function (req, res) {
                         ...row,
                         day: `${row.from_day} - ${row.until_day}`,
                         time: `${row.start_time} - ${row.end_time}`,
+                        image: 'http://localhost:3000/img/' + row.image,
                     }
                 })
             });
@@ -34,7 +35,14 @@ const getDoctorScheduleId = function (req, res) {
             } else {
                 res.json({
                     message: "successfully",
-                    doctor_schedule_data: rows[0]
+                    doctor_schedule_data: rows.map(row => {
+                        return {
+                            ...row,
+                            day: `${row.from_day} - ${row.until_day}`,
+                            time: `${row.start_time} - ${row.end_time}`,
+                            image: 'http://localhost:3000/img/' + row.image,
+                        }
+                    })
                 });
             }  
         }
