@@ -347,6 +347,7 @@ const updateAppointmentStatus = function(req, res){
 }
 
 const updateAppointementFeedback = function(req, res) {
+
     let id = req.params.id;
     let rating = req.body.rating;
     let review = req.body.review;
@@ -372,7 +373,12 @@ const updateAppointementFeedback = function(req, res) {
                 review: formData.review
             })
         } else {
-            res.send({ message: 'Data updated successfully!'});
+            // res.send({ message: 'Data updated successfully!'});
+            if (result.affectedRows === 0) {
+                res.status(404).send({ message: 'ID does not exist' });
+            } else {
+                res.send({ message: 'Data updated successfully!'});
+            }
         }
     })
 }
