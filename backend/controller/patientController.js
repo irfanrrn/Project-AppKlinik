@@ -32,15 +32,15 @@ const getPatientId = function (req, res) {
     connection.query('SELECT * FROM tbl_patients WHERE patient_id = '+ id, function (err, rows) {
         if (err) {
             res.send('error', err);
-            res.json({
-                message: "successfully",
-                patient_data: ''
-            });
         } else {
-            res.json({
-                message: "successfully",
-                patient_data: rows
-            });
+            if (rows.length === 0) {
+                res.status(404).send({ message: 'ID does not exist' });
+            } else {
+                res.json({
+                    message: "successfully",
+                    patient_data: rows
+                });
+            } 
         }
     });
 }
@@ -188,7 +188,11 @@ const updatePatient = function(req, res) {
                 email: formData.email
             })
         } else {
-            res.send({ message: 'Data updated successfully!'});
+            if (result.affectedRows === 0) {
+                res.status(404).send({ message: 'ID does not exist' });
+            } else {
+                res.send({ message: 'Data updated successfully!'});
+            }
         }
     })
 }
