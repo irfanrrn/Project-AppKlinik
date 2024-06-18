@@ -1,12 +1,12 @@
 var connection = require('../library/database');
 var nodemailer = require('nodemailer');
+var cron = require('node-cron');
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'raihanrizki83@gmail.com',
         pass: 'lopm tapb fign dgmn'
-        //sandi : lopm tapb fign dgmn
     }
 });
 
@@ -27,31 +27,15 @@ const sendEmail = (to, subject, text) => {
 };
 
 // Fungsi untuk mengirim pengingat
-// Fungsi untuk mengirim pengingat
 const sendReminders = async () => {
     try {
-        // Atur waktu praktik dokter dimulai pada pukul 9 pagi
-        var practiceStartTime = new Date(); // Mendapatkan waktu saat ini
-        practiceStartTime.setHours(17, 0, 0, 0); // Set waktu praktik dokter mulai pada pukul 09:00:00
+        const now = new Date();
+        const todayDate = now.toISOString().slice(0, 10);
+        const practiceStartTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 16, 0, 0, 0);
+        const oneHourBeforePractice = new Date(practiceStartTime.getTime() - 60 * 60 * 1000);
 
-        // Hitung satu jam sebelum waktu praktik dokter
-        var oneHourBeforePractice = new Date(practiceStartTime.getTime() - 60 * 60 * 1000);
-
-        // Hitung delay sampai satu jam sebelum waktu praktik dokter
-        var now = new Date();
-        var delay = oneHourBeforePractice - now;
-
-        // Jika delay negatif, artinya waktu sudah lewat, jadi tidak perlu set timeout
-        // if (delay < 0) {
-        //     const patient = delay;
-        //     sendEmail(patient.email, 'Pengingat: Janji Temu Kurang Dari Satu Jam', Antrian nomor ${appointment.queue_no}, janji temu Anda akan dimulai kurang dari satu jam.);
-        //     // console.log('Waktu praktik dokter kurang dari satu jam lagi. Tidak ada pengingat yang akan dikirim.');
-        //     // return;
-        // }
-
-        // Set timeout untuk mengirim pengingat tepat pada waktunya
-        setTimeout(() => {
-            connection.query('SELECT * FROM tbl_appointments WHERE queue_no IN (1, 2)', (err, results) => {
+        if (now < practiceStartTime) {
+            connection.query('SELECT * FROM tbl_appointments WHERE queue_no IN (1, 2) AND date = ?', [todayDate], (err, results) => {
                 if (err) {
                     return console.error('Error querying appointment:', err);
                 }
@@ -64,14 +48,35 @@ const sendReminders = async () => {
 
                         if (patientResults.length > 0) {
                             const patient = patientResults[0];
-                            sendEmail(patient.email, 'Pengingat: Janji Temu Dalam Satu Jam', `Antrian nomor ${appointment.queue_no}, janji temu Anda akan dimulai dalam satu jam.`);
-                        } 
+                            sendEmail(patient.email, 'Pengingat: Janji Temu', `Antrian nomor ${appointment.queue_no}, janji temu Anda akan dimulai pada jam 08:00`);
+                        }
                     });
                 });
             });
-        }, delay);
 
-        console.log('Pengingat dijadwalkan untuk dikirim pada:', oneHourBeforePractice);
+            console.log('Pengingat satu jam sebelum praktik dijadwalkan untuk dikirim pada:', oneHourBeforePractice);
+        } else {
+            connection.query('SELECT * FROM tbl_appointments WHERE date = ? AND queue_no IN (1, 2) AND status = "Will come"', [todayDate], (err, results) => {
+                if (err) {
+                    return console.error('Error querying appointment:', err);
+                }
+
+                results.forEach(appointment => {
+                    connection.query('SELECT * FROM tbl_patients WHERE patient_id = ?', [appointment.patient_id], (err, patientResults) => {
+                        if (err) {
+                            return console.error('Error querying patient:', err);
+                        }
+
+                        if (patientResults.length > 0) {
+                            const patient = patientResults[0];
+                            sendEmail(patient.email, 'Segera Datang ke Klinik', `Antrian nomor ${appointment.queue_no}, janji temu Anda sudah bisa dimulai. Segera datang ke klinik.`);
+                        }
+                    });
+                });
+            });
+
+            console.log('Pengingat setelah waktu praktik dijadwalkan.');
+        }
     } catch (error) {
         console.error('Error dalam mengirim pengingat:', error);
     }
@@ -81,20 +86,23 @@ const sendReminders = async () => {
 const updateStatus = (req, res) => {
     const { id, status } = req.body;
 
-    connection.query('UPDATE tbl_appointments SET status = ? WHERE id = ?', [status, id], (err, result) => {
+    connection.query('UPDATE tbl_appointments SET status = ? WHERE appointment_id = ?', [status, id], (err, result) => {
         if (err) {
             return res.status(500).send('Error updating status');
         }
 
         if (status === 'completed' || status === 'cancelled') {
-            connection.query('SELECT * FROM tbl_appointments WHERE queue_no = ? AND status = ?', [id, 'Will come'], (err, appointmentResults) => {
+            const queue_no = parseInt(req.body.queue_no, 10);
+            const nextQueue = queue_no + 2;
+
+            connection.query('SELECT * FROM tbl_appointments WHERE queue_no = ? AND status = "Will come"', [nextQueue], (err, appointmentResults) => {
                 if (err) {
                     return console.error('Error querying appointment:', err);
                 }
 
                 if (appointmentResults.length > 0) {
                     const appointment = appointmentResults[0];
-                    connection.query('SELECT * FROM tbl_patients WHERE id = ?', [appointment.id], (err, patientResults) => {
+                    connection.query('SELECT * FROM tbl_patients WHERE id = ?', [appointment.patient_id], (err, patientResults) => {
                         if (err) {
                             return console.error('Error querying patient:', err);
                         }
@@ -111,19 +119,11 @@ const updateStatus = (req, res) => {
     });
 };
 
-// Jadwalkan fungsi pengingat untuk dijalankan sekali sehari (atau pada waktu tertentu)
-const jadwalkanPengingat = () => {
-    const now = new Date();
-    const nextCheck = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0); // Pukul 00:00 hari berikutnya
-    const waktuHinggaNextCheck = nextCheck - now;
-
-    setTimeout(() => {
-        sendReminders();
-        jadwalkanPengingat(); // Jadwalkan ulang untuk hari berikutnya
-    }, waktuHinggaNextCheck);
-};
-
-// Mulai penjadwalan pengingat awal
-jadwalkanPengingat();
+// Jadwalkan fungsi pengingat untuk dijalankan setiap hari pada pukul 15:00
+cron.schedule('0 15 * * *', () => {
+    sendReminders();
+}, {
+    timezone: "Asia/Jakarta"
+});
 
 module.exports = { sendReminders, updateStatus };
