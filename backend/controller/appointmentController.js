@@ -1,3 +1,4 @@
+const { queue } = require('jquery');
 var connection = require('../library/database');
 require('dotenv').config();
 var {setReminder, sendEmail} = require ('../library/sendEmail');
@@ -256,12 +257,13 @@ const createAppointment = async function (req, res) {
 
         // Set reminder if queue_no is 1 or 2
         if(queue_no == 1 || queue_no == 2){
-            if(now < new Date().setHours(hourOpen, minuteOpen, 0, 0) && now > new Date().setHours(hourSend, minuteSend, 0, 0)){
+            const getDate = date.split('-')[2];
+            if(now < new Date().setHours(hourOpen, minuteOpen, 0, 0) && now > new Date().setHours(hourSend, minuteSend, 0, 0) && new Date().getDate() == getDate){
                 sendEmail(email, 'Reminder', 'Antrian nomor ' + queue_no + ' Janji temu anda akan dimulai jam ' + process.env.TIME_OPEN + '.');
-            }else if(now > new Date().setHours(hourOpen, minuteOpen, 0, 0)){
+            }else if(now > new Date().setHours(hourOpen, minuteOpen, 0, 0) && new Date().getDate() == getDate){
                 sendEmail(email, 'Segera ke klinik', `Antrian nomor ${queue_no}, janji temu anda sudah bisa dimulai, segera datang ke klinik`);
             }else{
-                setReminder(email, queue_no);
+                setReminder(email, queue_no, getDate);
             }
         }
 
@@ -388,7 +390,7 @@ const updateAppointmentStatus = function(req, res){
         res.json({ message: 'The status field cannot be empty!' });
     }
 
-    connection.query('UPDATE tbl_appointments SET ? WHERE appointment_id = ' + id, {status}, function (err, result) {
+    connection.query('UPDATE tbl_appointments SET ? WHERE appointment_id = ' + id, {status}, async function (err, result) {
 
         if (err) {
             res.send('error', err);
@@ -397,6 +399,30 @@ const updateAppointmentStatus = function(req, res){
                 status: status
             })
         } else {
+
+            let queue_no, doctor_id, date;
+
+            await new Promise((resolve, reject) => {
+                connection.query('SELECT * FROM tbl_appointments WHERE appointment_id = ' + id, function(err, result){
+                    if(err) {
+                        reject(err);
+                    }else {
+                        queue_no = result[0].queue_no;
+                        doctor_id = result[0].doctor_id;
+                        date = result[0].date;
+                        resolve();
+                    }
+                })
+            })
+
+            connection.query('SELECT * FROM  tbl_appointments JOIN tbl_patients ON tbl_appointments.patient_id = tbl_patients.patient_id WHERE queue_no=? AND doctor_id=? AND date=?', [queue_no + 2, doctor_id, date], function (err, result){
+                if(err){
+                    console.log(err);
+                }else if(result.length > 0){
+                    sendEmail(result[0].email, "Reminder", `Antrian dengan nomor ${result[0].queue_no} jadwal appointment anda akan segera tiba mohon untuk datang ke klinik`);
+                }
+            })
+
             res.send({ message: 'Data updated successfully!'});
         }
     })

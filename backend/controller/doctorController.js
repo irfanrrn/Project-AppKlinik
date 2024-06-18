@@ -7,9 +7,17 @@ const getAllDoctor = function (req, res) {
 
     if(q) {
         const searchTerm = `%${q}%`;
-        connection.query('SELECT * FROM tbl_doctors WHERE name LIKE ?', [searchTerm], (err, results) => {
+        connection.query('SELECT * FROM tbl_doctors WHERE name LIKE ?', [searchTerm], (err, rows) => {
             if (err) throw err;
-            res.json(results);
+            res.json({
+                message: "successfully",
+                doctor_data: rows.map((row) => {
+                    return {
+                        ...row,
+                        image: 'http://localhost:3000/img/' + row.image,
+                    }
+                })
+            });
         });
     } else {
         connection.query('SELECT * FROM tbl_doctors', function (err, rows) {
@@ -22,7 +30,12 @@ const getAllDoctor = function (req, res) {
             } else {
                 res.json( {
                     message: "successfully",
-                    doctor_data: rows
+                    doctor_data: rows.map((row) => {
+                        return {
+                            ...row,
+                            image: 'http://localhost:3000/img/' + row.image,
+                        }
+                    })
                 });
             }
         });
@@ -40,7 +53,12 @@ const getDoctorId = function (req, res) {
             } else {
                 res.json( {
                     message: "successfully",
-                    doctor_data: rows
+                    doctor_data: rows.map((row) => {
+                        return {
+                            ...row,
+                            image: 'http://localhost:3000/img/' + row.image,
+                        }
+                    })
                 });
             } 
         }
@@ -89,7 +107,7 @@ const updateDoctor = function (req, res) {
     connection.query('SELECT image FROM tbl_doctors WHERE doctor_id = ?', [id], function (err, rows) {
         if (err) {
             if (image) {
-                const newImagePath = path.join(__dirname, '../img', image);
+                const newImagePath = path.join(__dirname, '../public/img', image);
                 if (fs.existsSync(newImagePath)) {
                     fs.unlink(newImagePath, (err) => {
                         if (err) {
@@ -103,7 +121,7 @@ const updateDoctor = function (req, res) {
 
         if (rows.length === 0) {
             if (image) {
-                const newImagePath = path.join(__dirname, '../img', image);
+                const newImagePath = path.join(__dirname, '../public/img', image);
                 if (fs.existsSync(newImagePath)) {
                     fs.unlink(newImagePath, (err) => {
                         if (err) {
@@ -116,7 +134,7 @@ const updateDoctor = function (req, res) {
         }
 
         const oldImageName = rows[0].image;
-        const oldImagePath = path.join(__dirname, '../img', oldImageName);
+        const oldImagePath = path.join(__dirname, '../public/img', oldImageName);
 
         if (image) {
             if (fs.existsSync(oldImagePath)) {
@@ -165,7 +183,7 @@ const deleteDoctor = function(req, res) {
 
         if (rows.length > 0) {
             const imageName = rows[0].image;
-            const imagePath = path.join(__dirname, '../img', imageName);
+            const imagePath = path.join(__dirname, '../public/img', imageName);
 
             if (fs.existsSync(imagePath)) {
                 fs.unlink(imagePath, (err) => {
