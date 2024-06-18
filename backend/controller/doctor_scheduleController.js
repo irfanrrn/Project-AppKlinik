@@ -1,7 +1,7 @@
 var connection = require('../library/database');
 
 const getAllDoctorSchedule = function (req, res) {
-    connection.query('SELECT * FROM tbl_doctors_schedules', function (err, rows) {
+    connection.query('SELECT * FROM tbl_doctors_schedules JOIN tbl_doctors ON tbl_doctors_schedules.doctor_id = tbl_doctors.doctor_id', function (err, rows) {
         if (err) {
             res.send('error', err);
             res.json({
@@ -11,7 +11,13 @@ const getAllDoctorSchedule = function (req, res) {
         } else {
             res.json({
                 message: "successfully",
-                doctor_schedule_data: rows
+                doctor_schedule_data: rows.map(row => {
+                    return {
+                        ...row,
+                        day: `${row.from_day} - ${row.until_day}`,
+                        time: `${row.start_time} - ${row.end_time}`,
+                    }
+                })
             });
         }
     });
@@ -19,7 +25,7 @@ const getAllDoctorSchedule = function (req, res) {
 
 const getDoctorScheduleId = function (req, res) {
     let id = req.params.id;
-    connection.query('SELECT * FROM tbl_doctors_schedules WHERE schedule_id = '+ id, function (err, rows) {
+    connection.query('SELECT * FROM tbl_doctors_schedules JOIN tbl_doctors ON tbl_doctors_schedules.doctor_id = tbl_doctors.doctor_id WHERE schedule_id = '+ id, function (err, rows) {
         if (err) {
             res.send('error', err);
             res.json({
@@ -29,7 +35,7 @@ const getDoctorScheduleId = function (req, res) {
         } else {
             res.json({
                 message: "successfully",
-                doctor_schedule_data: rows
+                doctor_schedule_data: rows[0]
             });
         }
     });

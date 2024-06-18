@@ -17,7 +17,6 @@ var patientRouter = require('./routes/patient');
 var appointmentRouter = require('./routes/appointment');
 var registerRouter = require('./routes/register');
 var loginRouter = require('./routes/login');
-var reminderRouter = require('./routes/reminder');
 
 var app = express();
 
@@ -51,7 +50,6 @@ app.use('/patient', patientRouter);
 app.use('/appointment', appointmentRouter);
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);
-app.use('/reminder', reminderRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

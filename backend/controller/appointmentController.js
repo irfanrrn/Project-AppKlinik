@@ -1,6 +1,6 @@
 var connection = require('../library/database');
-var nodemailer = require('nodemailer');
-var cron = require('node-cron');
+require('dotenv').config();
+var {setReminder, sendEmail} = require ('../library/sendEmail');
 
 const getAllAppointment = function (req, res) {
     connection.query('SELECT * FROM tbl_appointments', function (err, rows) {
@@ -117,44 +117,25 @@ const getAppointmentId = function (req, res) {
 //         }
 //     });
 // }
-
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'raihanrizki83@gmail.com',
-        pass: 'lopm tapb fign dgmn'
-    }
-});
-
-// Fungsi untuk mengirim email
-const sendEmail = (to, subject, text) => {
-    const mailOptions = {
-        from: 'raihanrizki83@gmail.com',
-        to: to,
-        subject: subject,
-        text: text
-    };
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            return console.log(error);
-        }
-        console.log('Email sent: ' + info.response);
-    });
-};
-
 const createAppointment = async function (req, res) {
     try {
-        let { doctor_id, patient_id, date } = req.body;
+        let { doctor_id, patient_id, day } = req.body;
         let { user_id, name, gender, address, date_of_birth, phone_number, email } = req.body;
         let queue_no;
         let status = "Will come";
+        let date = new Date();
+
+        if(day == 'today'){
+            date = date.toISOString().slice(0, 10);
+        }else if(day == 'tomorrow'){
+            date.setDate(date.getDate() + 1);
+            date = date.toISOString().slice(0, 10);
+        }else{
+            return res.status(400).json({ message: 'The day field has not been filled in, please fill it in completely.' });
+        }
 
         if (!doctor_id) {
             return res.status(400).json({ message: 'The doctor_id field has not been filled in, please fill it in completely.' });
-        }
-
-        if (!date) {
-            return res.status(400).json({ message: 'The date field has not been filled in, please fill it in completely.' });
         }
 
         if (!patient_id) {
@@ -253,6 +234,37 @@ const createAppointment = async function (req, res) {
             throw insertAppointment;
         }
 
+        await new Promise((resolve, reject) => {
+            connection.query('SELECT email FROM tbl_patients WHERE patient_id = ?', [patient_id], (err, result) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    email = result[0].email;
+                    resolve();
+                }
+            });
+        });
+
+
+        const timeOpen = process.env.TIME_OPEN;
+        const timeSend = process.env.TIME_SEND_REMINDER;
+        const hourOpen = timeOpen.split(':')[0];
+        const minuteOpen = timeOpen.split(':')[1];
+        const hourSend = timeSend.split(':')[0];
+        const minuteSend = timeSend.split(':')[1];
+        const now = new Date().getTime();
+
+        // Set reminder if queue_no is 1 or 2
+        if(queue_no == 1 || queue_no == 2){
+            if(now < new Date().setHours(hourOpen, minuteOpen, 0, 0) && now > new Date().setHours(hourSend, minuteSend, 0, 0)){
+                sendEmail(email, 'Reminder', 'Antrian nomor ' + queue_no + ' Janji temu anda akan dimulai jam ' + process.env.TIME_OPEN + '.');
+            }else if(now > new Date().setHours(hourOpen, minuteOpen, 0, 0)){
+                sendEmail(email, 'Segera ke klinik', `Antrian nomor ${queue_no}, janji temu anda sudah bisa dimulai, segera datang ke klinik`);
+            }else{
+                setReminder(email, queue_no);
+            }
+        }
+
         // If everything is successful, send success message
         res.status(200).json({ message: 'Data saved successfully!' });
 
@@ -261,66 +273,7 @@ const createAppointment = async function (req, res) {
         console.error('Error in createAppointment:', error);
         res.status(500).json({ message: 'An error occurred on the server.', error: error.message });
     }
-
-        try {
-            const now = new Date();
-            const todayDate = now.toISOString().slice(0, 10);
-            const practiceStartTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 1, 35, 0, 0);
-            const oneHourBeforePractice = new Date(practiceStartTime.getTime() - 60 * 60 * 1000);
-    
-            if (now < practiceStartTime) {
-                connection.query('SELECT * FROM tbl_appointments WHERE queue_no IN (1, 2) AND date = ?', [todayDate], (err, results) => {
-                    if (err) {
-                        return console.error('Error querying appointment:', err);
-                    }
-    
-                    results.forEach(appointment => {
-                        connection.query('SELECT * FROM tbl_patients WHERE patient_id = ?', [appointment.patient_id], (err, patientResults) => {
-                            if (err) {
-                                return console.error('Error querying patient:', err);
-                            }
-    
-                            if (patientResults.length > 0) {
-                                const patient = patientResults[0];
-                                sendEmail(patient.email, 'Pengingat: Janji Temu', `Antrian nomor ${appointment.queue_no}, janji temu Anda akan dimulai pada jam 08:00`);
-                            }
-                        });
-                    });
-                });
-    
-                console.log('Pengingat satu jam sebelum praktik dijadwalkan untuk dikirim pada:', oneHourBeforePractice);
-            } else {
-                connection.query('SELECT * FROM tbl_appointments WHERE date = ? AND queue_no IN (1, 2) AND status = "Will come"', [todayDate], (err, results) => {
-                    if (err) {
-                        return console.error('Error querying appointment:', err);
-                    }
-    
-                    results.forEach(appointment => {
-                        connection.query('SELECT * FROM tbl_patients WHERE patient_id = ?', [appointment.patient_id], (err, patientResults) => {
-                            if (err) {
-                                return console.error('Error querying patient:', err);
-                            }
-    
-                            if (patientResults.length > 0) {
-                                const patient = patientResults[0];
-                                sendEmail(patient.email, 'Segera Datang ke Klinik', `Antrian nomor ${appointment.queue_no}, janji temu Anda sudah bisa dimulai. Segera datang ke klinik.`);
-                            }
-                        });
-                    });
-                });
-    
-                console.log('Pengingat setelah waktu praktik dijadwalkan.');
-            }
-        } catch (error) {
-            console.error('Error dalam mengirim pengingat:', error);
-        }
 };
-
-cron.schedule('35 0 * * *', () => {
-    createAppointment();
-}, {
-    timezone: "Asia/Jakarta"
-});
 
 const updateAppointement = function (req, res) {
     let id = req.params.id;
