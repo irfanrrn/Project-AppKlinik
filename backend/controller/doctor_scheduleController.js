@@ -153,34 +153,35 @@ const updateDoctorSchedule = function(req, res) {
             return res.status(400).json({ message: 'The doctor with the ID was not found' });
         }
 
-        let formData = {
-            doctor_id: doctor_id,
-            from_day: from_day,
-            until_day: until_day,
-            start_time: start_time,
-            end_time: end_time,
-            room_number: room_number
-        };
-
-        connection.query('UPDATE tbl_doctors_schedules SET ? WHERE schedule_id = ?', [formData, id], function(err, result) {
+        connection.query('SELECT * FROM tbl_doctors_schedules WHERE doctor_id = ? AND schedule_id != ?', [doctor_id, id], function(err, schedules) {
             if (err) {
-                res.send('error', err);
-                res.json({
-                    id: req.params.id,
-                    doctor_id: formData.doctor_id,
-                    from_day: formData.from_day,
-                    until_day: formData.until_day,
-                    start_time: formData.start_time,
-                    end_time: formData.end_time,
-                    room_number: formData.room_number
-            }) 
-            } else {
-                if (result.affectedRows === 0) {
-                    res.status(404).send({ message: 'ID does not exist' });
-                } else {
-                    res.send({ message: 'Data updated successfully!'});
-                }
+                return res.status(500).json({ message: 'An error occurred on the server while checking the doctor\'s schedule' });
             }
+
+            if (schedules.length > 0) {
+                return res.status(400).json({ message: 'The doctor with the ID already has another schedule' });
+            }
+
+            let formData = {
+                doctor_id: doctor_id,
+                from_day: from_day,
+                until_day: until_day,
+                start_time: start_time,
+                end_time: end_time,
+                room_number: room_number
+            };
+
+            connection.query('UPDATE tbl_doctors_schedules SET ? WHERE schedule_id = ?', [formData, id], function(err, result) {
+                if (err) {
+                    return res.status(500).json({ message: 'An error occurred on the server while updating the doctor\'s schedule' });
+                } else {
+                    if (result.affectedRows === 0) {
+                        return res.status(404).send({ message: 'ID does not exist' });
+                    } else {
+                        return res.send({ message: 'Data updated successfully!' });
+                    }
+                }
+            });
         });
     });
 }
