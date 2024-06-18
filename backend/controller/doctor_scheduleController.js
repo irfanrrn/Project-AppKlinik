@@ -28,15 +28,15 @@ const getDoctorScheduleId = function (req, res) {
     connection.query('SELECT * FROM tbl_doctors_schedules JOIN tbl_doctors ON tbl_doctors_schedules.doctor_id = tbl_doctors.doctor_id WHERE schedule_id = '+ id, function (err, rows) {
         if (err) {
             res.send('error', err);
-            res.json({
-                message: "successfully",
-                doctor_schedule_data: ''
-            });
         } else {
-            res.json({
-                message: "successfully",
-                doctor_schedule_data: rows[0]
-            });
+            if (rows.length === 0) {
+                res.status(404).send({ message: 'ID does not exist' });
+            } else {
+                res.json({
+                    message: "successfully",
+                    doctor_schedule_data: rows[0]
+                });
+            }  
         }
     });
 }
@@ -174,8 +174,12 @@ const updateDoctorSchedule = function(req, res) {
                     end_time: formData.end_time,
                     room_number: formData.room_number
             }) 
-        } else {
-                res.send({ message: 'Data updated successfully!'});
+            } else {
+                if (result.affectedRows === 0) {
+                    res.status(404).send({ message: 'ID does not exist' });
+                } else {
+                    res.send({ message: 'Data updated successfully!'});
+                }
             }
         });
     });
