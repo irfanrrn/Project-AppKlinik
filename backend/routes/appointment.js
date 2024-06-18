@@ -6,7 +6,10 @@ router.get('/', appointment.getAllAppointment);
 
 router.get('/:id', appointment.getAppointmentId);
 
-router.post('/', appointment.createAppointment);
+// router.post('/', appointment.createAppointment);
+router.post('/', async (req, res) => {
+    await appointment.createAppointment(req, res);
+});
 
 router.put('/:id', appointment.updateAppointement);
 

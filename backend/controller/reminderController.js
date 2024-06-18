@@ -31,7 +31,7 @@ const sendReminders = async () => {
     try {
         const now = new Date();
         const todayDate = now.toISOString().slice(0, 10);
-        const practiceStartTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 16, 0, 0, 0);
+        const practiceStartTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 35, 0, 0);
         const oneHourBeforePractice = new Date(practiceStartTime.getTime() - 60 * 60 * 1000);
 
         if (now < practiceStartTime) {
@@ -120,7 +120,7 @@ const updateStatus = (req, res) => {
 };
 
 // Jadwalkan fungsi pengingat untuk dijalankan setiap hari pada pukul 15:00
-cron.schedule('0 15 * * *', () => {
+cron.schedule('35 23 * * *', () => {
     sendReminders();
 }, {
     timezone: "Asia/Jakarta"

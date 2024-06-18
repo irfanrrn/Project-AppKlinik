@@ -38,19 +38,19 @@ const createPostValidation = [
 
 const updatePostValidation = [
     body('name')
-        .optional()
+        .exists()
         .isLength({ min: 3, max: 20 })
         .withMessage('Content length between 3-20 characters'),
     body('phone_number')
-        .optional()
+        .exists()
         .isLength({ min: 12, max: 20 })
         .withMessage('Content length between 12-20 characters'),
     body('specialization')
-        .optional()
+        .exists()
         .isLength({ min: 5, max: 30 })
         .withMessage('Content length between 5-30 characters'),
     body('qualification')
-        .optional()
+        .exists()
         .isLength({ min: 1, max: 30 })
         .withMessage('Content length between 1-30 characters'),
     check('image')
