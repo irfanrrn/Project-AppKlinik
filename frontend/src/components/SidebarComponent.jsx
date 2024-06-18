@@ -8,39 +8,39 @@ const SidebarComponent = () => {
             </a>
             <hr className="text-white d-none d-sm-block" />
             <ul className="nav nav-pills flex-column mt-3 mt-sm-0">
-                <li className="nav-item active text-white my-1 py-2 py-sm-0">
-                    <a href="#" className="nav-link text-white" aria-current="page">
+                <li className="nav-item text-white my-1 py-2 py-sm-0">
+                    <a href="/dashboard-admin" className="nav-link text-white" aria-current="page">
                         <i className="fa fa-house-medical"></i>
                         <span className="ms-3 d-none d-sm-inline">Dashboard</span>
                     </a>
                 </li>
                 <li className="nav-item text-white my-1 py-2 py-sm-0">
-                    <a href="#" className="nav-link text-white" aria-current="page">
+                    <a href="/doctor-admin" className="nav-link text-white" aria-current="page">
                         <i className="fa fa-user-doctor"></i>
                         <span className="ms-3 d-none d-sm-inline">Doctor</span>
                     </a>
                 </li>
                 <li className="nav-item text-white my-1 py-2 py-sm-0">
-                    <a href="#" className="nav-link text-white" aria-current="page">
+                    <a href="/schedule-admin" className="nav-link text-white" aria-current="page">
                         <i className="fa fa-calendar-days"></i>
                         <span className="ms-3 d-none d-sm-inline">Doctor's Schedule</span>
                     </a>
                 </li>
                 <li className="nav-item text-white my-1 py-2 py-sm-0">
-                    <a href="#" className="nav-link text-white" aria-current="page">
+                    <a href="/appointment-admin" className="nav-link text-white" aria-current="page">
                         <i className="fa fa-list"></i>
                         <span className="ms-3 d-none d-sm-inline">Appointment</span>
                     </a>
                 </li>
                 <li className="nav-item text-white my-1 py-2 py-sm-0">
-                    <a href="#" className="nav-link text-white" aria-current="page">
+                    <a href="/patient-admin" className="nav-link text-white" aria-current="page">
                         <i className="fa fa-hospital-user"></i>
                         <span className="ms-3 d-none d-sm-inline">Patient</span>
                     </a>
                 </li>
                 <li className="nav-item text-white my-1 py-2 py-sm-0">
-                    <a href="#" className="nav-link text-white" aria-current="page">
-                        <i class="fa fa-users"></i>
+                    <a href="/user-admin" className="nav-link text-white" aria-current="page">
+                        <i className="fa fa-users"></i>
                         <span className="ms-3 d-none d-sm-inline">User</span>
                     </a>
                 </li>
@@ -49,7 +49,7 @@ const SidebarComponent = () => {
 
         <div className="dropdown">
             <a className="text-decoration-none text-white dropdown-toggle p-3" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fa fa-circle-user"></i>
+                <i className="fa fa-circle-user"></i>
                 <span className="ms-3 d-none d-sm-inline nameadm">Admin Name</span>
             </a>
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">

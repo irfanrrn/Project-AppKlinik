@@ -22,7 +22,7 @@ const TableAppointmentComponent = () => {
 
             <div className="table-responsive box-tabtab">
             <button type="button" className="btn btn-primary my-3 button-add"><i className="fa fa-plus me-1"></i> Add Data</button>
-            <table class="table mt-5">
+            <table className="table mt-5">
                 <thead>
                     <tr>
                     <th scope="col">No</th>
