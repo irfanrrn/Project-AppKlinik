@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import dokterImg from "../assets/img/doctor-masuk.jpg";
 import { Link, useNavigate } from "react-router-dom";
-import { login } from "../configs/userSlice";
-import { useDispatch } from "react-redux";
+import { login, selectUser } from "../configs/userSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const LoginComponent = () => {
   const [email, setEmail] = useState("");
@@ -11,6 +11,7 @@ const LoginComponent = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const user = useSelector(selectUser);
 
   const submitHandle = async (e) => {
     e.preventDefault();
@@ -25,7 +26,11 @@ const LoginComponent = () => {
 
       if (user) {
         dispatch(login(user));
-        navigate("/");
+        if(user.role == 'user'){
+          navigate("/");
+        }else if(user.role == 'admin'){
+          navigate('/dashboard-admin');
+        }
       } else {
         setError(message || "Login failed");
       }

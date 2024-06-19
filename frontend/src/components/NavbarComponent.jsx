@@ -82,9 +82,7 @@ const NavbarComponent = () => {
         <NavLink to="/aboutus" className="nav-item nav-link py-md-4">
         About Us
         </NavLink>
-        <NavLink to="#reviewcust" className="nav-item nav-link py-md-4">
-        Customer Reviews
-        </NavLink>
+        
         {user.isLogin ? (
           <NavLink
           to="/formAppointment" className="btn text-white btn-warning btn-appo border-0 rounded-0 py-4 px-lg-5"

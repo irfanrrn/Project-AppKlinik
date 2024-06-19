@@ -33,6 +33,7 @@ import "tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.min.css";
 
 import "./scss/styles.scss";
 import * as bootstrap from "bootstrap";
+import Logout from "./pages/Logout";
 
 
 function App() {
@@ -63,6 +64,7 @@ function App() {
         <Route path="/formDoctorSchedule" element={<DoctorScheduleForm />} />
         <Route path="/formPatient" element={<PatientForm />} />
         <Route path="/formUser" element={<UserForm />} />
+        <Route path="/logout" element={<Logout />} />
       </Routes>
     </BrowserRouter>
   );

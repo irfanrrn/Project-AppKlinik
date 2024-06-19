@@ -1,11 +1,22 @@
-import doctorImg1 from "../assets/img/dokter/dr.rina.jpg";
-import doctorImg2 from "../assets/img/dokter/dr.maya.jpg";
-import doctorImg3 from "../assets/img/dokter/dr.budi.jpg";
-import doctorImg4 from "../assets/img/dokter/dr.andi.jpg";
-import doctorImg5 from "../assets/img/dokter/dr.agus.jpg";
-import doctorImg6 from "../assets/img/dokter/dr.sinta.jpg";
+import {useEffect, useState} from "react";
+import axios from "axios";
 
 const DashContentComponent = () => {
+    const [dashboardData, setDashboardData] = useState({
+        "number_of_appointment": 0,
+        "number_will_come": 0,
+        "number_completed": 0,
+        "patientCountByDoctors": []
+    });
+
+    const fetchData = async () => {
+        const res = await axios.get('/dashboard');
+        setDashboardData(res.data);
+    }
+
+    useEffect(() => {
+        fetchData();
+    }, []);
     return (
         <div className="col" id="content-side">
             <div className="head-title">
@@ -17,112 +28,55 @@ const DashContentComponent = () => {
 
             <ul className="box-info">
                 <li>
-                <i className="bx fa fa-notes-medical" />
-                <span className="text">
+                    <i className="bx fa fa-notes-medical"/>
+                    <span className="text">
                     <p>Today's Appointment</p>
-                    <h3>60 <span className="span-patient">Patient</span></h3>
+                    <h3>{dashboardData.number_of_appointment} <span className="span-patient">Patient</span></h3>
                 </span>
                 </li>
                 <li>
-                <i className="bx fa fa-notes-medical" />
-                <span className="text">
+                    <i className="bx fa fa-notes-medical"/>
+                    <span className="text">
                     <p>Appointment Remaining</p>
-                    <h3>40 <span className="span-patient">Patient</span></h3>
+                    <h3>{dashboardData.number_will_come} <span className="span-patient">Patient</span></h3>
                 </span>
                 </li>
                 <li>
-                <i className="bx fa fa-notes-medical" />
-                <span className="text">
+                    <i className="bx fa fa-notes-medical"/>
+                    <span className="text">
                     <p>Appointment Completed</p>
-                    <h3>20 <span className="span-patient">Patient</span></h3>
+                    <h3>{dashboardData.number_completed} <span className="span-patient">Patient</span></h3>
                 </span>
                 </li>
             </ul>
 
 
-        <div className="doc-appo-data">
-            <div className="doc-appoint">
-                <div className="head">
-                    <h3>Doctor Appointment</h3>
-                    <i className="bx bx-search" />
-                    <i className="bx bx-filter" />
-                </div>
+            <div className="doc-appo-data">
+                <div className="doc-appoint">
+                    <div className="head">
+                        <h3>Doctor Appointment</h3>
+                        <i className="bx bx-search"/>
+                        <i className="bx bx-filter"/>
+                    </div>
                     <ul className="box-doc">
-                        <li>
-                        <img src={doctorImg1} alt="" />
-                        
-                        <span className="text1">
-                            <h3 className="doc-name">Dr. Maya Putri, Sp.JP</h3>
-                            <p>Heart Specialist</p>
+                        {dashboardData.patientCountByDoctors.map((doctor, index) => (
+                            <li key={index}>
+                                <img src={doctor.image} alt=""/>
+
+                                <span className="text1">
+                            <h3 className="doc-name">{doctor.name}</h3>
+                            <p>{doctor.specialization}</p>
                         </span>
-                        <span className="text2">
-                            <h3 className="num-patient">10</h3>
+                                <span className="text2">
+                            <h3 className="num-patient">{doctor.patientCount}</h3>
                             <span className="span-patient">Patient</span>
                         </span>
-                        </li>
-                        <li>
-                        <img src={doctorImg2} alt="" />
-                        <span className="text1">
-                            <h3 className="doc-name">Dr. Maya Putri, Sp.JP</h3>
-                            <p>Heart Specialist</p>
-                        </span>
-                        <span className="text2">
-                            <h3 className="num-patient">10</h3>
-                            <span className="span-patient">Patient</span>
-                        </span>
-                        </li>
-                        <li>
-                        <img src={doctorImg3} alt="" />
-                        
-                        <span className="text1">
-                            <h3 className="doc-name">Dr. Maya Putri, Sp.JP</h3>
-                            <p>Heart Specialist</p>
-                        </span>
-                        <span className="text2">
-                            <h3 className="num-patient">10</h3>
-                            <span className="span-patient">Patient</span>
-                        </span>
-                        </li>
-                        <li>
-                        <img src={doctorImg4} alt="" />
-                        
-                        <span className="text1">
-                            <h3 className="doc-name">Dr. Maya Putri, Sp.JP</h3>
-                            <p>Heart Specialist</p>
-                        </span>
-                        <span className="text2">
-                            <h3 className="num-patient">10</h3>
-                            <span className="span-patient">Patient</span>
-                        </span>
-                        </li>
-                        <li>
-                        <img src={doctorImg5} alt="" />
-                        
-                        <span className="text1">
-                            <h3 className="doc-name">Dr. Maya Putri, Sp.JP</h3>
-                            <p>Heart Specialist</p>
-                        </span>
-                        <span className="text2">
-                            <h3 className="num-patient">10</h3>
-                            <span className="span-patient">Patient</span>
-                        </span>
-                        </li>
-                        <li>
-                        <img src={doctorImg6} alt="" />
-                        
-                        <span className="text1">
-                            <h3 className="doc-name">Dr. Maya Putri, Sp.JP</h3>
-                            <p>Heart Specialist</p>
-                        </span>
-                        <span className="text2">
-                            <h3 className="num-patient">10</h3>
-                            <span className="span-patient">Patient</span>
-                        </span>
-                        </li>
+                            </li>
+                        ))}
                     </ul>
-            </div> 
+                </div>
+            </div>
         </div>
-</div>
 
     )
 }

@@ -39,7 +39,7 @@ const createPostValidation = [
 const updatePostValidation = [
     body('name')
         .exists()
-        .isLength({ min: 3, max: 20 })
+        .isLength({ min: 3, max: 50 })
         .withMessage('Content length between 3-20 characters'),
     body('phone_number')
         .exists()

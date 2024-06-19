@@ -1,4 +1,4 @@
-import doctorImg1 from "../assets/img/dokter/dr.rina.jpg";
+
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
@@ -26,7 +26,8 @@ const TableDoctorComponent = () => {
         });
     };
 
-    const handleDelete = async () => {
+    const handleDelete = async (e) => {
+        e.preventDefault();
         try {
             let res = await axios.delete(`/doctor/${idDelete}`);
             setModalDeleteShow(false);
