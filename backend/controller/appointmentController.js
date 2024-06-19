@@ -336,6 +336,10 @@ const updateAppointmentStatus = function(req, res){
                 status: status
             })
         } else {
+            if (result.affectedRows === 0) {
+                res.status(404).json({ message: 'Appointment ID not found!' });
+                return;
+            }
 
             let queue_no, doctor_id, date;
 
@@ -344,6 +348,11 @@ const updateAppointmentStatus = function(req, res){
                     if(err) {
                         reject(err);
                     }else {
+                        if (result.length === 0) {
+                            res.status(404).json({ message: 'Appointment data not found after update!' });
+                            return;
+                        }
+
                         queue_no = result[0].queue_no;
                         doctor_id = result[0].doctor_id;
                         date = result[0].date;
@@ -358,11 +367,11 @@ const updateAppointmentStatus = function(req, res){
                 }else if(result.length > 0){
                     sendEmail(result[0].email, "Reminder", `Antrian dengan nomor ${result[0].queue_no} jadwal appointment anda akan segera tiba mohon untuk datang ke klinik`);
                 }
-            })
+            });
 
             res.send({ message: 'Data updated successfully!'});
         }
-    })
+    });
 }
 
 const updateAppointementFeedback = function(req, res) {
