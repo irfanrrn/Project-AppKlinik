@@ -12,7 +12,12 @@ const getAllAppointment = function (req, res) {
         } else {
             res.json({
                 message: "successfully",
-                appointment_data: rows
+                appointment_data: rows.map(row => {
+                    return {
+                        ...row,
+                        image: 'http://localhost:3000/img/' + row.image,
+                    }
+                })
             });
         }
     });

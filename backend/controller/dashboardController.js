@@ -43,7 +43,12 @@ const getDashboard = function (req, res) {
                     number_of_appointment: appointmentCount,
                     number_will_come: willComeCount,
                     number_completed: completedCount,
-                    patientCountByDoctors: doctorsResult
+                    patientCountByDoctors: doctorsResult.map(row => {
+                        return {
+                            ...row,
+                            image: 'http://localhost:3000/img/' + row.image,
+                        }
+                    })
                 });
             });
         })
