@@ -1,8 +1,3 @@
-import appointImg from "../assets/img/appointment/dr-agus.png";
-import appointImg1 from "../assets/img/appointment/dr-budi.png";
-import appointImg2 from "../assets/img/appointment/dr-maya.png";
-
-
 const AppointmentAllComponent = () => {
   return (
     <div>
@@ -24,139 +19,209 @@ const AppointmentAllComponent = () => {
       <hr className="hr-nav"/>
       
       <section className="appoint-container">
-        <div className="dcapp-card" data-status="upcoming">
-          <div className="dcapp-image">
-            <img src={appointImg} alt="Dr. Agus Widodo, M.D." />
-          </div>
+      <div className="dcapp-card" data-status="upcoming">
           <div className="appoint-details">
-            <p className="status upcoming">Upcoming</p>
-            <h3>Dr. Agus Widodo, M.D.</h3>
-            <p>General Specialist</p>
-            <hr className="short-hr-all"/>
-            <p><b>Date :</b> Friday, 24/05/2024</p>
+              <div className="column left-column">
+                <p><b>Name :</b> Natasya Rizki</p>
+                <p><b>Email :</b> natnat15@gmail.com</p>
+                <p><b>Date of Birth :</b> Friday, 12/01/2002</p>
+                <p><b>Gender :</b> Female</p>
+                <p><b>Phone :</b> 0812-1234-5678</p>
+                <p><b>Address :</b> Kota Bandung</p>
+              </div>
+              <hr className="short-hr-all" />
+              <div className="column right-column">
+                <p><b>Doctor :</b> Dr. Agus Widodo, M.D.</p>
+                <p><b>Department :</b> General Specialist</p>
+                <p><b>Date :</b> Friday, 24/05/2024</p>
+                <p><b>Queue :</b> GEN01</p>
+                <div className="status-container">
+                  <p><b>Status :</b></p>
+                  <p className="status upcoming">Will Come</p>
+                </div>
+              </div>
           </div>
         </div>
 
         <div className="dcapp-card" data-status="completed">
-          <div className="dcapp-image">
-            <img src={appointImg2} alt="Dr. Maya Putri, Sp.JP." />
-          </div>
           <div className="appoint-details">
-            <p className="status completed">Completed</p>
-            <h3>Dr. Maya Putri, Sp.JP.</h3>
-            <p>Heart Specialist</p>
-            <hr className="short-hr-all"/>
-            <p><b>Date :</b> Monday, 20/05/2024</p>
-            <div className="review-section">
-              <p className="review-order">Give your review :</p>
-              <div className="rating">
-                <input type="radio" id="star-1-may" name="may-star-radio" value="star-1" />
-                <label htmlFor="star-1-may">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"></path>
-                  </svg>
-                </label>
-                <input type="radio" id="star-2-may" name="may-star-radio" value="star-2" />
-                <label htmlFor="star-2-may">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"></path>
-                  </svg>
-                </label>
-                <input type="radio" id="star-3-may" name="may-star-radio" value="star-3" />
-                <label htmlFor="star-3-may">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"></path>
-                  </svg>
-                </label>
-                <input type="radio" id="star-4-may" name="may-star-radio" value="star-4" />
-                <label htmlFor="star-4-may">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"></path>
-                  </svg>
-                </label>
-                <input type="radio" id="star-5-may" name="may-star-radio" value="star-5" />
-                <label htmlFor="star-5-may">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"></path>
-                  </svg>
-                </label>
+            <div className="column left-column">
+              <p><b>Name :</b> Natasya Rizki</p>
+              <p><b>Email :</b> natnat15@gmail.com</p>
+              <p><b>Date of Birth :</b> Friday, 12/01/2002</p>
+              <p><b>Gender :</b> Female</p>
+              <p><b>Phone :</b> 0812-1234-5678</p>
+              <p><b>Address :</b> Kota Bandung</p>
+            </div>
+              <hr className="short-hr-all" />
+            <div className="column right-column">
+              <p><b>Doctor :</b> Dr. Maya Putri, Sp.JP</p>
+              <p><b>Department :</b> Heart Specialist</p>
+              <p><b>Date :</b> Friday, 24/05/2024</p>
+              <p><b>Queue :</b> HRT01</p>
+              <div className="status-container">
+                <p><b>Status :</b></p>
+                <p className="status completed">Completed</p>
               </div>
-              <form className="review-form">
-                <input type="text" className="review-input" placeholder="Enter your review" />
-                <div className="review-actions">
-                  <button className="submit-review-btn" type="submit">Submit</button>
+              <div className="review-section">
+                <div className="review-header">
+                  <p className="review-order">Give your review :</p>
+                  <div className="rating">
+                    <input type="radio" id="star-1-maya" name="maya-star-radio" value="star-1" />
+                    <label htmlFor="star-1-maya">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path pathLength="360"
+                          d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
+                        </path>
+                      </svg>
+                    </label>
+                    <input type="radio" id="star-2-maya" name="maya-star-radio" value="star-2" />
+                    <label htmlFor="star-2-maya">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path pathLength="360"
+                          d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
+                        </path>
+                      </svg>
+                    </label>
+                    <input type="radio" id="star-3-maya" name="maya-star-radio" value="star-3" />
+                    <label htmlFor="star-3-maya">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path pathLength="360"
+                          d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
+                        </path>
+                      </svg>
+                    </label>
+                    <input type="radio" id="star-4-maya" name="maya-star-radio" value="star-4" />
+                    <label htmlFor="star-4-maya">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path pathLength="360"
+                          d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
+                        </path>
+                      </svg>
+                    </label>
+                    <input type="radio" id="star-5-maya" name="maya-star-radio" value="star-5" />
+                    <label htmlFor="star-5-maya">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path pathLength="360"
+                          d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
+                        </path>
+                      </svg>
+                    </label>
+                  </div>
                 </div>
-              </form>
+                <form className="review-form">
+                  <input type="text" className="review-input" placeholder="Enter your review" />
+                  <div className="review-actions">
+                    <button className="submit-review-btn" type="submit">Submit</button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="dcapp-card" data-status="canceled">
-          <div className="dcapp-image">
-            <img src={appointImg1} alt="Dr. Budi Santoso, Sp.A." />
-          </div>
+        
+        <div className="dcapp-card">
           <div className="appoint-details">
-            <p className="status canceled">Canceled</p>
-            <h3>Dr. Budi Santoso, Sp.A.</h3>
-            <p>Child Specialist</p>
-            <hr className="short-hr-all"/>
-            <p><b>Date :</b> Thursday, 17/05/2024</p>
+          <div className="column left-column">
+                <p><b>Name :</b> Natasya Rizki</p>
+                <p><b>Email :</b> natnat15@gmail.com</p>
+                <p><b>Date of Birth :</b> Friday, 12/01/2002</p>
+                <p><b>Gender :</b> Female</p>
+                <p><b>Phone :</b> 0812-1234-5678</p>
+                <p><b>Address :</b> Kota Bandung</p>
+              </div>
+              <hr className="short-hr-all" />
+              <div className="column right-column">
+              <p><b>Doctor :</b> Dr. Budi Santoso, Sp.A</p>
+              <p><b>Department :</b> Child Specialist</p>
+              <p><b>Date :</b> Friday, 24/05/2024</p>
+              <p><b>Queue :</b> GEN01</p>
+              <div className="status-container">
+                <p><b>Status :</b></p>
+                <p className="status canceled">Canceled</p>
+              </div>
+              </div>
           </div>
         </div>
 
         <div className="dcapp-card" data-status="completed">
-          <div className="dcapp-image">
-            <img src={appointImg1} alt="Dr. Budi Santoso, Sp.A." />
-          </div>
           <div className="appoint-details">
-            <p className="status completed">Completed</p>
-            <h3>Dr. Budi Santoso, Sp.A.</h3>
-            <p>Child Specialist</p>
-            <hr className="short-hr-all"/>
-            <p><b>Date :</b> Tuesday, 15/05/2024</p>
-            <div className="review-section">
-              <p className="review-order">Give your review :</p>
-              <div className="rating">
-                <input type="radio" id="star-1-bud" name="bud-star-radio" value="star-1" />
-                <label htmlFor="star-1-bud">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"></path>
-                  </svg>
-                </label>
-                <input type="radio" id="star-2-bud" name="bud-star-radio" value="star-2" />
-                <label htmlFor="star-2-bud">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"></path>
-                  </svg>
-                </label>
-                <input type="radio" id="star-3-bud" name="bud-star-radio" value="star-3" />
-                <label htmlFor="star-3-bud">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"></path>
-                  </svg>
-                </label>
-                <input type="radio" id="star-4-bud" name="bud-star-radio" value="star-4" />
-                <label htmlFor="star-4-bud">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"></path>
-                  </svg>
-                </label>
-                <input type="radio" id="star-5-bud" name="bud-star-radio" value="star-5" />
-                <label htmlFor="star-5-bud">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"></path>
-                  </svg>
-                </label>
+            <div className="column left-column">
+              <p><b>Name :</b> Natasya Rizki</p>
+              <p><b>Email :</b> natnat15@gmail.com</p>
+              <p><b>Date of Birth :</b> Friday, 12/01/2002</p>
+              <p><b>Gender :</b> Female</p>
+              <p><b>Phone :</b> 0812-1234-5678</p>
+              <p><b>Address :</b> Kota Bandung</p>
+            </div>
+              <hr className="short-hr-all" />
+            <div className="column right-column">
+              <p><b>Doctor :</b> Dr. Budi Santoso, Sp.A</p>
+              <p><b>Department :</b> Child Specialist</p>
+              <p><b>Date :</b> Friday, 24/05/2024</p>
+              <p><b>Queue :</b> CHL01</p>
+              <div className="status-container">
+                <p><b>Status :</b></p>
+                <p className="status completed">Completed</p>
               </div>
-              <form className="review-form">
-                <input type="text" className="review-input" placeholder="Enter your review" />
-                <div className="review-actions">
-                  <button className="submit-review-btn" type="submit">Submit</button>
+              <div className="review-section">
+                <div className="review-header">
+                  <p className="review-order">Give your review :</p>
+                  <div className="rating">
+                    <input type="radio" id="star-1-budi" name="budi-star-radio" value="star-1" />
+                    <label htmlFor="star-1-budi">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path pathLength="360"
+                          d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
+                        </path>
+                      </svg>
+                    </label>
+                    <input type="radio" id="star-2-budi" name="budi-star-radio" value="star-2" />
+                    <label htmlFor="star-2-budi">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path pathLength="360"
+                          d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
+                        </path>
+                      </svg>
+                    </label>
+                    <input type="radio" id="star-3-budi" name="budi-star-radio" value="star-3" />
+                    <label htmlFor="star-3-budi">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path pathLength="360"
+                          d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
+                        </path>
+                      </svg>
+                    </label>
+                    <input type="radio" id="star-4-budi" name="budi-star-radio" value="star-4" />
+                    <label htmlFor="star-4-budi">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path pathLength="360"
+                          d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
+                        </path>
+                      </svg>
+                    </label>
+                    <input type="radio" id="star-5-budi" name="budi-star-radio" value="star-5" />
+                    <label htmlFor="star-5-budi">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path pathLength="360"
+                          d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
+                        </path>
+                      </svg>
+                    </label>
+                  </div>
                 </div>
-              </form>
+                <form className="review-form">
+                  <input type="text" className="review-input" placeholder="Enter your review" />
+                  <div className="review-actions">
+                    <button className="submit-review-btn" type="submit">Submit</button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
+
       </section>
     </div>
   );

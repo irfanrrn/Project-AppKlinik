@@ -1,5 +1,3 @@
-import appoupcImg from "../assets/img/appointment/dr-agus.png";
-
 const AppointmentUpcComponent = () => {
   return (
     <div>
@@ -21,16 +19,27 @@ const AppointmentUpcComponent = () => {
       <hr className="hr-nav" />
 
       <section className="appoint-container">
-        <div className="dcapp-card" data-status="upcoming">
-          <div className="dcapp-image">
-            <img src={appoupcImg} alt="Dr. Agus Widodo, M.D." />
-          </div>
+      <div className="dcapp-card" data-status="upcoming">
           <div className="appoint-details">
-            <p className="status upcoming">Upcoming</p>
-            <h3>Dr. Agus Widodo, M.D.</h3>
-            <p>General Specialist</p>
-            <hr className="short-hr-all" />
-            <p><b>Date :</b> Friday, 24/05/2024</p>
+              <div className="column left-column">
+                <p><b>Name :</b> Natasya Rizki</p>
+                <p><b>Email :</b> natnat15@gmail.com</p>
+                <p><b>Date of Birth :</b> Friday, 12/01/2002</p>
+                <p><b>Gender :</b> Female</p>
+                <p><b>Phone :</b> 0812-1234-5678</p>
+                <p><b>Address :</b> Kota Bandung</p>
+              </div>
+              <hr className="short-hr-all" />
+              <div className="column right-column">
+                <p><b>Doctor :</b> Dr. Agus Widodo, M.D.</p>
+                <p><b>Department :</b> General Specialist</p>
+                <p><b>Date :</b> Friday, 24/05/2024</p>
+                <p><b>Queue :</b> GEN01</p>
+                <div className="status-container">
+                  <p><b>Status :</b></p>
+                  <p className="status upcoming">Will Come</p>
+                </div>
+              </div>
           </div>
         </div>
       </section>
