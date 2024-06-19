@@ -29,7 +29,7 @@ const setReminder = (email, queue_no, date) => {
     const hour = timeSend.split(':')[0];
     const minute = timeSend.split(':')[1];    
     cron.schedule('' + minute + ' ' + hour + ' ' + date + ' * *', () => {
-        sendEmail(email, 'Reminder', 'Antrian nomor ' + queue_no + ' Janji temu anda akan dimulai jam ' + process.env.TIME_OPEN + '.');    }, {
+        sendEmail(email, 'Reminder', 'Queue number ' + queue_no + ', your appointment will start at ' + process.env.TIME_OPEN + '.');    }, {
         timezone: "Asia/Jakarta"    
     });
 }

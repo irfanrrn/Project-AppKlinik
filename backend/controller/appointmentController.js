@@ -185,9 +185,9 @@ const createAppointment = async function (req, res) {
         if(queue_no == 1 || queue_no == 2){
             const getDate = date.split('-')[2];
             if(now < new Date().setHours(hourOpen, minuteOpen, 0, 0) && now > new Date().setHours(hourSend, minuteSend, 0, 0) && new Date().getDate() == getDate){
-                sendEmail(email, 'Reminder', 'Antrian nomor ' + queue_no + ' Janji temu anda akan dimulai jam ' + process.env.TIME_OPEN + '.');
+                sendEmail(email, 'Reminder', 'Queue number ' + queue_no + ', your appointment will start at ' + process.env.TIME_OPEN + '.');
             }else if(now > new Date().setHours(hourOpen, minuteOpen, 0, 0) && new Date().getDate() == getDate){
-                sendEmail(email, 'Segera ke klinik', `Antrian nomor ${queue_no}, janji temu anda sudah bisa dimulai, segera datang ke klinik`);
+                sendEmail(email, 'Go to the clinic immediately', `Queue number ${queue_no}, your appointment can start, come to the clinic immediately`);
             }else{
                 setReminder(email, queue_no, getDate);
             }
@@ -353,7 +353,7 @@ const updateAppointmentStatus = function(req, res){
                 if(err){
                     console.log(err);
                 }else if(result.length > 0){
-                    sendEmail(result[0].email, "Reminder", `Antrian dengan nomor ${result[0].queue_no} jadwal appointment anda akan segera tiba mohon untuk datang ke klinik`);
+                    sendEmail(result[0].email, "Reminder", `Queue number ${result[0].queue_no}, your appointment schedule will arrive soon, please come to the clinic`);
                 }
             });
 
