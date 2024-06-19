@@ -45,6 +45,27 @@ const getPatientId = function (req, res) {
     });
 }
 
+const getPatientUserId = function (req, res) {
+    let id = req.params.id;
+    connection.query('SELECT * FROM tbl_patients WHERE user_id = '+ id, function (err, rows) {
+        if (err) {
+            res.status(500).json({
+                message: "Error",
+                error: err
+            });
+        } else {
+            if (rows.length === 0) {
+                res.status(404).send({ message: 'ID does not exist' });
+            } else {
+                res.json({
+                    message: "successfully",
+                    patient_data: rows
+                });
+            } 
+        }
+    });
+}
+
 const createPatient = function (req, res) {
     let user_id = req.body.user_id;
     let name = req.body.name;
@@ -225,6 +246,7 @@ const deletePatient = function(req, res) {
 module.exports = {
     getAllPatient,
     getPatientId,
+    getPatientUserId,
     createPatient,
     updatePatient,
     deletePatient
