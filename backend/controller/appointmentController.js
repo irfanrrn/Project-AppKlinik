@@ -3,12 +3,11 @@ require('dotenv').config();
 var {setReminder, sendEmail} = require ('../library/sendEmail');
 
 const getAllAppointment = function (req, res) {
-    connection.query('SELECT * FROM tbl_appointments', function (err, rows) {
+    connection.query('SELECT * FROM tbl_appointments JOIN tbl_doctors ON tbl_appointments.doctor_id = tbl_doctors.doctor_id JOIN tbl_patients ON tbl_appointments.patient_id = tbl_patients.patient_id', function (err, rows) {
         if (err) {
-            res.send('error', err);
-            res.json({
-                message: "successfully",
-                appointment_data: ''
+            res.status(500).json({
+                message: "Error",
+                error: err
             });
         } else {
             res.json({

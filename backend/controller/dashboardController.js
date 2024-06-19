@@ -28,10 +28,10 @@ const getDashboard = function (req, res) {
         const completedCount = completedResults.length;
 
         connection.query(`
-            SELECT d.name, d.specialization, COUNT(a.appointment_id) AS patientCount 
+            SELECT d.name, d.specialization, d.image, COUNT(a.appointment_id) AS patientCount 
             FROM tbl_doctors d 
             LEFT JOIN tbl_appointments a ON a.doctor_id = d.doctor_id AND a.date = ? 
-            GROUP BY d.name, d.specialization`, 
+            GROUP BY d.name, d.specialization, d.image`, 
             [currentDate], (err, doctorsResult) => {
                 if (err) {
                     console.error('Error executing doctors query:', err);
