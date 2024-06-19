@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import appImg2 from "../assets/img/appointment/doctor-app.jpg";
 
-
 const AppointmentForm = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -14,31 +13,58 @@ const AppointmentForm = () => {
     field: 'poli_umum',
     doctor: '',
     address: '',
-    message: ''
   });
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    let updatedDoctor = formData.doctor;
+    if (name === 'field') {
+      switch (value) {
+        case 'poli_umum':
+          updatedDoctor = 'Dr. Agus Widodo, M.D';
+          break;
+        case 'psychology':
+          updatedDoctor = 'Dr. Sinta Dewi, Sp.KJ';
+          break;
+        case 'child_specialist':
+          updatedDoctor = 'Dr. Budi Santoso Sp.A';
+          break;
+        case 'heart_specialist':
+          updatedDoctor = 'Dr. Maya Putri, Sp.JP';
+          break;
+        case 'dental_and_oral':
+          updatedDoctor = 'Dr. Rina Sari, Sp.Pros';
+          break;
+        case 'obgyn':
+          updatedDoctor = 'Dr. Andi Pratama, Sp.OG';
+          break;
+        default:
+          updatedDoctor = '';
+      }
+    }
+
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: value,
+      doctor: updatedDoctor
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     axios.post("/appointments", formData)
-    .then(response => {
-      console.log(response.data);
-      alert('Appointment created successfully!');
-      // Tambahkan kode untuk membersihkan form atau menampilkan pesan sukses
-    })
-    .catch(error => {
-      console.error('Error creating appointment:', error);
-      alert('Error creating appointment: ' + error.message);
-      // Tambahkan kode untuk menangani error dan menampilkan pesan kesalahan
-    });
+      .then(response => {
+        console.log(response.data);
+        alert('Appointment created successfully!');
+        // Add code to reset the form or display success message
+      })
+      .catch(error => {
+        console.error('Error creating appointment:', error);
+        alert('Error creating appointment: ' + error.message);
+        // Add code to handle error and display error message
+      });
   };
-  
 
   return (
     <div id="form-appointment">
@@ -55,29 +81,29 @@ const AppointmentForm = () => {
           <div className="form-container-app">
             <form onSubmit={handleSubmit}>
               <div className="horizontal-group">
-               <div className="form-row">
-                <div>
-                  <label htmlFor="name">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Full Name"
-                    value={formData.name}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="name@*.com"
-                    value={formData.email}
-                    onChange={handleChange}
-                  />
-                </div>
+                <div className="form-row">
+                  <div>
+                    <label htmlFor="name">Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      placeholder="Full Name"
+                      value={formData.name}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email">Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="name@*.com"
+                      value={formData.email}
+                      onChange={handleChange}
+                    />
+                  </div>
                 </div>
               </div>
               <div className="form-row">
@@ -132,6 +158,7 @@ const AppointmentForm = () => {
                     <option value="obgyn">OBGYN</option>
                     <option value="child_specialist">Child Specialist</option>
                     <option value="heart_specialist">Heart Specialist</option>
+                    <option value="dental_and_oral">Dental And Oral</option>
                   </select>
                 </div>
                 <div>
@@ -157,16 +184,6 @@ const AppointmentForm = () => {
                     value={formData.address}
                     onChange={handleChange}
                   />
-                </div>
-                <div>
-                  <label htmlFor="message">Message</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    placeholder="Convey your message here"
-                    value={formData.message}
-                    onChange={handleChange}
-                  ></textarea>
                 </div>
               </div>
             </form>
