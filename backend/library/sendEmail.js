@@ -9,7 +9,6 @@ const transporter = nodemailer.createTransport({
     pass: 'lopm tapb fign dgmn'
 }});
 
-// Fungsi untuk mengirim email
 const sendEmail = (to, subject, text) => {    
     const mailOptions = {
         from: 'raihanrizki83@gmail.com',        
@@ -25,9 +24,6 @@ const sendEmail = (to, subject, text) => {
     });
 };
 
-// Jadwalkan fungsi pengingat untuk dijalankan setiap hari pada pukul 15:00// cron.schedule('0 15 * * *', () => {
-//     sendReminders();// }, {
-//     timezone: "Asia/Jakarta"// });
 const setReminder = (email, queue_no, date) => {
     const timeSend = process.env.TIME_SEND_REMINDER;    
     const hour = timeSend.split(':')[0];

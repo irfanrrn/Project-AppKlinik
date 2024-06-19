@@ -7,6 +7,7 @@ var {
     updatePostValidation,
     result 
    } = require("../middleware/validation.js");
+   
 var { upload } = require("../middleware/uploadImage.js");
 
 router.get('/', doctor.getAllDoctor);
