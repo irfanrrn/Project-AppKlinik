@@ -213,8 +213,30 @@
 
   .search-container {
     width: 100%;
-    flex-direction: column;
+    flex-direction: row;
     padding: 10px;
+  }
+
+  .search-container input {
+    border: none;
+    outline: none;
+    padding: 5px;
+    flex: 1;
+    box-sizing: border-box;
+  }
+
+  .search-btn {
+    cursor: pointer;
+    padding: 5px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    margin-right: 10px; /* Menempatkan ikon di sebelah kiri input */
+  }
+
+  .search-btn:hover {
+    background-color: #f0f0f0;
+    border-radius: 50%;
   }
 
   .profile-container {
