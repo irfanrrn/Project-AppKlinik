@@ -78,7 +78,6 @@ const createAppointment = async function (req, res) {
         }
 
         if (!patient_id) {
-            // Insert new patient if patient_id is not provided
             const insertPatient = await new Promise((resolve, reject) => {
                 connection.query('INSERT INTO tbl_patients SET ?', { user_id, name, gender, address, date_of_birth, phone_number, email }, (err, result) => {
                     if (err) {
@@ -90,13 +89,11 @@ const createAppointment = async function (req, res) {
                 });
             });
 
-            // Handle error if patient insertion fails
             if (insertPatient instanceof Error) {
                 throw insertPatient;
             }
         }
 
-        // Check if doctor_id exists
         const checkDoctor = await new Promise((resolve, reject) => {
             connection.query('SELECT * FROM tbl_doctors WHERE doctor_id = ?', [doctor_id], (err, result) => {
                 if (err) {
@@ -109,12 +106,10 @@ const createAppointment = async function (req, res) {
             });
         });
 
-        // Handle error if doctor_id check fails
         if (checkDoctor instanceof Error) {
             throw checkDoctor;
         }
 
-        // Check if patient_id exists
         const checkPatient = await new Promise((resolve, reject) => {
             connection.query('SELECT * FROM tbl_patients WHERE patient_id = ?', [patient_id], (err, result) => {
                 if (err) {
@@ -127,12 +122,10 @@ const createAppointment = async function (req, res) {
             });
         });
 
-        // Handle error if patient_id check fails
         if (checkPatient instanceof Error) {
             throw checkPatient;
         }
 
-        // Get the next queue number for the appointment
         const getNextQueueNumber = await new Promise((resolve, reject) => {
             connection.query('SELECT MAX(queue_no) AS max_queue_no FROM tbl_appointments WHERE doctor_id = ? AND date = ?', [doctor_id, date], (err, result) => {
                 if (err) {
@@ -144,12 +137,10 @@ const createAppointment = async function (req, res) {
             });
         });
 
-        // Handle error if queue number retrieval fails
         if (getNextQueueNumber instanceof Error) {
             throw getNextQueueNumber;
         }
 
-        // Insert the appointment into the database
         const insertAppointment = await new Promise((resolve, reject) => {
             const formData = {
                 doctor_id,
@@ -168,7 +159,6 @@ const createAppointment = async function (req, res) {
             });
         });
 
-        // Handle error if appointment insertion fails
         if (insertAppointment instanceof Error) {
             throw insertAppointment;
         }
@@ -192,7 +182,6 @@ const createAppointment = async function (req, res) {
         const minuteSend = timeSend.split(':')[1];
         const now = new Date().getTime();
 
-        // Set reminder if queue_no is 1 or 2
         if(queue_no == 1 || queue_no == 2){
             const getDate = date.split('-')[2];
             if(now < new Date().setHours(hourOpen, minuteOpen, 0, 0) && now > new Date().setHours(hourSend, minuteSend, 0, 0) && new Date().getDate() == getDate){
@@ -204,11 +193,9 @@ const createAppointment = async function (req, res) {
             }
         }
 
-        // If everything is successful, send success message
         res.status(200).json({ message: 'Data saved successfully!' });
 
     } catch (error) {
-        // Handle any error that occurred during the process
         console.error('Error in createAppointment:', error);
         res.status(500).json({ message: 'An error occurred on the server.', error: error.message });
     }
@@ -325,6 +312,7 @@ const updateAppointmentStatus = function(req, res){
     if (!status) {
         errors = true;
         res.json({ message: 'The status field cannot be empty!' });
+        return;
     }
 
     connection.query('UPDATE tbl_appointments SET ? WHERE appointment_id = ' + id, {status}, async function (err, result) {
@@ -401,7 +389,6 @@ const updateAppointementFeedback = function(req, res) {
                 review: formData.review
             })
         } else {
-            // res.send({ message: 'Data updated successfully!'});
             if (result.affectedRows === 0) {
                 res.status(404).send({ message: 'ID does not exist' });
             } else {
