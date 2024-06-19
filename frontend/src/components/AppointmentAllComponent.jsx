@@ -136,7 +136,7 @@ const AppointmentAllComponent = () => {
               <p><b>Doctor :</b> Dr. Budi Santoso, Sp.A</p>
               <p><b>Department :</b> Child Specialist</p>
               <p><b>Date :</b> Friday, 24/05/2024</p>
-              <p><b>Queue :</b> GEN01</p>
+              <p><b>Queue :</b> CHL01</p>
               <div className="status-container">
                 <p><b>Status :</b></p>
                 <p className="status canceled">Canceled</p>
