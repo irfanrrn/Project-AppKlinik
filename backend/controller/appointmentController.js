@@ -3,7 +3,12 @@ require('dotenv').config();
 var {setReminder, sendEmail} = require ('../library/sendEmail');
 
 const getAllAppointment = function (req, res) {
-    connection.query('SELECT * FROM tbl_appointments JOIN tbl_doctors ON tbl_appointments.doctor_id = tbl_doctors.doctor_id JOIN tbl_patients ON tbl_appointments.patient_id = tbl_patients.patient_id', function (err, rows) {
+    connection.query(`SELECT a.*, 
+        d.name AS doctor_name,d.phone_number, 
+        d.specialization, d.qualification, d.image,
+        p.user_id, p.name AS patient_name, p.gender, p.address, 
+        p.date_of_birth, p.phone_number, p.email 
+        FROM tbl_appointments a JOIN tbl_doctors d ON a.doctor_id = d.doctor_id JOIN tbl_patients p ON a.patient_id = p.patient_id`, function (err, rows) {
         if (err) {
             res.status(500).json({
                 message: "Error",
@@ -25,7 +30,12 @@ const getAllAppointment = function (req, res) {
 
 const getAppointmentId = function (req, res) {
     let id = req.params.id;
-    connection.query('SELECT * FROM tbl_appointments WHERE appointment_id = ' + id, function (err, rows) {
+    connection.query(`SELECT a.*, 
+        d.name AS doctor_name,d.phone_number, 
+        d.specialization, d.qualification, d.image,
+        p.user_id, p.name AS patient_name, p.gender, p.address, 
+        p.date_of_birth, p.phone_number, p.email 
+        FROM tbl_appointments a JOIN tbl_doctors d ON a.doctor_id = d.doctor_id JOIN tbl_patients p ON a.patient_id = p.patient_id WHERE appointment_id = ` + id, function (err, rows) {
         if (err) {
             res.send('error', err);
             res.json({
@@ -35,7 +45,12 @@ const getAppointmentId = function (req, res) {
         } else {
             res.json({
                 message: "successfully",
-                appointment_data: rows
+                appointment_data: rows.map(row => {
+                    return {
+                        ...row,
+                        image: 'http://localhost:3000/img/' + row.image,
+                    }
+                })
             });
         }
     });
