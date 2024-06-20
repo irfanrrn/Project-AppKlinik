@@ -398,6 +398,31 @@ const updateAppointementFeedback = function(req, res) {
     })
 }
 
+const getAppointmentUserId = async function (req, res) {
+    let id = req.params.id;
+    connection.query(` SELECT a.*
+      FROM tbl_appointments a
+      JOIN tbl_patients p ON a.patient_id = p.patient_id
+      JOIN tbl_users u ON p.user_id = u.user_id
+      WHERE u.user_id =`+ id, await function (err, rows) {
+        if (err) {
+            res.status(500).json({
+                message: "Error",
+                error: err
+            });
+        } else {
+            if (rows.length === 0) {
+                res.status(404).send({ message: 'ID does not exist' });
+            } else {
+                res.json({
+                    message: "successfully",
+                    data_appointmentByUserId: rows
+                });
+            }  
+        }
+    });
+}
+
 module.exports = {
     getAllAppointment,
     getAppointmentId,
@@ -405,5 +430,6 @@ module.exports = {
     updateAppointement,
     deleteAppointment,
     updateAppointmentStatus,
-    updateAppointementFeedback
+    updateAppointementFeedback,
+    getAppointmentUserId
 }

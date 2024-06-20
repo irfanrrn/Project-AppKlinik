@@ -18,4 +18,6 @@ router.put('/status/:id', appointment.updateAppointmentStatus);
 
 router.put('/feedback/:id', appointment.updateAppointementFeedback);
 
+router.get('/by-user/:id', appointment.getAppointmentUserId);
+
 module.exports = router;
