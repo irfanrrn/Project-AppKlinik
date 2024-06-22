@@ -1,3 +1,5 @@
+import appcanImg from "../assets/img/appointment/dr-budi.png";
+
 const AppointmentCanComponent = () => {
   return (
     <div>
@@ -20,26 +22,15 @@ const AppointmentCanComponent = () => {
 
       <section className="appoint-container">
         <div className="dcapp-card">
+          <div className="dcapp-image">
+            <img src={appcanImg} alt="Dr. Budi Santoso, Sp.A., Child Specialist" />
+          </div>
           <div className="appoint-details">
-          <div className="column left-column">
-                <p><b>Name :</b> Natasya Rizki</p>
-                <p><b>Email :</b> natnat15@gmail.com</p>
-                <p><b>Date of Birth :</b> Friday, 12/01/2002</p>
-                <p><b>Gender :</b> Female</p>
-                <p><b>Phone :</b> 0812-1234-5678</p>
-                <p><b>Address :</b> Kota Bandung</p>
-              </div>
-              <hr className="short-hr-all" />
-              <div className="column right-column">
-              <p><b>Doctor :</b> Dr. Budi Santoso, Sp.A</p>
-              <p><b>Department :</b> Child Specialist</p>
-              <p><b>Date :</b> Friday, 24/05/2024</p>
-              <p><b>Queue :</b> CHL01</p>
-              <div className="status-container">
-                <p><b>Status :</b></p>
-                <p className="status canceled">Canceled</p>
-              </div>
-              </div>
+            <p className="status canceled">Canceled</p>
+            <h3>Dr. Budi Santoso, Sp.A.</h3>
+            <p>Child Specialist</p>
+            <hr className="short-hr-all"/>
+            <p><b>Date :</b> Thursday, 17/05/2024</p>
           </div>
         </div>
       </section>
