@@ -400,10 +400,11 @@ const updateAppointementFeedback = function(req, res) {
 
 const getAppointmentUserId = async function (req, res) {
     let id = req.params.id;
-    connection.query(` SELECT a.*
+    connection.query(` SELECT a.*, d.name AS doctor_name, d.specialization, d.image
       FROM tbl_appointments a
       JOIN tbl_patients p ON a.patient_id = p.patient_id
       JOIN tbl_users u ON p.user_id = u.user_id
+      JOIN tbl_doctors d ON a.doctor_id = d.doctor_id
       WHERE u.user_id =`+ id, await function (err, rows) {
         if (err) {
             res.status(500).json({
@@ -416,7 +417,12 @@ const getAppointmentUserId = async function (req, res) {
             } else {
                 res.json({
                     message: "successfully",
-                    data_appointmentByUserId: rows
+                    data_appointmentByUserId: rows.map(row => {
+                        return {
+                            ...row,
+                            image: 'http://localhost:3000/img/' + row.image,
+                        }
+                    })
                 });
             }  
         }
