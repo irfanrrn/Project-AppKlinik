@@ -9,11 +9,19 @@
 let mysql = require('mysql');
  
 let connection = mysql.createConnection({
-   host:        'localhost',
-   user:        'root',
-   password:    '',
-   database:    'klinik-app'
+   host:        'educalab.id',
+   user:        '1Xu9qiSivEWUlAQ6',
+   password:    'Wm0T0gxgDTtAyODS',
+   database:    '1LIUp1PCfwXo6Of6',
+   port: 3307
  });
+
+// let connection = mysql.createConnection({
+//   host:        'localhost',
+//   user:        'root',
+//   password:    '',
+//   database:    'klinik-app'
+// });
 
 connection.connect(function(error){
    if(!!error){
