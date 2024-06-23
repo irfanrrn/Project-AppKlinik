@@ -265,8 +265,7 @@ const AppointmentForm = () => {
                                     type="submit"
                                     className="btn btn-primary text-white"
                                 >
-                                    <i className="fa fa-floppy-disk me-2"></i>
-                                    Save
+                                    Submit
                                 </button>
                             </div>
                         </form>

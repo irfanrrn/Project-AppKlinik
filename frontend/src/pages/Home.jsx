@@ -6,6 +6,7 @@ import ServiceComponent from '../components/ServiceComponent'
 import WhychoiceComponent from '../components/WhychoiceComponent'
 import AboutComponent from '../components/AboutComponent'
 import SecdoctorsComponent from '../components/SecdoctorsComponent'
+import TestiComponent from '../components/TestiComponent'
 import ContactComponent from '../components/ContactComponent'
 
 
@@ -19,6 +20,7 @@ export default function Home() {
       <AboutComponent />
       <WhychoiceComponent />
       <SecdoctorsComponent />
+      <TestiComponent />
       <ContactComponent />
     </UserLayout>
   )
