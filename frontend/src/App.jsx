@@ -6,6 +6,7 @@ import DocSchedule from "./pages/Admin/DocSchedule";
 import Appointment from "./pages/Admin/Appointment";
 import Patient from "./pages/Admin/Patient";
 import User from "./pages/Admin/User";
+import MyAppointment from "./pages/MyAppointment";
 
 import Doctorschedule from "./pages/Doctorschedule";
 import Login from "./pages/Login";
@@ -47,6 +48,7 @@ function App() {
         <Route path="/appointment-admin" element={<Appointment />} />
         <Route path="/patient-admin" element={<Patient />} />
         <Route path="/user-admin" element={<User />} />
+        <Route path="/myappointment" element={<MyAppointment />} />
 
         <Route path="/doctorschedule" element={<Doctorschedule />} />
         <Route path="/login" element={<Login />} />

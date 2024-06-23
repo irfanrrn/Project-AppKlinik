@@ -1,4 +1,4 @@
-import appoupcImg from "../assets/img/appointment/dr-agus.png";
+
 
 const AppointmentUpcComponent = () => {
   return (

@@ -1,5 +1,4 @@
-import appcomImg1 from "../assets/img/appointment/dr-budi.png";
-import appcomImg2 from "../assets/img/appointment/dr-maya.png";
+
 
 const AppointmentComComponent = () => {
   return (

@@ -1,6 +1,4 @@
-import appointImg from "../assets/img/appointment/dr-agus.png";
-import appointImg1 from "../assets/img/appointment/dr-budi.png";
-import appointImg2 from "../assets/img/appointment/dr-maya.png";
+
 
 
 const AppointmentAllComponent = () => {

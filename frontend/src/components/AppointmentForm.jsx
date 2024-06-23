@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import appImg2 from "../assets/img/appointment/doctor-app.jpg";
 import { useSelector } from "react-redux";
 import { selectUser } from "../configs/userSlice";
 import CreatableSelect from 'react-select/creatable'
@@ -12,7 +11,7 @@ const AppointmentForm = () => {
     const [patients, setPatients] = useState([]);
     const [fields, setFields] = useState({
         doctor_id: "",
-        user_id: "",
+        user_id: user.user_id,
         patient_id: "",
         day: "",
         name: "",
@@ -54,7 +53,6 @@ const AppointmentForm = () => {
           const res = await axios.post('/appointment', fields);
           setFields({
               doctor_id: "",
-              user_id: "",
               patient_id: "",
               day: "",
               name: "",
@@ -187,7 +185,7 @@ const AppointmentForm = () => {
                                         Date Of Birth
                                     </label>
                                     <input
-                                        type="text"
+                                        type="date"
                                         className="form-control"
                                         onChange={changeHandle}
                                         value={fields.date_of_birth}
@@ -270,6 +268,11 @@ const AppointmentForm = () => {
                             </div>
                         </form>
                     </div>
+                </div>
+                <div className="d-flex justify-content-end mt-3">
+                    <a href="/myappointment" className="btn btn-primary text-white">
+                        SEE MY APPOINTMENT
+                    </a>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-import appcanImg from "../assets/img/appointment/dr-budi.png";
+
 
 const AppointmentCanComponent = () => {
   return (
